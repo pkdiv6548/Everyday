@@ -24,3 +24,6 @@
 .dark-mode .round-arrow,.dark-mode .circle-link{background:var(--lime);color:#17332f}
 .theme-toggle{display:grid;place-items:center;line-height:1;font-size:0}
 .theme-toggle svg{display:block;width:17px;height:17px;flex:none}
+
+/* Ensure the inline theme SVGs render as crisp stroked icons. */
+.theme-toggle svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
