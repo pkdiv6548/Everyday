@@ -8,3 +8,12 @@
 
 /* Align the two-letter monogram as one compact logo mark. */
 .brand-mark{display:flex;align-items:center;justify-content:center;gap:0;letter-spacing:-.13em;padding-right:.12em;white-space:nowrap}.brand-mark span{display:inline;position:static;line-height:1;margin:0;padding:0;transform:none;letter-spacing:inherit}
+
+/* Contrast fixes for dark theme controls and experiment text. */
+.dark-mode .button-dark{background:var(--lime);color:#17332f}
+.dark-mode .round-arrow,.dark-mode .circle-link{background:var(--lime);color:#17332f}
+.dark-mode .experiment-card p,.dark-mode .experiment-card li{color:#c1d1c4}
+.dark-mode .experiment-card .eyebrow{color:#b5c6b9}
+.dark-mode .experiment-card .demo-result{color:#e6efdc}
+.icon-button.theme-toggle{display:grid;place-items:center;padding:0;line-height:1}
+.icon-button.theme-toggle svg{width:16px;height:16px;display:block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
