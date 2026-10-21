@@ -5,3 +5,6 @@
 
 /* Keep the primary navigation visible during page scroll. */
 .site-header{position:sticky!important;top:0!important;z-index:1000!important}
+
+/* Align the two-letter monogram as one compact logo mark. */
+.brand-mark{display:flex;align-items:center;justify-content:center;gap:0;letter-spacing:-.13em;padding-right:.12em;white-space:nowrap}.brand-mark span{display:inline;position:static;line-height:1;margin:0;padding:0;transform:none;letter-spacing:inherit}
