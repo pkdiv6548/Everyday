@@ -289,3 +289,7 @@ body.dark-mode .skip-link{background:#f8f7f1;color:#17332f}
 .feedback-panel .form-note{color:var(--muted);font-size:13px;line-height:1.7}
 .feedback-panel .button{margin-top:18px}
 @media(max-width:650px){.feedback-cta{align-items:stretch;flex-direction:column}.feedback-cta .button{width:100%;justify-content:center}}
+
+.sort-control{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:12px;white-space:nowrap}
+.sort-control select{max-width:190px;padding:9px 11px;border:1px solid var(--line);border-radius:7px;background:var(--paper);color:var(--ink);font:inherit}
+@media(max-width:600px){.sort-control{width:100%;align-items:stretch;flex-direction:column}.sort-control select{width:100%;max-width:none}}
