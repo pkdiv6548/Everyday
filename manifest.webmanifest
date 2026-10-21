@@ -1,0 +1,16 @@
+{
+  "name": "Everyday Oddities",
+  "short_name": "Oddities",
+  "description": "The extraordinary hiding in ordinary things.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f8f7f1",
+  "theme_color": "#17332f",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
