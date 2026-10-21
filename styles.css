@@ -239,3 +239,13 @@ html[lang="hi"] .hero h1{font-size:clamp(42px,5.05vw,72px);line-height:1.08;lett
   .menu-toggle{display:grid;place-items:center;min-width:36px;min-height:36px;padding:0;cursor:pointer;position:relative;z-index:1101;line-height:1}
   .header-actions{position:relative;z-index:1101}
 }
+
+
+/* Mobile header order: brand left, controls middle, hamburger pinned right */
+@media(max-width:650px){
+  .site-header{display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:10px;padding-left:16px;padding-right:16px}
+  .brand{flex:0 1 auto;min-width:0;max-width:calc(100% - 185px)}
+  .brand-name{white-space:nowrap}
+  .menu-toggle{order:3;margin-left:auto;flex:0 0 36px;width:36px}
+  .header-actions{order:2;flex:0 0 auto;margin-left:auto}
+}
