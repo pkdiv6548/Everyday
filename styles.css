@@ -293,3 +293,7 @@ body.dark-mode .skip-link{background:#f8f7f1;color:#17332f}
 .sort-control{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:12px;white-space:nowrap}
 .sort-control select{max-width:190px;padding:9px 11px;border:1px solid var(--line);border-radius:7px;background:var(--paper);color:var(--ink);font:inherit}
 @media(max-width:600px){.sort-control{width:100%;align-items:stretch;flex-direction:column}.sort-control select{width:100%;max-width:none}}
+
+/* Reliable header controls: keep buttons clickable and mobile navigation above page content. */
+.icon-button,.lang-toggle,.menu-toggle{position:relative;z-index:1102;pointer-events:auto;touch-action:manipulation}
+@media(max-width:650px){.site-header{isolation:isolate}.menu-toggle{display:grid!important;place-items:center;min-width:40px;min-height:40px;padding:0;cursor:pointer;line-height:1;flex:0 0 40px}.header-actions{z-index:1102}.main-nav{z-index:1100;max-height:calc(100dvh - 80px);overflow-y:auto;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .18s ease,visibility .18s ease}.main-nav.open{display:flex!important;visibility:visible;opacity:1;pointer-events:auto}.main-nav a{min-height:44px;display:flex;align-items:center}.menu-toggle:focus-visible,.theme-toggle:focus-visible,.lang-toggle:focus-visible{outline:3px solid #9cbd41;outline-offset:3px}}
