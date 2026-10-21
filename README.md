@@ -2,7 +2,7 @@
 
 **The extraordinary hiding in ordinary things.**
 
-A bilingual (English/Hindi), responsive science-discovery website built with plain HTML, CSS and JavaScript. Designed for GitHub Pages with no build step.
+A bilingual (English/Hindi), responsive science-discovery website built with plain HTML, CSS and JavaScript for GitHub Pages. No build step is required.
 
 ## Pages
 - Home: `index.html`
@@ -10,20 +10,23 @@ A bilingual (English/Hindi), responsive science-discovery website built with pla
 - Experiments: `experiments.html`
 - About: `about.html`
 - Topics: `physics.html`, `food.html`, `water.html`, `light.html`, `materials.html`, `sound.html`
-- Articles: `articles/why-sky-blue.html`, `articles/microwave-works.html`, `articles/water-weird.html`
+- Articles: individual pages in `articles/`
 
 ## Features
 - English/Hindi language toggle
 - Responsive mobile navigation and layouts
-- Search and category filters
+- Search and category filters on Discover
 - Dark mode
 - Interactive mini-experiments
-- Original local SVG illustrations
-- PWA manifest and service-worker offline cache
-- No external image, script or font dependencies
+- Local SVG illustrations for featured homepage story cards
+- PWA manifest and service-worker cache for offline fallback
+- No external scripts or font files are required by the site code
+- Note: the homepage hero's soap-bubble artwork currently uses an external image URL; it has not yet been replaced with the exact user-provided PNG asset.
 
 ## Run locally
-Open `index.html` in a browser. No package installation required.
+Open `index.html` in a browser. No package installation is required. For best PWA testing, serve the folder through a local HTTP server rather than opening the file directly.
 
 ## Publish on GitHub Pages
-Repository **Settings → Pages → Build and deployment**. If Pages is not enabled, choose **Deploy from a branch**, select `main` and `/(root)`, then Save. Expected URL: `https://pkdiv6548.github.io/Everyday/`.
+In repository **Settings → Pages → Build and deployment**, select **Deploy from a branch**, branch `main`, folder `/(root)`, then save.
+
+Expected URL: https://pkdiv6548.github.io/Everyday/
