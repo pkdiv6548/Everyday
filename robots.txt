@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pkdiv6548.github.io/Everyday/sitemap.xml
