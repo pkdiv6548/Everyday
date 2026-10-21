@@ -22,7 +22,7 @@ A bilingual (English/Hindi), responsive science-discovery website built with pla
 - Local SVG illustrations for the three featured homepage story cards
 - PWA manifest and service-worker cache for offline fallback; offline mode should still be verified in a browser
 - No external script files or downloaded font files are required by the site code
-- Some Explore-page images and the homepage hero bubble artwork still load from external image hosts. Six science articles now include links to further reading. The exact user-provided bubble PNG has not yet been added to the repository, so that specific asset task remains open.
+- Some Explore-page images and the homepage hero bubble artwork still load from external image hosts. Nine science articles now include links to further reading. The exact user-provided bubble PNG has not yet been added to the repository, so that specific asset task remains open.
 
 ## Run locally
 Open `index.html` in a browser. No package installation is required. For best PWA testing, serve the folder through a local HTTP server rather than opening the file directly.
