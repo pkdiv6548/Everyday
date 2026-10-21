@@ -17,3 +17,10 @@
 .dark-mode .experiment-card .demo-result{color:#e6efdc}
 .icon-button.theme-toggle{display:grid;place-items:center;padding:0;line-height:1}
 .icon-button.theme-toggle svg{width:16px;height:16px;display:block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* Contrast and icon fixes for light/dark themes. */
+.dark-mode .button-dark{background:var(--lime);color:#17332f}
+.dark-mode .button-dark:hover{background:#e5f89a;color:#17332f}
+.dark-mode .round-arrow,.dark-mode .circle-link{background:var(--lime);color:#17332f}
+.theme-toggle{display:grid;place-items:center;line-height:1;font-size:0}
+.theme-toggle svg{display:block;width:17px;height:17px;flex:none}
