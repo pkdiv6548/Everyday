@@ -27,3 +27,11 @@
 
 /* Ensure the inline theme SVGs render as crisp stroked icons. */
 .theme-toggle svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Final contrast fixes: make dark-mode action text and hover arrows unmistakable. */
+body.dark-mode .button-dark,body.dark-mode .button-dark:visited,body.dark-mode .button-dark:hover,body.dark-mode .experiment-card .button-dark{background:#d9f36a!important;color:#17332f!important;border-color:#d9f36a!important;text-shadow:none!important;opacity:1!important}
+body.dark-mode .story-card:hover .card-arrow,body.dark-mode .story-card:focus-visible .card-arrow{background:#d9f36a!important;color:#17332f!important;border-color:#d9f36a!important;opacity:1!important}
+.story-card:hover .card-arrow,.story-card:focus-visible .card-arrow{background:#d9f36a;color:#17332f;border-color:#d9f36a}
+.filter-chip{cursor:pointer;position:relative;z-index:1;pointer-events:auto}
+.filter-chip.active{background:var(--lime);color:#17332f;border-color:var(--lime)}
+body.dark-mode .filter-chip.active,body.dark-mode .filter-chip:hover{background:#d9f36a;color:#17332f;border-color:#d9f36a}
