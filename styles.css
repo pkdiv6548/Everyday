@@ -204,3 +204,13 @@ body.dark-mode .safety-note{background:#293b2b;border-color:#596c39;color:#e3ecd
 body.dark-mode .experiment-card.premium-experiment .demo-result{background:#293b2b;border-color:#596c39;color:#e3ecd6}
 @media(max-width:800px){.experiments-intro{align-items:flex-start;flex-direction:column;gap:22px}.experiment-stats{width:100%;max-width:320px}.experiment-grid{gap:16px}.experiment-visual{min-height:170px}}
 @media(max-width:600px){.experiments-library{padding-bottom:60px}.experiment-grid{grid-template-columns:1fr;gap:17px}.experiment-visual{min-height:205px}.experiment-body{padding:20px}.experiment-card.premium-experiment h2{font-size:23px}.experiment-finish{padding:25px 21px}.safety-note{padding:15px;gap:10px}}
+
+
+/* Premium hero layout: Hindi headline + large transparent-style artwork */
+html[lang="hi"] .hero h1{font-size:clamp(42px,5.05vw,72px);line-height:1.08;letter-spacing:-.055em;max-width:700px}
+.hero-art{min-width:0;overflow:visible}
+.hero-art img{width:min(125%,760px);max-width:none;left:-8%;position:relative;mix-blend-mode:screen;filter:drop-shadow(0 22px 24px #17332f12)}
+.hero-art .art-orbit{pointer-events:none}
+.hero-art-label.label-top,.hero-note{z-index:4}
+@media(max-width:900px){.hero-art img{width:min(112%,650px);left:-4%}html[lang="hi"] .hero h1{font-size:clamp(40px,6vw,62px)}}
+@media(max-width:600px){.hero-art img{width:100%;left:0;mix-blend-mode:screen}html[lang="hi"] .hero h1{font-size:clamp(38px,10vw,52px);line-height:1.12}}
