@@ -107,7 +107,7 @@ body.dark-mode .mystery-card:hover{border-color:var(--lime)}
 
 /* Discover library: premium editorial grid for the expanded 23-story collection. */
 .explore-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:34px 22px!important;padding-top:28px;padding-bottom:100px!important;align-items:stretch}
-.explore-grid .story-card{min-width:0;padding:0 0 22px;border:1px solid var(--line);border-radius:7px;overflow:hidden;background:var(--surface);transition:transform .25s,border-color .25s,box-shadow .25s}
+.explore-grid .story-card{min-width:0;padding:0 0 22px;border:1px solid var(--line);border-radius:7px;overflow:hidden;background:var(--white);transition:transform .25s,border-color .25s,box-shadow .25s}
 .explore-grid .story-card:hover{transform:translateY(-5px);border-color:#a8bf45;box-shadow:0 18px 35px rgba(10,30,25,.12)}
 .explore-grid .story-image{height:225px!important;margin:0;border-radius:0;overflow:hidden;position:relative}
 .explore-grid .story-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s}
@@ -115,7 +115,7 @@ body.dark-mode .mystery-card:hover{border-color:var(--lime)}
 .explore-grid .story-meta{display:flex;justify-content:space-between;gap:10px;padding:17px 18px 0;font:9px var(--mono);letter-spacing:.09em;color:var(--muted)}
 .explore-grid .story-card h3{padding:0 18px;margin:12px 0 9px;font-size:23px;line-height:1.25;min-height:58px}
 .explore-grid .story-card p{padding:0 18px;margin:0 0 18px;max-width:none;font-size:12px;line-height:1.8;color:var(--muted)}
-.explore-grid .card-arrow{position:absolute;right:15px;bottom:15px;display:grid;place-items:center;width:30px;height:30px;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--ink);transition:background .2s,color .2s,border-color .2s}
+.explore-grid .card-arrow{position:absolute;right:15px;bottom:15px;display:grid;place-items:center;width:30px;height:30px;border:1px solid var(--line);border-radius:50%;background:var(--white);color:var(--ink);transition:background .2s,color .2s,border-color .2s}
 .explore-grid .story-card:hover .card-arrow,.explore-grid .story-card:focus-visible .card-arrow{background:var(--lime)!important;color:#17332f!important;border-color:var(--lime)!important}
 .filter-row{display:flex;flex-wrap:wrap;gap:9px;margin:24px 0 8px}
 .filter-chip{transition:background .2s,color .2s,border-color .2s}
