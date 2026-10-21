@@ -15,7 +15,7 @@ A bilingual (English/Hindi), responsive science-discovery website built with pla
 ## Features
 - English/Hindi language toggle
 - Responsive mobile navigation and layouts
-- Search and category filters on Discover
+- Search, category filters, visible result count, reset controls and alphabetical sorting on Discover
 - Dark mode
 - Reader feedback page that prepares a reviewable GitHub issue; submissions are not stored by the static site
 - Interactive mini-experiments
