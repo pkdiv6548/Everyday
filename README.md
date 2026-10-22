@@ -19,7 +19,7 @@ A bilingual (English/Hindi), responsive science and knowledge-discovery website 
 - English/Hindi language toggle, responsive navigation, dark mode and accessible focus styles
 - Search, topic filters (including psychology, technology/AI, maths, micro-world, history and future skills), result count, reset controls and alphabetical sorting on Discover
 - Category directory cards link into the corresponding Discover filter, including plants, geography, inventions and unsolved science
-- 112 bilingual dynamic story records with unique image identifiers; all 107 use local illustrations, and all 55 static Discover story cards use unique local SVG illustrations. The latest 5 additions cover memory practice, passkeys, time zones, microbiomes and preparing for AI-related work changes.
+- 117 bilingual dynamic story records with unique image identifiers; all 107 use local illustrations, and all 55 static Discover story cards use unique local SVG illustrations. The latest 5 additions cover memory practice, passkeys, time zones, microbiomes and preparing for AI-related work changes.
 - Media provenance and licence notes for reviewed image sources in `data/media-manifest.json`
 - Interactive mini-experiments and article reading progress/share controls
 - PWA manifest and service-worker offline fallback; the service-worker cache is versioned as v32 and includes the newest five story illustrations.
@@ -32,7 +32,7 @@ A bilingual (English/Hindi), responsive science and knowledge-discovery website 
 - For future integrations, prefer documented open-data/open-source APIs (for example Wikimedia Commons for licensed media metadata) and record attribution/licence. Do not use a source image until its subject match and usage rights are verified.
 
 ## Content quality and scale
-- Content target: at least 50 distinct reviewed stories in each of 19 categories (950 stories total as a minimum). Current verified catalog: 55 static Discover cards plus 112 dynamic bilingual records; the current category-coverage audit still reports gaps, so the 950-story target is not yet complete.
+- Content target: at least 50 distinct reviewed stories in each of 19 categories (950 stories total as a minimum). Current verified catalog: 55 static Discover cards plus 117 dynamic bilingual records; the current category-coverage audit still reports gaps, so the 950-story target is not yet complete.
 - Each story should have a unique, relevant main image, alt text, source and licence metadata. Missing/mismatched media should be fixed before publication rather than replaced with unrelated imagery.
 - See `docs/CONTENT_QUALITY.md` and `docs/SCALABILITY.md` for editorial checks, API limits and load-testing guidance.
 - GitHub Actions runs JavaScript syntax checks plus `scripts/content-audit.mjs` to report broken local paths, missing image alt text, repeated article covers, duplicate dynamic-story image identifiers, missing local image assets and externally hosted image URLs. The audit is a technical baseline; unique image paths are checked automatically, but visual relevance still requires editorial review.
