@@ -19,7 +19,7 @@ const imageSources = new Map();
 const hrefPattern = /\b(?:href|src|poster)\s*=\s*(["'])(.*?)\1/gi;
 const imgPattern = /<img\b([^>]*?)>/gi;
 const attr = (text, name) => {
-  const match = text.match(new RegExp('(?:^|\\s)' + name + '\\s*=\\s*(["'])(.*?)\\1', 'i'));
+  const match = text.match(new RegExp("(?:^|\\s)" + name + "\\s*=\\s*([\"'])(.*?)\\1", "i"));
   return match ? match[2] : null;
 };
 for (const file of htmlFiles) {
