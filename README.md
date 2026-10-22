@@ -19,10 +19,10 @@ A bilingual (English/Hindi), responsive science and knowledge-discovery website 
 - English/Hindi language toggle, responsive navigation, dark mode and accessible focus styles
 - Search, topic filters (including psychology, technology/AI, maths, micro-world, history and future skills), result count, reset controls and alphabetical sorting on Discover
 - Category directory cards link into the corresponding Discover filter, including plants, geography, inventions and unsolved science
-- 62 bilingual dynamic story records with unique image identifiers; all 62 use original local illustrations, with additional local illustrations used to replace repeated static article covers
+- 62 bilingual dynamic story records with unique image identifiers; all 62 use local illustrations, and all 55 static Discover story cards plus their article cover images now use unique local SVG illustrations
 - Media provenance and licence notes for reviewed image sources in `data/media-manifest.json`
 - Interactive mini-experiments and article reading progress/share controls
-- PWA manifest and service-worker offline fallback
+- PWA manifest and service-worker offline fallback; all 55 Discover card illustrations are included in the pre-cache list
 - Weather lookup using Open-Meteo Geocoding + Forecast APIs; no API key required for non-commercial use. The visitor enters a city or explicitly chooses browser location. Weather is cached locally for a short period, and the page credits Open-Meteo.
 - Content/category plan and story-schema in `data/`; editorial image/source and scalability standards in `docs/`
 
@@ -37,7 +37,7 @@ A bilingual (English/Hindi), responsive science and knowledge-discovery website 
 - See `docs/CONTENT_QUALITY.md` and `docs/SCALABILITY.md` for editorial checks, API limits and load-testing guidance.
 - GitHub Actions runs JavaScript syntax checks plus `scripts/content-audit.mjs` to report broken local paths, missing image alt text, repeated article covers, duplicate dynamic-story image identifiers, missing local image assets and externally hosted image URLs. The audit is a technical baseline; unique image paths are checked automatically, but visual relevance still requires editorial review.
 - 10,000 daily visitors and 10,000 concurrent users are different workloads. Capacity must be verified by measured load tests; GitHub Pages is static hosting, not an application server.
-- `scripts/category-coverage.mjs` reports progress toward 50 stories per category and checks bilingual fields, source URLs, unique slugs/images and local assets. `tests/load/` contains a manual k6 plan; it is not run automatically or against production.
+- `scripts/category-coverage.mjs` counts static Discover cards and dynamic records toward the 50-story category target, and checks bilingual fields, source URLs, unique slugs/images and local assets. `tests/load/` contains a manual k6 plan; it is not run automatically or against production.
 
 ## Run locally
 Open `index.html` in a browser. For service-worker/PWA testing, serve the folder through a local HTTP server.
