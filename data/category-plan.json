@@ -1,0 +1,269 @@
+{
+  "site": "Everyday Oddities",
+  "version": 1,
+  "minimumStoriesPerCategory": 50,
+  "storyCountTarget": "No fixed maximum; expand only with distinct, reviewed content.",
+  "uniqueMainImageRequired": true,
+  "categories": [
+    {
+      "id": "human-body",
+      "name": "Human Body",
+      "subcategories": [
+        "Brain & Nervous System",
+        "Eyes & Vision",
+        "Skin & Hair",
+        "Senses",
+        "Sleep & Dreams",
+        "Digestion",
+        "Muscles & Bones",
+        "Body Reflexes"
+      ]
+    },
+    {
+      "id": "space-universe",
+      "name": "Space & Universe",
+      "subcategories": [
+        "Solar System",
+        "Stars",
+        "Black Holes",
+        "Galaxies",
+        "Moon",
+        "Space Missions",
+        "Exoplanets",
+        "Cosmic Mysteries"
+      ]
+    },
+    {
+      "id": "nature-wildlife",
+      "name": "Nature & Wildlife",
+      "subcategories": [
+        "Mammals",
+        "Birds",
+        "Insects",
+        "Marine Life",
+        "Reptiles",
+        "Animal Senses",
+        "Adaptation",
+        "Animal Behavior"
+      ]
+    },
+    {
+      "id": "science-explained",
+      "name": "Science Explained",
+      "subcategories": [
+        "Physics",
+        "Chemistry",
+        "Light & Color",
+        "Electricity",
+        "Magnetism",
+        "Heat",
+        "Sound",
+        "Experiments"
+      ]
+    },
+    {
+      "id": "psychology-mind",
+      "name": "Psychology & Mind",
+      "subcategories": [
+        "Memory",
+        "Attention",
+        "Emotions",
+        "Habits",
+        "Decision Making",
+        "Perception",
+        "Social Psychology",
+        "Cognitive Biases"
+      ]
+    },
+    {
+      "id": "history-civilizations",
+      "name": "History & Civilizations",
+      "subcategories": [
+        "Ancient India",
+        "World Civilizations",
+        "Archaeology",
+        "Ancient Engineering",
+        "Historical Inventions",
+        "Manuscripts",
+        "Trade Routes",
+        "Lost Cities"
+      ]
+    },
+    {
+      "id": "technology-ai",
+      "name": "Technology & AI",
+      "subcategories": [
+        "Artificial Intelligence",
+        "Computers",
+        "Internet",
+        "Smartphones",
+        "Robotics",
+        "Cybersecurity",
+        "GPS",
+        "Future Technology"
+      ]
+    },
+    {
+      "id": "everyday-mysteries",
+      "name": "Everyday Mysteries",
+      "subcategories": [
+        "Home Science",
+        "Household Objects",
+        "Water & Air",
+        "Cleaning",
+        "Everyday Sounds",
+        "Common Phenomena",
+        "Daily Materials"
+      ]
+    },
+    {
+      "id": "earth-weather",
+      "name": "Earth & Weather",
+      "subcategories": [
+        "Clouds",
+        "Rain & Monsoon",
+        "Lightning",
+        "Earthquakes",
+        "Volcanoes",
+        "Oceans",
+        "Deserts",
+        "Climate"
+      ]
+    },
+    {
+      "id": "food-science",
+      "name": "Food Science",
+      "subcategories": [
+        "Taste & Smell",
+        "Cooking Chemistry",
+        "Fruits & Vegetables",
+        "Fermentation",
+        "Food Texture",
+        "Preservation",
+        "Baking",
+        "Food Colors"
+      ]
+    },
+    {
+      "id": "optical-illusions",
+      "name": "Optical Illusions",
+      "subcategories": [
+        "Color Illusions",
+        "Size & Shape",
+        "Motion Illusions",
+        "Depth Perception",
+        "Ambiguous Images",
+        "Visual Tests"
+      ]
+    },
+    {
+      "id": "micro-world",
+      "name": "Micro World",
+      "subcategories": [
+        "Cells",
+        "Bacteria",
+        "Viruses",
+        "Fungi",
+        "Microscopic Insects",
+        "Pollen",
+        "Microscopes",
+        "Microbiology"
+      ]
+    },
+    {
+      "id": "materials-objects",
+      "name": "Materials & Objects",
+      "subcategories": [
+        "Metals",
+        "Glass",
+        "Plastics",
+        "Paper",
+        "Fabrics",
+        "Crystals",
+        "Ceramics",
+        "Smart Materials"
+      ]
+    },
+    {
+      "id": "geography-world",
+      "name": "Geography & World",
+      "subcategories": [
+        "Unusual Borders",
+        "Islands",
+        "Rivers",
+        "Mountains",
+        "Time Zones",
+        "Landforms",
+        "Population Geography",
+        "World Records"
+      ]
+    },
+    {
+      "id": "mathematics-numbers",
+      "name": "Mathematics & Numbers",
+      "subcategories": [
+        "Number Patterns",
+        "Probability",
+        "Geometry",
+        "Infinity",
+        "Puzzles",
+        "Statistics",
+        "Paradoxes",
+        "Real-World Maths"
+      ]
+    },
+    {
+      "id": "plants-botany",
+      "name": "Plants & Botany",
+      "subcategories": [
+        "Roots",
+        "Leaves",
+        "Flowers",
+        "Seeds",
+        "Plant Defense",
+        "Photosynthesis",
+        "Carnivorous Plants",
+        "Plant Adaptation"
+      ]
+    },
+    {
+      "id": "inventions-discoveries",
+      "name": "Inventions & Discoveries",
+      "subcategories": [
+        "Accidental Discoveries",
+        "Medical Inventions",
+        "Communication",
+        "Transportation",
+        "Scientific Instruments",
+        "Ancient Engineering",
+        "Everyday Innovations"
+      ]
+    },
+    {
+      "id": "unsolved-questions",
+      "name": "Unsolved Questions",
+      "subcategories": [
+        "Dark Matter",
+        "Dark Energy",
+        "Origin of Life",
+        "Consciousness",
+        "Quantum Questions",
+        "Deep Ocean",
+        "Cosmic Origins"
+      ]
+    },
+    {
+      "id": "future-career-intelligence",
+      "name": "Future & Career Intelligence",
+      "subcategories": [
+        "Emerging Technology",
+        "Future Careers",
+        "What to Learn Next",
+        "Future of Work",
+        "Industry Outlook",
+        "Learning Roadmaps",
+        "30/90-Day Plans"
+      ]
+    }
+  ]
+}
