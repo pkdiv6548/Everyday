@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "policy": "Each story image must have a unique primary visual, meaningful alt text, source URL, creator, licence, and a local copy where technically and legally practical. Original illustrations must be labelled as illustrations, not documentary photographs.",
+  "verifiedMedia": [
+    {
+      "path": "articles/why-ice-cracks.html",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cracked_ice_and_sand_Lake_Michigan.jpg?width=1400",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Cracked_ice_and_sand_Lake_Michigan.jpg",
+      "creator": "Visviva",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "notes": "Relevant cracked-ice photograph; attribution is included on the article page as a courtesy."
+    },
+    {
+      "path": "articles/fingers-wrinkle.html",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wrinkly_Fingers_002.JPG?width=1400",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Wrinkly_Fingers_002.JPG",
+      "creator": "Sebastian Wallroth",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "notes": "Relevant water-wrinkled-fingers photograph; attribution and licence link are included on the article page."
+    }
+  ],
+  "originalIllustrations": [
+    "assets/illustrations/sunrise-spectrum.svg",
+    "assets/illustrations/sunflower-tracking.svg",
+    "assets/illustrations/soap-bubble.svg",
+    "assets/illustrations/cracked-ice.svg",
+    "assets/illustrations/bubble-burst.svg",
+    "assets/illustrations/rainbow-arc.svg",
+    "assets/illustrations/ocean-tides.svg",
+    "assets/illustrations/breaking-wave.svg",
+    "assets/illustrations/sun-earth-energy.svg",
+    "assets/illustrations/earth-blue.svg",
+    "assets/illustrations/rubber-band.svg",
+    "assets/illustrations/sun-faded-colour.svg",
+    "assets/illustrations/thermal-glass.svg",
+    "assets/illustrations/memory-network.svg",
+    "assets/illustrations/qr-code.svg",
+    "assets/illustrations/probability-dice.svg",
+    "assets/illustrations/microbe-world.svg",
+    "assets/illustrations/desert-night.svg",
+    "assets/illustrations/roman-concrete.svg",
+    "assets/illustrations/printing-press.svg",
+    "assets/illustrations/afterimage-vision.svg",
+    "assets/illustrations/learning-roadmap.svg",
+    "assets/illustrations/neural-network.svg"
+  ],
+  "legacyExternalAssets": "Many pre-existing story and listing images are still remotely hosted. Their individual source, licence, relevance and local-copy status have not yet all been verified. Do not treat the legacy collection as fully cleared for commercial reuse."
+}
