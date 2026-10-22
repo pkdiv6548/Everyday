@@ -30,7 +30,7 @@ const records = JSON.parse(source.slice(start, end));
 const counts = new Map();
 const staticCounts = new Map();
 const staticSlugs = new Set();
-const cardPattern = /<a class="story-card explore-card"[^>]*data-category="([^"]+)"[^>]*href="([^"]+)"[^>]*>([\\s\\S]*?)<\\/a>/g;
+const cardPattern = /<a class="story-card explore-card"[^>]*data-category="([^"]+)"[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g;
 let cardMatch;
 while ((cardMatch = cardPattern.exec(exploreHtml))) {
   const tag = cardMatch[1];
