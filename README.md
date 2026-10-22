@@ -2,30 +2,40 @@
 
 **The extraordinary hiding in ordinary things.**
 
-A bilingual (English/Hindi), responsive science-discovery website built with plain HTML, CSS and JavaScript for GitHub Pages. No build step is required.
+A bilingual (English/Hindi), responsive science and knowledge-discovery website built with plain HTML, CSS and JavaScript for GitHub Pages. No build step is required.
 
-## Pages
+## Main pages
 - Home: `index.html`
-- Discovery and search: `explore.html`
-- Experiments: `experiments.html`
-- About: `about.html`
-- Topics: `physics.html`, `food.html`, `water.html`, `light.html`, `materials.html`, `sound.html`
-- Articles: individual pages in `articles/`
+- Explore/search: `explore.html`
+- Topic directory and content roadmap: `categories.html`
+- Weather and 7-day forecast: `weather.html`
+- Future technology, careers and learning plans: `future.html`
+- Interactive experiments: `experiments.html`
+- About and feedback: `about.html`, `feedback.html`
+- Topic pages: `physics.html`, `food.html`, `water.html`, `light.html`, `materials.html`, `sound.html`
+- Individual explainers: `articles/`
 
-## Features
-- English/Hindi language toggle
-- Responsive mobile navigation and layouts
-- Search, category filters, visible result count, reset controls and alphabetical sorting on Discover
-- Dark mode
-- Reader feedback page that prepares a reviewable GitHub issue; submissions are not stored by the static site
-- Interactive mini-experiments
-- Local SVG illustrations for the three featured homepage story cards
-- PWA manifest and service-worker cache for offline fallback; offline mode should still be verified in a browser
-- No external script files or downloaded font files are required by the site code
-- Some Explore-page images and the homepage hero bubble artwork still load from external image hosts. Nine science articles now include links to further reading. The exact user-provided bubble PNG has not yet been added to the repository, so that specific asset task remains open.
+## Current features
+- English/Hindi language toggle, responsive navigation, dark mode and accessible focus styles
+- Search, topic filters, result count, reset controls and alphabetical sorting on Discover
+- Interactive mini-experiments and article reading progress/share controls
+- PWA manifest and service-worker offline fallback
+- Weather lookup using Open-Meteo Geocoding + Forecast APIs; no API key required for non-commercial use. The visitor enters a city or explicitly chooses browser location. Weather is cached locally for a short period, and the page credits Open-Meteo.
+- Content/category plan and story-schema in `data/`; editorial image/source and scalability standards in `docs/`
+
+## Open API policy
+- Open-Meteo: weather geocoding and forecast. Free endpoint is for non-commercial use and data attribution is required; verify current provider terms before monetization or higher traffic. See https://open-meteo.com/en/terms and https://open-meteo.com/en/docs.
+- Keep external requests user-initiated where possible, handle failures, disclose data freshness, and never store API secrets in client-side files.
+- For future integrations, prefer documented open-data/open-source APIs (for example Wikimedia Commons for licensed media metadata) and record attribution/licence. Do not use a source image until its subject match and usage rights are verified.
+
+## Content quality and scale
+- The content roadmap sets a minimum of 50 distinct reviewed stories per main category, with no artificial maximum. This is a target, not a claim that every category already contains 50 published stories.
+- Each story should have a unique, relevant main image, alt text, source and licence metadata. Missing/mismatched media should be fixed before publication rather than replaced with unrelated imagery.
+- See `docs/CONTENT_QUALITY.md` and `docs/SCALABILITY.md` for editorial checks, API limits and load-testing guidance.
+- 10,000 daily visitors and 10,000 concurrent users are different workloads. Capacity must be verified by measured load tests; GitHub Pages is static hosting, not an application server.
 
 ## Run locally
-Open `index.html` in a browser. No package installation is required. For best PWA testing, serve the folder through a local HTTP server rather than opening the file directly.
+Open `index.html` in a browser. For service-worker/PWA testing, serve the folder through a local HTTP server.
 
 ## Publish on GitHub Pages
 In repository **Settings → Pages → Build and deployment**, select **Deploy from a branch**, branch `main`, folder `/(root)`, then save.
