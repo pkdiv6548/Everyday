@@ -4,6 +4,7 @@ import path from 'node:path';
 const root = process.cwd();
 const plan = JSON.parse(fs.readFileSync(path.join(root, 'data/category-plan.json'), 'utf8'));
 const source = fs.readFileSync(path.join(root, 'stories-extra.js'), 'utf8');
+const exploreHtml = fs.readFileSync(path.join(root, 'explore.html'), 'utf8');
 const marker = source.indexOf('window.EO_EXTRA_STORIES=');
 const start = source.indexOf('[', marker);
 if (marker < 0 || start < 0) throw new Error('Could not find EO_EXTRA_STORIES data');
@@ -27,6 +28,18 @@ for (let i = start; i < source.length; i++) {
 if (end < 0) throw new Error('Could not parse EO_EXTRA_STORIES array');
 const records = JSON.parse(source.slice(start, end));
 const counts = new Map();
+const staticCounts = new Map();
+const staticSlugs = new Set();
+const cardPattern = /<a class="story-card explore-card"[^>]*data-category="([^"]+)"[^>]*href="([^"]+)"[^>]*>([\\s\\S]*?)<\\/a>/g;
+let cardMatch;
+while ((cardMatch = cardPattern.exec(exploreHtml))) {
+  const tag = cardMatch[1];
+  const href = cardMatch[2].split(/[?#]/)[0];
+  const slug = path.basename(href, '.html');
+  if (staticSlugs.has(slug)) issues.push('Duplicate static story link: ' + slug);
+  staticSlugs.add(slug);
+  staticCounts.set(tag, (staticCounts.get(tag) || 0) + 1);
+}
 const slugs = new Set();
 const images = new Map();
 const issues = [];
@@ -72,11 +85,13 @@ const mapping = {
 console.log('Dynamic story records:', records.length);
 console.log('Unique slugs:', slugs.size);
 console.log('Unique image sources:', images.size);
-console.log('Stories per planned category (minimum target: ' + plan.minimumStoriesPerCategory + '):');
+console.log('Static story cards:', staticSlugs.size);
+console.log('Combined catalog entries (static cards + dynamic records):', staticSlugs.size + records.length);
+console.log('Stories per planned category (static cards + dynamic records; minimum target: ' + plan.minimumStoriesPerCategory + '):');
 let gaps = 0;
 for (const category of plan.categories) {
   const tags = mapping[category.id] || [];
-  const count = tags.reduce((sum, tag) => sum + (counts.get(tag) || 0), 0);
+  const count = tags.reduce((sum, tag) => sum + (counts.get(tag) || 0) + (staticCounts.get(tag) || 0), 0);
   const gap = Math.max(0, plan.minimumStoriesPerCategory - count);
   if (gap) gaps++;
   console.log(' - ' + category.name + ': ' + count + '/' + plan.minimumStoriesPerCategory + (gap ? ' (needs ' + gap + ' more)' : ' (target met)'));
