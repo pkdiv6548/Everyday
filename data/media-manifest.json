@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "policy": "Each story image must have a unique primary visual, meaningful alt text, source URL, creator, licence, and a local copy where technically and legally practical. Original illustrations must be labelled as illustrations, not documentary photographs.",
+  "policy": "Each story image must have a unique primary visual, meaningful alt text, source URL, creator, licence, and a local copy where technically and legally practical. Original illustrations must be labelled as illustrations, not documentary photographs. The Discover-page static story cards use locally stored SVG illustrations; alt text explicitly identifies them as illustrations rather than documentary photographs.",
   "verifiedMedia": [
     {
       "path": "articles/why-ice-cracks.html",
@@ -87,7 +87,27 @@
     "assets/illustrations/paper-towel-capillary.svg",
     "assets/illustrations/snowflake-hexagonal.svg",
     "assets/illustrations/mirror-lateral-reversal.svg",
-    "assets/illustrations/fingers-wrinkle.svg"
+    "assets/illustrations/fingers-wrinkle.svg",
+    "assets/illustrations/microwave-waves.svg",
+    "assets/illustrations/ice-floats.svg",
+    "assets/illustrations/popcorn-pops.svg",
+    "assets/illustrations/banana-browning.svg",
+    "assets/illustrations/rain-smell.svg",
+    "assets/illustrations/autumn-leaves.svg",
+    "assets/illustrations/yawning.svg",
+    "assets/illustrations/magnetism.svg",
+    "assets/illustrations/chameleon-colour.svg",
+    "assets/illustrations/ear-pressure.svg",
+    "assets/illustrations/ice-expansion.svg",
+    "assets/illustrations/cat-purr.svg",
+    "assets/illustrations/fingerprints.svg",
+    "assets/illustrations/shadow-length.svg",
+    "assets/illustrations/star-colours.svg",
+    "assets/illustrations/snow-quiet.svg",
+    "assets/illustrations/salt-ice.svg",
+    "assets/illustrations/goosebumps.svg",
+    "assets/illustrations/winter-static.svg",
+    "assets/illustrations/iron-rust.svg"
   ],
   "legacyExternalAssets": "Many pre-existing story and listing images are still remotely hosted. Their individual source, licence, relevance and local-copy status have not yet all been verified. Do not treat the legacy collection as fully cleared for commercial reuse."
 }
