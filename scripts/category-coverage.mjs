@@ -69,7 +69,7 @@ while ((card = cardPattern.exec(html))) {
     const normalized = src.replaceAll('&amp;', '&');
     if (!staticImages.has(normalized)) staticImages.set(normalized, []);
     staticImages.get(normalized).push(slug);
-    if (/^https?:\\/\\//i.test(normalized)) issues.push('External static story image: ' + slug + ' -> ' + normalized);
+    if (normalized.startsWith('http://') || normalized.startsWith('https://')) issues.push('External static story image: ' + slug + ' -> ' + normalized);
     else if (!fs.existsSync(path.resolve(root, normalized))) issues.push('Missing static story image asset: ' + slug + ' -> ' + normalized);
   } else issues.push('Missing static story image: ' + slug);
 }
