@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "policy": "Each story image must have a unique primary visual, meaningful alt text, source URL, creator, licence, and a local copy where technically and legally practical. Original illustrations must be labelled as illustrations, not documentary photographs. The Discover-page static story cards use locally stored SVG illustrations; alt text explicitly identifies them as illustrations rather than documentary photographs. The home-page soap-bubble visual is an original local illustration. Added 19 original local SVG illustrations in the October 2026 content expansion.",
+  "policy": "Each story image must have a unique primary visual, meaningful alt text, source URL, creator, licence, and a local copy where technically and legally practical. Original illustrations must be labelled as illustrations, not documentary photographs. The Discover-page static story cards use locally stored SVG illustrations; alt text explicitly identifies them as illustrations rather than documentary photographs. The home-page soap-bubble visual is an original local illustration. Added 19 original local SVG illustrations in the October 2026 content expansion. Additional unique original SVG illustrations were added for new bilingual explainers; these are explanatory art, not documentary photographs.",
   "verifiedMedia": [
     {
       "path": "articles/why-ice-cracks.html",
@@ -127,7 +127,13 @@
     "assets/illustrations/root-gravitropism.svg",
     "assets/illustrations/movable-type-printing.svg",
     "assets/illustrations/dark-matter-galaxy-lensing.svg",
-    "assets/illustrations/skill-learning-path.svg"
+    "assets/illustrations/skill-learning-path.svg",
+    "assets/illustrations/why-habits-need-cues.svg",
+    "assets/illustrations/how-carbon-dating-works.svg",
+    "assets/illustrations/how-two-factor-authentication-helps.svg",
+    "assets/illustrations/why-mountains-affect-rainfall.svg",
+    "assets/illustrations/why-estimates-are-useful.svg",
+    "assets/illustrations/why-handwashing-reduces-germs.svg"
   ],
   "legacyExternalAssets": "Many pre-existing story and listing images are still remotely hosted. Their individual source, licence, relevance and local-copy status have not yet all been verified. Do not treat the legacy collection as fully cleared for commercial reuse."
 }
