@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "policy": "Each story image must have a unique primary visual, meaningful alt text, source URL, creator, licence, and a local copy where technically and legally practical. Original illustrations must be labelled as illustrations, not documentary photographs. The Discover-page static story cards use locally stored SVG illustrations; alt text explicitly identifies them as illustrations rather than documentary photographs. The home-page soap-bubble visual is an original local illustration. Added 19 original local SVG illustrations in the October 2026 content expansion. Additional unique original SVG illustrations were added for new bilingual explainers; these are explanatory art, not documentary photographs. Five additional bilingual explainers with unique local educational SVG illustrations were added. These are original explanatory graphics, not documentary photographs. Five additional bilingual explainers and unique local educational SVG illustrations added. These are explanatory graphics, not documentary photographs. Ten additional bilingual explainers and unique local educational SVG illustrations added. These are explanatory graphics, not documentary photographs. Three additional bilingual explainers with distinct local educational SVG illustrations were added; these are explanatory graphics, not documentary photos. Ten more bilingual explainers with unique local SVG educational illustrations were added in this batch; these are explanatory graphics, not documentary photographs. Five additional bilingual explainers with unique local SVG educational illustrations added; these are explanatory graphics, not documentary photographs. New bilingual educational explainers use unique local SVG illustrations; these are explanatory graphics, not documentary photographs.",
+  "policy": "Each story image must have a unique primary visual, meaningful alt text, source URL, creator, licence, and a local copy where technically and legally practical. Original illustrations must be labelled as illustrations, not documentary photographs. The Discover-page static story cards use locally stored SVG illustrations; alt text explicitly identifies them as illustrations rather than documentary photographs. The home-page soap-bubble visual is an original local illustration. Added 19 original local SVG illustrations in the October 2026 content expansion. Additional unique original SVG illustrations were added for new bilingual explainers; these are explanatory art, not documentary photographs. Five additional bilingual explainers with unique local educational SVG illustrations were added. These are original explanatory graphics, not documentary photographs. Five additional bilingual explainers and unique local educational SVG illustrations added. These are explanatory graphics, not documentary photographs. Ten additional bilingual explainers and unique local educational SVG illustrations added. These are explanatory graphics, not documentary photographs. Three additional bilingual explainers with distinct local educational SVG illustrations were added; these are explanatory graphics, not documentary photos. Ten more bilingual explainers with unique local SVG educational illustrations were added in this batch; these are explanatory graphics, not documentary photographs. Five additional bilingual explainers with unique local SVG educational illustrations added; these are explanatory graphics, not documentary photographs. New bilingual educational explainers use unique local SVG illustrations; these are explanatory graphics, not documentary photographs. Additional bilingual explainers use unique local educational SVG illustrations, not documentary photographs.",
   "verifiedMedia": [
     {
       "path": "articles/why-ice-cracks.html",
@@ -202,7 +202,31 @@
     "assets/illustrations/why-deep-ocean-mapping-is-incomplete.svg",
     "assets/illustrations/how-scientists-study-dark-matter.svg",
     "assets/illustrations/why-digital-accessibility-matters.svg",
-    "assets/illustrations/how-to-break-a-large-project-into-tasks.svg"
+    "assets/illustrations/how-to-break-a-large-project-into-tasks.svg",
+    "assets/illustrations/why-sound-travels-through-solids.svg",
+    "assets/illustrations/why-thunder-follows-lightning.svg",
+    "assets/illustrations/why-order-of-operations-matters.svg",
+    "assets/illustrations/why-rounding-helps-estimation.svg",
+    "assets/illustrations/why-symmetry-appears-in-nature.svg",
+    "assets/illustrations/what-microscope-resolution-means.svg",
+    "assets/illustrations/why-bacteria-divide.svg",
+    "assets/illustrations/how-antibiotic-resistance-spreads.svg",
+    "assets/illustrations/why-nose-can-detect-many-smells.svg",
+    "assets/illustrations/why-moons-have-phases.svg",
+    "assets/illustrations/why-squirrels-store-food.svg",
+    "assets/illustrations/how-browser-caches-speed-sites.svg",
+    "assets/illustrations/why-https-protects-data-in-transit.svg",
+    "assets/illustrations/how-postal-systems-connected-regions.svg",
+    "assets/illustrations/why-fermentation-changes-flavour.svg",
+    "assets/illustrations/why-wind-changes-direction.svg",
+    "assets/illustrations/why-soap-makes-bubbles.svg",
+    "assets/illustrations/why-prisms-split-white-light.svg",
+    "assets/illustrations/why-ceramics-can-be-hard-brittle.svg",
+    "assets/illustrations/why-coordinates-locate-places.svg",
+    "assets/illustrations/why-seeds-need-water-to-germinate.svg",
+    "assets/illustrations/how-electric-motors-turn.svg",
+    "assets/illustrations/why-we-have-not-found-life-beyond-earth.svg",
+    "assets/illustrations/why-technical-documentation-matters.svg"
   ],
   "legacyExternalAssets": "Many pre-existing story and listing images are still remotely hosted. Their individual source, licence, relevance and local-copy status have not yet all been verified. Do not treat the legacy collection as fully cleared for commercial reuse."
 }
