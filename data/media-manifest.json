@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "policy": "Each story image must have a unique primary visual, meaningful alt text, source URL, creator, licence, and a local copy where technically and legally practical. Original illustrations must be labelled as illustrations, not documentary photographs. The Discover-page static story cards use locally stored SVG illustrations; alt text explicitly identifies them as illustrations rather than documentary photographs. The home-page soap-bubble visual is an original local illustration. Added 19 original local SVG illustrations in the October 2026 content expansion. Additional unique original SVG illustrations were added for new bilingual explainers; these are explanatory art, not documentary photographs. Five additional bilingual explainers with unique local educational SVG illustrations were added. These are original explanatory graphics, not documentary photographs. Five additional bilingual explainers and unique local educational SVG illustrations added. These are explanatory graphics, not documentary photographs. Ten additional bilingual explainers and unique local educational SVG illustrations added. These are explanatory graphics, not documentary photographs. Three additional bilingual explainers with distinct local educational SVG illustrations were added; these are explanatory graphics, not documentary photos.",
+  "policy": "Each story image must have a unique primary visual, meaningful alt text, source URL, creator, licence, and a local copy where technically and legally practical. Original illustrations must be labelled as illustrations, not documentary photographs. The Discover-page static story cards use locally stored SVG illustrations; alt text explicitly identifies them as illustrations rather than documentary photographs. The home-page soap-bubble visual is an original local illustration. Added 19 original local SVG illustrations in the October 2026 content expansion. Additional unique original SVG illustrations were added for new bilingual explainers; these are explanatory art, not documentary photographs. Five additional bilingual explainers with unique local educational SVG illustrations were added. These are original explanatory graphics, not documentary photographs. Five additional bilingual explainers and unique local educational SVG illustrations added. These are explanatory graphics, not documentary photographs. Ten additional bilingual explainers and unique local educational SVG illustrations added. These are explanatory graphics, not documentary photographs. Three additional bilingual explainers with distinct local educational SVG illustrations were added; these are explanatory graphics, not documentary photos. Ten more bilingual explainers with unique local SVG educational illustrations were added in this batch; these are explanatory graphics, not documentary photographs.",
   "verifiedMedia": [
     {
       "path": "articles/why-ice-cracks.html",
@@ -155,7 +155,15 @@
     "assets/illustrations/why-digital-skills-need-practice.svg",
     "assets/illustrations/how-thermostats-control-temperature.svg",
     "assets/illustrations/why-deltas-form-at-river-mouths.svg",
-    "assets/illustrations/why-negative-times-negative-is-positive.svg"
+    "assets/illustrations/why-negative-times-negative-is-positive.svg",
+    "assets/illustrations/why-leaves-change-colour-in-autumn.svg",
+    "assets/illustrations/why-sound-changes-pitch.svg",
+    "assets/illustrations/why-bread-rises.svg",
+    "assets/illustrations/why-skin-heals-after-small-cuts.svg",
+    "assets/illustrations/why-glass-is-transparent.svg",
+    "assets/illustrations/why-islands-form.svg",
+    "assets/illustrations/how-refrigerators-keep-food-cold.svg",
+    "assets/illustrations/why-some-deep-sea-species-remain-undiscovered.svg"
   ],
   "legacyExternalAssets": "Many pre-existing story and listing images are still remotely hosted. Their individual source, licence, relevance and local-copy status have not yet all been verified. Do not treat the legacy collection as fully cleared for commercial reuse."
 }

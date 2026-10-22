@@ -19,10 +19,10 @@ A bilingual (English/Hindi), responsive science and knowledge-discovery website 
 - English/Hindi language toggle, responsive navigation, dark mode and accessible focus styles
 - Search, topic filters (including psychology, technology/AI, maths, micro-world, history and future skills), result count, reset controls and alphabetical sorting on Discover
 - Category directory cards link into the corresponding Discover filter, including plants, geography, inventions and unsolved science
-- 124 bilingual dynamic story records with unique image identifiers; all 107 use local illustrations, and all 55 static Discover story cards use unique local SVG illustrations. The latest 5 additions cover memory practice, passkeys, time zones, microbiomes and preparing for AI-related work changes.
+- 134 bilingual dynamic story records with unique image identifiers; all 134 use local illustrations, and all 55 static Discover story cards use unique local SVG illustrations. Recent additions cover everyday science, technology, nature, food, mathematics, geography and digital skills.
 - Media provenance and licence notes for reviewed image sources in `data/media-manifest.json`
 - Interactive mini-experiments and article reading progress/share controls
-- PWA manifest and service-worker offline fallback; the service-worker cache is versioned as v36 and includes the newest five story illustrations.
+- PWA manifest and service-worker offline fallback; the service-worker cache is versioned as v37 and includes the newest five story illustrations.
 - Weather lookup using Open-Meteo Geocoding + Forecast APIs; no API key required for non-commercial use. The visitor enters a city or explicitly chooses browser location. Weather is cached locally for a short period, and the page credits Open-Meteo.
 - Content/category plan and story-schema in `data/`; editorial image/source and scalability standards in `docs/`
 
