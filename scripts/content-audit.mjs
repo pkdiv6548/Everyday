@@ -16,6 +16,7 @@ function walk(dir) {
 walk(root);
 const issues = [];
 const imageSources = new Map();
+const externalImages = new Map();
 const hrefPattern = /\b(?:href|src|poster)\s*=\s*(["'])(.*?)\1/gi;
 const imgPattern = /<img\b([^>]*?)>/gi;
 const attr = (text, name) => {
@@ -41,6 +42,7 @@ for (const file of htmlFiles) {
     if (alt === null) issues.push({ type: 'missing-alt', file: rel, src: src || '(no src)' });
     if (src) {
       const normalized = src.trim();
+      if (/^https?:\\/\\//i.test(normalized)) { if (!externalImages.has(normalized)) externalImages.set(normalized, []); externalImages.get(normalized).push(rel); }
       if (!imageSources.has(normalized)) imageSources.set(normalized, []);
       imageSources.get(normalized).push(rel);
     }
@@ -53,7 +55,9 @@ console.log('HTML pages:', htmlFiles.length);
 console.log('Article pages:', articleCount);
 console.log('Unique image source strings:', imageSources.size);
 console.log('Repeated image source strings:', duplicateImages.length);
+console.log('Externally hosted image source strings (review for local asset/licence):', externalImages.size);
 for (const [src, files] of duplicateImages) console.warn('DUPLICATE IMAGE:', src, '=>', [...new Set(files)].join(', '));
+for (const [src, files] of externalImages) console.warn('EXTERNAL IMAGE REVIEW:', src, '=>', [...new Set(files)].join(', '));
 console.log('Missing image alt attributes:', issues.filter(x => x.type === 'missing-alt').length);
 console.log('Broken local paths:', issues.filter(x => x.type === 'broken-local-path').length);
 for (const issue of issues) console.warn(issue.type.toUpperCase() + ':', issue.file, issue.value || issue.src);
