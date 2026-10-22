@@ -42,7 +42,7 @@ for (const file of htmlFiles) {
     if (alt === null) issues.push({ type: 'missing-alt', file: rel, src: src || '(no src)' });
     if (src) {
       const normalized = src.trim();
-      if (/^https?:\\/\\//i.test(normalized)) { if (!externalImages.has(normalized)) externalImages.set(normalized, []); externalImages.get(normalized).push(rel); }
+      if (normalized.startsWith('http://') || normalized.startsWith('https://')) { if (!externalImages.has(normalized)) externalImages.set(normalized, []); externalImages.get(normalized).push(rel); }
       if (!imageSources.has(normalized)) imageSources.set(normalized, []);
       imageSources.get(normalized).push(rel);
     }
