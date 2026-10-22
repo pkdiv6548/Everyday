@@ -133,7 +133,12 @@
     "assets/illustrations/how-two-factor-authentication-helps.svg",
     "assets/illustrations/why-mountains-affect-rainfall.svg",
     "assets/illustrations/why-estimates-are-useful.svg",
-    "assets/illustrations/why-handwashing-reduces-germs.svg"
+    "assets/illustrations/why-handwashing-reduces-germs.svg",
+    "assets/illustrations/why-memory-needs-retrieval.svg",
+    "assets/illustrations/what-is-a-passkey.svg",
+    "assets/illustrations/why-time-zones-have-borders.svg",
+    "assets/illustrations/what-is-a-microbiome.svg",
+    "assets/illustrations/how-to-prepare-for-ai-changes-at-work.svg"
   ],
   "legacyExternalAssets": "Many pre-existing story and listing images are still remotely hosted. Their individual source, licence, relevance and local-copy status have not yet all been verified. Do not treat the legacy collection as fully cleared for commercial reuse."
 }
