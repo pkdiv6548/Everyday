@@ -16,6 +16,7 @@ function walk(dir) {
 walk(root);
 const issues = [];
 const imageSources = new Map();
+const storyCoverSources = new Map();
 const externalImages = new Map();
 const hrefPattern = /\b(?:href|src|poster)\s*=\s*(["'])(.*?)\1/gi;
 const imgPattern = /<img\b([^>]*?)>/gi;
@@ -45,18 +46,24 @@ for (const file of htmlFiles) {
       if (normalized.startsWith('http://') || normalized.startsWith('https://')) { if (!externalImages.has(normalized)) externalImages.set(normalized, []); externalImages.get(normalized).push(rel); }
       if (!imageSources.has(normalized)) imageSources.set(normalized, []);
       imageSources.get(normalized).push(rel);
+      if (rel.startsWith('articles/') && /\barticle-cover\b/.test(attrs)) {
+        let key = normalized;
+        try { const parsed = new URL(normalized.replaceAll('&amp;', '&')); key = parsed.origin + parsed.pathname; } catch {}
+        if (!storyCoverSources.has(key)) storyCoverSources.set(key, []);
+        storyCoverSources.get(key).push(rel);
+      }
     }
   }
 }
-const duplicateImages = [...imageSources.entries()].filter(([, files]) => files.length > 1);
+const duplicateImages = [...storyCoverSources.entries()].filter(([, files]) => new Set(files).size > 1);
 const articleCount = htmlFiles.filter(file => file.replaceAll(path.sep, '/').includes('/articles/')).length;
 console.log('Everyday content audit');
 console.log('HTML pages:', htmlFiles.length);
 console.log('Article pages:', articleCount);
 console.log('Unique image source strings:', imageSources.size);
-console.log('Repeated image source strings:', duplicateImages.length);
+console.log('Repeated main story images (URL query parameters ignored):', duplicateImages.length);
 console.log('Externally hosted image source strings (review for local asset/licence):', externalImages.size);
-for (const [src, files] of duplicateImages) console.warn('DUPLICATE IMAGE:', src, '=>', [...new Set(files)].join(', '));
+for (const [src, files] of duplicateImages) console.warn('DUPLICATE STORY COVER:', src, '=>', [...new Set(files)].join(', '));
 for (const [src, files] of externalImages) console.warn('EXTERNAL IMAGE REVIEW:', src, '=>', [...new Set(files)].join(', '));
 console.log('Missing image alt attributes:', issues.filter(x => x.type === 'missing-alt').length);
 console.log('Broken local paths:', issues.filter(x => x.type === 'broken-local-path').length);
