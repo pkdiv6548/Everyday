@@ -1,0 +1,58 @@
+{
+  "id": "unique-kebab-case-id",
+  "slug": "unique-url-slug",
+  "title": {
+    "en": "Clear title",
+    "hi": "सरल शीर्षक"
+  },
+  "categoryId": "science-explained",
+  "subcategory": "Physics",
+  "summary": {
+    "en": "A concise direct answer.",
+    "hi": "सीधा और संक्षिप्त जवाब।"
+  },
+  "body": {
+    "en": [
+      "Direct answer",
+      "Step-by-step explanation",
+      "Everyday example",
+      "Misconceptions and limits",
+      "Practical takeaway"
+    ],
+    "hi": [
+      "सीधा जवाब",
+      "चरणबद्ध व्याख्या",
+      "रोजमर्रा का उदाहरण",
+      "गलतफहमियाँ और सीमाएँ",
+      "व्यावहारिक सीख"
+    ]
+  },
+  "readingLevel": "general",
+  "readingMinutes": 4,
+  "tags": [
+    "example"
+  ],
+  "status": "draft",
+  "publishedAt": null,
+  "reviewedAt": null,
+  "sources": [
+    {
+      "title": "Source title",
+      "url": "https://example.org",
+      "accessedAt": "YYYY-MM-DD"
+    }
+  ],
+  "media": {
+    "mainImage": "assets/images/unique-story-id.webp",
+    "alt": {
+      "en": "Describe exactly what the image shows",
+      "hi": "चित्र में वास्तव में क्या दिखाया गया है"
+    },
+    "source": "Source URL",
+    "license": "License identifier",
+    "sha256": "computed-by-build-check",
+    "uniqueMainImage": true
+  },
+  "relatedStoryIds": [],
+  "editorialStatus": "needs-review"
+}
