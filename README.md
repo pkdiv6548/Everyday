@@ -18,7 +18,7 @@ A bilingual (English/Hindi), responsive science and knowledge-discovery website 
 ## Current features
 - English/Hindi language toggle, responsive navigation, dark mode and accessible focus styles
 - Search, topic filters (including psychology, technology/AI, maths, micro-world, history and future skills), result count, reset controls and alphabetical sorting on Discover
-- Category directory cards link into the corresponding Discover filter
+- Category directory cards link into the corresponding Discover filter, including plants, geography, inventions and unsolved science
 - 62 bilingual dynamic story records with unique image identifiers; 42 use original local illustrations, with additional local illustrations used to replace repeated static article covers
 - Media provenance and licence notes for reviewed image sources in `data/media-manifest.json`
 - Interactive mini-experiments and article reading progress/share controls
