@@ -15,7 +15,7 @@ for (let i = start; i < source.length; i++) {
   const ch = source[i];
   if (inString) {
     if (escaped) escaped = false;
-    else if (ch === '\\\\') escaped = true;
+    else if (ch === '\\') escaped = true;
     else if (ch === '"') inString = false;
     continue;
   }
@@ -45,14 +45,14 @@ for (const item of records) {
   if ([title, titleHi, answer, answerHi, body, bodyHi, takeaway, takeawayHi].some(x => typeof x !== 'string' || x.trim().length < 12)) {
     issues.push('Incomplete bilingual content: ' + slug);
   }
-  if (sourceUrl && !/^https:\\/\\//.test(sourceUrl)) issues.push('Source URL must use HTTPS: ' + slug);
+  if (sourceUrl && !/^https:\/\//.test(sourceUrl)) issues.push('Source URL must use HTTPS: ' + slug);
 }
 for (const [image, slugs] of dynamicImages) if (slugs.length > 1) issues.push('Repeated dynamic image: ' + image + ' used by ' + slugs.join(', '));
 
 const staticByTag = new Map();
 const staticSlugs = new Set();
 const staticImages = new Map();
-const cardPattern = /<a class="story-card explore-card"[^>]*data-category="([^"]+)"[^>]*href="([^"]+)"[^>]*>([\\s\\S]*?)<\\/a>/g;
+const cardPattern = /<a class="story-card explore-card"[^>]*data-category="([^"]+)"[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g;
 let card;
 while ((card = cardPattern.exec(html))) {
   const tag = card[1];
