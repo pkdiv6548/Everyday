@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "policy": "Each story image must have a unique primary visual, meaningful alt text, source URL, creator, licence, and a local copy where technically and legally practical. Original illustrations must be labelled as illustrations, not documentary photographs. The Discover-page static story cards use locally stored SVG illustrations; alt text explicitly identifies them as illustrations rather than documentary photographs. The home-page soap-bubble visual is an original local illustration.",
+  "policy": "Each story image must have a unique primary visual, meaningful alt text, source URL, creator, licence, and a local copy where technically and legally practical. Original illustrations must be labelled as illustrations, not documentary photographs. The Discover-page static story cards use locally stored SVG illustrations; alt text explicitly identifies them as illustrations rather than documentary photographs. The home-page soap-bubble visual is an original local illustration. Added 19 original local SVG illustrations in the October 2026 content expansion.",
   "verifiedMedia": [
     {
       "path": "articles/why-ice-cracks.html",
@@ -108,7 +108,26 @@
     "assets/illustrations/goosebumps.svg",
     "assets/illustrations/winter-static.svg",
     "assets/illustrations/iron-rust.svg",
-    "assets/illustrations/soap-bubbles-home.svg"
+    "assets/illustrations/soap-bubbles-home.svg",
+    "assets/illustrations/pupil-response.svg",
+    "assets/illustrations/moon-horizon-illusion.svg",
+    "assets/illustrations/gecko-toe-pads-detail.svg",
+    "assets/illustrations/straw-refraction.svg",
+    "assets/illustrations/pattern-pareidolia.svg",
+    "assets/illustrations/stepwell-water-levels.svg",
+    "assets/illustrations/gps-satellite-ranges.svg",
+    "assets/illustrations/soap-grease-molecules.svg",
+    "assets/illustrations/desert-day-night-heat.svg",
+    "assets/illustrations/apple-browning-oxygen.svg",
+    "assets/illustrations/sunset-rayleigh-scattering.svg",
+    "assets/illustrations/vaccine-immune-memory.svg",
+    "assets/illustrations/shape-memory-alloy.svg",
+    "assets/illustrations/half-hour-timezones.svg",
+    "assets/illustrations/sample-size-average.svg",
+    "assets/illustrations/root-gravitropism.svg",
+    "assets/illustrations/movable-type-printing.svg",
+    "assets/illustrations/dark-matter-galaxy-lensing.svg",
+    "assets/illustrations/skill-learning-path.svg"
   ],
   "legacyExternalAssets": "Many pre-existing story and listing images are still remotely hosted. Their individual source, licence, relevance and local-copy status have not yet all been verified. Do not treat the legacy collection as fully cleared for commercial reuse."
 }
