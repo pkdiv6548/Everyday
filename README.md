@@ -32,6 +32,7 @@ A bilingual (English/Hindi), responsive science and knowledge-discovery website 
 - The content roadmap sets a minimum of 50 distinct reviewed stories per main category, with no artificial maximum. This is a target, not a claim that every category already contains 50 published stories.
 - Each story should have a unique, relevant main image, alt text, source and licence metadata. Missing/mismatched media should be fixed before publication rather than replaced with unrelated imagery.
 - See `docs/CONTENT_QUALITY.md` and `docs/SCALABILITY.md` for editorial checks, API limits and load-testing guidance.
+- GitHub Actions runs `scripts/content-audit.mjs` to report broken local paths, missing image alt text, duplicate image source strings and externally hosted image URLs. The audit is currently a reporting baseline, not proof that every image is unique or correctly matched.
 - 10,000 daily visitors and 10,000 concurrent users are different workloads. Capacity must be verified by measured load tests; GitHub Pages is static hosting, not an application server.
 
 ## Run locally
