@@ -331,3 +331,10 @@ body.dark-mode .skip-link{background:#f8f7f1;color:#17332f}
 :where(a,button,input,select,textarea):focus-visible{scroll-margin-top:100px}
 @media(hover:none){.story-card:hover,.category-tile:hover,.experiment-card:hover,.hub-card:hover,.career-card:hover{transform:none}.story-card:hover .story-image img{transform:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0ms!important}.reveal-on-scroll{opacity:1;transform:none}}
+
+
+/* Mobile weather controls: preserve contrast in both themes. */
+body.dark-mode .weather-form button[type="submit"],
+body.dark-mode .weather-form button:not(.weather-secondary){background:#d9f36a!important;color:#17332f!important;border:1px solid #d9f36a!important;text-shadow:none!important;opacity:1!important}
+body.dark-mode .weather-form button.weather-secondary{background:transparent!important;color:#e8efe6!important;border:1px solid #60756a!important}
+body.dark-mode .weather-form button:disabled{opacity:.65!important}
