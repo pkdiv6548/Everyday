@@ -1,1 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450"><rect width="800" height="450" rx="28" fill="#eaf7fc"/><path d="M100 235Q200 215 300 235T500 235T700 235V365H100Z" fill="#6bbbd9" opacity=".7"/><path d="M280 150l75-55 95 25 45 70-70 55-100-10z" fill="#d5f4ff" stroke="#5b9db6" stroke-width="8"/><path d="M180 285q35-25 70 0t70 0t70 0t70 0t70 0t70 0" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/><path d="M350 270v70M330 320l20 20 20-20" stroke="#357d9b" stroke-width="7" fill="none" stroke-linecap="round"/><text x="400" y="405" font-family="Arial,sans-serif" font-size="27" fill="#285e73" text-anchor="middle">ICE IS LESS DENSE THAN LIQUID WATER</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Why ice floats on liquid water</title>
+<desc id="desc">Scientific illustration of a faceted ice cube floating partly above the waterline, with an inset molecular lattice showing the open hexagonal structure of ice.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#effaff"/><stop offset="1" stop-color="#c4e9f4"/></linearGradient>
+ <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#4ab6d2" stop-opacity=".72"/><stop offset="1" stop-color="#18799e" stop-opacity=".9"/></linearGradient>
+ <linearGradient id="ice" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".45" stop-color="#b9ecfb"/><stop offset="1" stop-color="#65bad8"/></linearGradient>
+ <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#1c718c" flood-opacity=".2"/></filter>
+</defs>
+<rect width="1200" height="800" rx="42" fill="url(#bg)"/>
+<g font-family="Arial,Helvetica,sans-serif"><rect x="68" y="58" width="235" height="48" rx="24" fill="#15536a"/><text x="185" y="89" font-size="20" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="2">WATER SCIENCE</text><text x="72" y="158" font-size="34" font-weight="700" fill="#174c62">Why does ice float?</text><text x="74" y="194" font-size="21" fill="#427a8e">Frozen water expands into a more open crystal structure.</text></g>
+<!-- water body -->
+<path d="M40 435 Q140 414 240 435 T440 435 T640 435 T840 435 T1040 435 T1160 435 V750 Q1160 770 1140 770 H60 Q40 770 40 750Z" fill="url(#water)"/>
+<path d="M40 435 Q140 414 240 435 T440 435 T640 435 T840 435 T1040 435 T1160 435" fill="none" stroke="#f4ffff" stroke-width="8"/>
+<g fill="none" stroke="#d9f8ff" stroke-width="5" stroke-linecap="round" opacity=".8"><path d="M110 490 q45 -20 90 0 t90 0"/><path d="M640 500 q45 -20 90 0 t90 0"/><path d="M230 635 q45 -20 90 0 t90 0"/><path d="M800 660 q45 -20 90 0 t90 0"/></g>
+<!-- ice cube, mostly above water -->
+<g filter="url(#shadow)">
+ <path d="M280 282 L445 195 L610 258 L610 418 L447 505 L280 425Z" fill="url(#ice)" stroke="#fff" stroke-width="8"/>
+ <path d="M280 282 L445 367 L610 258" fill="none" stroke="#fff" stroke-width="7" opacity=".95"/>
+ <path d="M445 367 L447 505" fill="none" stroke="#5ba9c8" stroke-width="6" opacity=".7"/>
+ <path d="M280 282 L445 195 L610 258 L445 367Z" fill="#f7feff" fill-opacity=".58"/>
+ <path d="M280 425 L445 505 L610 418 L610 258 L445 367Z" fill="#71c8e6" fill-opacity=".25"/>
+ <path d="M326 284 L446 222 L562 267 L445 328Z" fill="#fff" fill-opacity=".45"/>
+</g>
+<!-- displacement arrows -->
+<g stroke="#ffce68" stroke-width="8" stroke-linecap="round" fill="none"><path d="M220 520 V590"/><path d="M202 572 L220 592 L238 572"/><path d="M670 520 V590"/><path d="M652 572 L670 592 L688 572"/></g>
+<g font-family="Arial,Helvetica,sans-serif" fill="#fff"><text x="110" y="640" font-size="23" font-weight="700">Liquid water</text><text x="110" y="673" font-size="20">molecules pack closer</text></g>
+<!-- inset molecular lattice -->
+<g filter="url(#shadow)"><rect x="735" y="165" width="380" height="245" rx="28" fill="#fff" fill-opacity=".9" stroke="#fff" stroke-width="4"/></g>
+<g stroke="#78b8ce" stroke-width="5" fill="none"><path d="M790 230 L830 205 L870 230 L870 278 L830 303 L790 278Z"/><path d="M870 230 L910 205 L950 230 L950 278 L910 303 L870 278Z"/><path d="M830 303 L870 278 L910 303 L910 351 L870 376 L830 351Z"/><path d="M950 230 L990 205 L1030 230 L1030 278 L990 303 L950 278Z"/></g>
+<g fill="#f8ffff" stroke="#2685a7" stroke-width="4"><circle cx="790" cy="230" r="9"/><circle cx="830" cy="205" r="9"/><circle cx="870" cy="230" r="9"/><circle cx="870" cy="278" r="9"/><circle cx="830" cy="303" r="9"/><circle cx="790" cy="278" r="9"/><circle cx="910" cy="205" r="9"/><circle cx="950" cy="230" r="9"/><circle cx="950" cy="278" r="9"/><circle cx="990" cy="205" r="9"/><circle cx="1030" cy="230" r="9"/><circle cx="1030" cy="278" r="9"/><circle cx="910" cy="303" r="9"/><circle cx="870" cy="351" r="9"/><circle cx="830" cy="351" r="9"/><circle cx="910" cy="351" r="9"/></g>
+<g font-family="Arial,Helvetica,sans-serif" text-anchor="middle"><text x="925" y="195" font-size="18" fill="#1c526a" font-weight="700">OPEN CRYSTAL LATTICE</text><text x="925" y="393" font-size="17" fill="#467b8c">More space between molecules</text></g>
+<!-- callout -->
+<path d="M615 335 C680 335 682 300 730 300" fill="none" stroke="#fff" stroke-width="5" stroke-dasharray="9 10"/>
+<g font-family="Arial,Helvetica,sans-serif"><rect x="730" y="525" width="390" height="130" rx="24" fill="#fff" fill-opacity=".88"/><text x="760" y="568" font-size="26" font-weight="700" fill="#15536a">Ice is less dense</text><text x="760" y="603" font-size="21" fill="#427a8e">than the same amount of liquid water.</text><text x="760" y="632" font-size="18" fill="#427a8e">That is why it floats.</text></g>
+<rect x="38" y="38" width="1124" height="724" rx="34" fill="none" stroke="#fff" stroke-width="4" opacity=".8"/>
+</svg>
