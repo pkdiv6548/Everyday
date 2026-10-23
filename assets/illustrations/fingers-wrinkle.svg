@@ -1,1 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" role="img" aria-labelledby="title desc"><title>#087f8c</title><desc>Wet fingers wrinkle</desc><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8f3f0"/><stop offset="1" stop-color="#ffffff"/></linearGradient><linearGradient id="bubble"><stop stop-color="#80d7fa" stop-opacity=".65"/><stop offset=".35" stop-color="#ff7fc8" stop-opacity=".55"/><stop offset=".65" stop-color="#f9db66" stop-opacity=".5"/><stop offset="1" stop-color="#70d9b1" stop-opacity=".55"/></linearGradient><linearGradient id="glass"><stop stop-color="#ffffff" stop-opacity=".8"/><stop offset="1" stop-color="#9ec5e4" stop-opacity=".4"/></linearGradient><linearGradient id="apple"><stop stop-color="#e7f3cf"/><stop offset=".5" stop-color="#dcebc0"/><stop offset="1" stop-color="#b76d3c"/></linearGradient></defs><rect width="360" height="360" rx="30" fill="url(#bg)"/><circle cx="285" cy="65" r="34" fill="#d8f3f0" opacity=".6"/><circle cx="62" cy="290" r="50" fill="#d8f3f0" opacity=".4"/><rect x="24" y="24" width="312" height="312" rx="24" fill="#ffffff" fill-opacity=".35" stroke="#ffffff" stroke-opacity=".85" stroke-width="2"/>Two fingertips submerged in water, visible skin creases</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Fingertips wrinkle after soaking in water</title>
+<desc id="desc">Educational illustration of fingertips beneath clear water, with curved creases across the skin and small water ripples.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e9f8f5"/><stop offset="1" stop-color="#b5e5e5"/></linearGradient>
+ <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#6cc9d5" stop-opacity=".16"/><stop offset="1" stop-color="#167e9b" stop-opacity=".38"/></linearGradient>
+ <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f6c9a7"/><stop offset=".55" stop-color="#e9a77e"/><stop offset="1" stop-color="#ca795b"/></linearGradient>
+ <linearGradient id="nail" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff0e8"/><stop offset="1" stop-color="#e9b5a3"/></linearGradient>
+ <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#235c65" flood-opacity=".18"/></filter>
+</defs>
+<rect width="1200" height="800" rx="44" fill="url(#bg)"/>
+<circle cx="1020" cy="130" r="100" fill="#fff" opacity=".34"/><circle cx="180" cy="680" r="130" fill="#fff" opacity=".28"/>
+<g fill="none" stroke="#fff" stroke-width="4" opacity=".75"><path d="M65 230 Q170 205 275 230 T485 230"/><path d="M730 150 Q835 125 940 150 T1150 150"/><path d="M750 690 Q850 665 950 690 T1150 690"/></g>
+<g filter="url(#shadow)">
+ <path d="M245 760 C232 670 240 560 272 450 C295 369 332 322 379 321 C424 320 448 362 439 419 L415 560 C409 603 427 623 450 614 C474 605 484 567 494 520 L530 338 C541 282 581 256 620 270 C660 284 674 321 663 371 L626 554 C617 599 638 617 661 606 C684 595 696 554 708 503 L743 365 C757 314 796 294 831 308 C869 323 879 360 865 409 L827 560 C816 603 836 620 859 610 C884 599 897 560 908 523 L935 436 C950 389 984 375 1015 389 C1048 404 1057 437 1045 477 L1000 641 C982 714 937 759 868 779 L310 800 Z" fill="url(#skin)" stroke="#c97d5e" stroke-width="5"/>
+ <path d="M309 440 C306 398 335 354 375 354 C408 354 425 384 418 424 L397 532" fill="none" stroke="#f8dfcc" stroke-width="5" opacity=".7"/>
+ <path d="M555 346 C561 313 583 295 609 300 C635 305 646 328 639 360 L605 531" fill="none" stroke="#f8dfcc" stroke-width="5" opacity=".7"/>
+ <path d="M771 377 C779 344 799 331 821 340 C843 349 850 370 840 403 L807 536" fill="none" stroke="#f8dfcc" stroke-width="5" opacity=".7"/>
+ <path d="M958 443 C968 418 984 409 1002 417 C1021 426 1026 446 1017 472 L984 589" fill="none" stroke="#f8dfcc" stroke-width="5" opacity=".7"/>
+ <g fill="none" stroke="#9b4d40" stroke-linecap="round" stroke-width="7" opacity=".76">
+  <path d="M275 476 Q319 493 358 477 T421 477"/><path d="M267 500 Q315 518 356 502 T414 502"/><path d="M263 524 Q310 541 352 526 T408 526"/><path d="M256 548 Q303 564 348 550 T403 550"/>
+  <path d="M501 399 Q545 416 584 400 T646 400"/><path d="M496 425 Q540 442 579 426 T640 426"/><path d="M490 451 Q534 468 574 452 T634 452"/><path d="M485 477 Q528 494 568 478 T628 478"/>
+  <path d="M720 431 Q759 447 797 433 T850 433"/><path d="M714 456 Q753 472 791 458 T844 458"/><path d="M708 481 Q747 497 785 483 T838 483"/>
+  <path d="M914 494 Q945 507 977 496 T1021 496"/><path d="M908 517 Q940 530 971 519 T1014 519"/>
+ </g>
+ <g fill="url(#nail)" stroke="#d88f76" stroke-width="4"><path d="M332 362 Q373 333 403 363 Q414 378 408 399 Q369 414 338 397 Q325 383 332 362Z"/><path d="M574 302 Q605 281 631 306 Q642 319 635 340 Q602 352 578 337 Q567 322 574 302Z"/><path d="M786 344 Q812 324 836 347 Q846 360 838 380 Q810 391 790 378 Q780 363 786 344Z"/><path d="M968 417 Q989 400 1008 420 Q1017 432 1010 448 Q988 459 971 447 Q963 433 968 417Z"/></g>
+</g>
+<rect x="52" y="52" width="1096" height="696" rx="34" fill="none" stroke="#fff" stroke-opacity=".8" stroke-width="3"/>
+<g font-family="Arial, Helvetica, sans-serif"><rect x="72" y="76" width="250" height="48" rx="24" fill="#173f43"/><text x="197" y="107" fill="#fff" font-size="20" font-weight="700" text-anchor="middle" letter-spacing="2">HUMAN BODY</text><text x="78" y="177" fill="#174d53" font-size="31" font-weight="700">Why do fingers wrinkle?</text><text x="80" y="211" fill="#3e7277" font-size="19">Water immersion • skin creases</text></g>
+<g fill="none" stroke="#258da0" stroke-width="5" stroke-linecap="round" opacity=".8"><path d="M104 295 Q125 277 146 295 T188 295"/><path d="M100 316 Q121 298 142 316 T184 316"/><path d="M1000 245 Q1021 227 1042 245 T1084 245"/><path d="M996 266 Q1017 248 1038 266 T1080 266"/></g>
+<g fill="#fff" fill-opacity=".75" stroke="#5ebac8" stroke-width="3"><circle cx="172" cy="390" r="12"/><circle cx="1060" cy="323" r="8"/><circle cx="1092" cy="352" r="5"/><circle cx="205" cy="354" r="6"/></g>
+</svg>

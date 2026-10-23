@@ -1,1 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="s" x2="0" y2="1"><stop stop-color="#4c9ce8"/><stop offset="1" stop-color="#c7edff"/></linearGradient></defs><rect width="1200" height="800" fill="url(#s)"/><circle cx="920" cy="150" r="75" fill="#fff6cc"/><g fill="#fff" opacity=".9"><ellipse cx="220" cy="260" rx="110" ry="34"/><ellipse cx="270" cy="240" rx="65" ry="48"/><ellipse cx="790" cy="330" rx="140" ry="40"/><ellipse cx="850" cy="300" rx="80" ry="55"/></g><path d="M0 650Q220 590 440 660T860 640T1200 660V800H0Z" fill="#74b77e"/><path d="M0 720Q280 660 500 730T1000 700T1200 720V800H0Z" fill="#418c69"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Why the sky is blue and sunsets are orange</title>
+<desc id="desc">Educational diagram showing blue sunlight scattered across the daytime sky and a low orange sun sending longer light rays through a thick layer of atmosphere at sunset.</desc>
+<defs>
+ <linearGradient id="day" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#3f91e8"/><stop offset="1" stop-color="#bfeaff"/></linearGradient>
+ <linearGradient id="evening" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f6a06b"/><stop offset=".6" stop-color="#f9d6a0"/><stop offset="1" stop-color="#e88967"/></linearGradient>
+ <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#548d75"/><stop offset="1" stop-color="#285e54"/></linearGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="18"/></filter>
+</defs>
+<rect width="1200" height="800" rx="40" fill="#f7fbff"/>
+<g><rect x="38" y="38" width="548" height="724" rx="30" fill="url(#day)"/><rect x="614" y="38" width="548" height="724" rx="30" fill="url(#evening)"/></g>
+<g font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#fff"><text x="78" y="100" font-size="27" letter-spacing="3">DAYTIME</text><text x="654" y="100" font-size="27" letter-spacing="3">SUNSET</text></g>
+<!-- daytime sun and scattered short wavelengths -->
+<circle cx="450" cy="175" r="74" fill="#fff5bf" opacity=".35" filter="url(#glow)"/><circle cx="450" cy="175" r="48" fill="#fff3b5"/>
+<g stroke="#eafaff" stroke-width="5" stroke-linecap="round" opacity=".9"><path d="M416 222 L290 340"/><path d="M434 231 L365 400"/><path d="M455 234 L445 372"/><path d="M475 228 L512 355"/></g>
+<g fill="#fff" opacity=".92"><ellipse cx="160" cy="255" rx="70" ry="22"/><ellipse cx="190" cy="237" rx="48" ry="32"/><ellipse cx="220" cy="256" rx="50" ry="20"/></g>
+<g stroke="#144fbd" stroke-width="4" stroke-linecap="round"><path d="M115 330 l-22 -16"/><path d="M150 360 l-23 8"/><path d="M220 330 l16 -22"/><path d="M280 390 l-24 1"/><path d="M310 290 l13 -22"/><path d="M370 330 l24 -8"/><path d="M185 420 l-5 24"/><path d="M340 430 l19 17"/></g>
+<g fill="#174c8b" font-family="Arial,Helvetica,sans-serif"><text x="78" y="510" font-size="29" font-weight="700">Blue light scatters</text><text x="78" y="547" font-size="22">more strongly in the air.</text></g>
+<!-- sunset sun, long path and loss of blue -->
+<circle cx="900" cy="390" r="110" fill="#ffb25d" opacity=".45" filter="url(#glow)"/><circle cx="900" cy="390" r="68" fill="#ffb64f" stroke="#fff0b0" stroke-width="5"/>
+<path d="M652 280 Q785 300 900 390" fill="none" stroke="#4c8ee8" stroke-width="8" stroke-linecap="round" stroke-dasharray="13 17" opacity=".85"/>
+<path d="M652 300 Q785 320 900 390" fill="none" stroke="#f17b40" stroke-width="11" stroke-linecap="round"/>
+<path d="M652 321 Q785 340 900 390" fill="none" stroke="#ffd16b" stroke-width="7" stroke-linecap="round"/>
+<g stroke="#b84f38" stroke-width="4" stroke-linecap="round"><path d="M745 280 l-14 -15"/><path d="M790 311 l-18 -4"/><path d="M822 346 l-4 18"/><path d="M852 361 l15 -13"/></g>
+<g fill="#763f36" font-family="Arial,Helvetica,sans-serif"><text x="654" y="510" font-size="29" font-weight="700">Longer path through air</text><text x="654" y="547" font-size="22">leaves more orange and red light.</text></g>
+<!-- horizon -->
+<path d="M38 625 Q160 590 285 620 T586 610 V732 Q586 762 556 762 H68 Q38 762 38 732Z" fill="url(#ground)"/>
+<path d="M614 625 Q740 598 870 624 T1162 610 V732 Q1162 762 1132 762 H644 Q614 762 614 732Z" fill="url(#ground)"/>
+<g fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700"><text x="78" y="690">SHORTER BLUE WAVELENGTHS</text><text x="654" y="690">WARMER COLOURS REACH YOUR EYES</text></g>
+<rect x="38" y="38" width="1124" height="724" rx="30" fill="none" stroke="#fff" stroke-width="4" opacity=".8"/>
+</svg>
