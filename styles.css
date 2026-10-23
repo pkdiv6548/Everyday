@@ -301,3 +301,33 @@ body.dark-mode .skip-link{background:#f8f7f1;color:#17332f}
 
 /* New knowledge hubs: weather, future readiness and scalable topic discovery. */
 .hub-hero{padding:64px 0 42px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(250px,.7fr);gap:34px;align-items:center}.hub-hero h1{font-size:clamp(38px,5vw,66px);line-height:1.02;letter-spacing:-.04em;margin:12px 0 18px}.hub-hero p{max-width:680px;color:var(--muted);line-height:1.8}.hub-panel,.hub-card,.weather-panel,.forecast-day,.career-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}.hub-panel{background:var(--ink);color:#f6f7ed}.hub-panel p{color:#c4d3c7}.hub-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:28px 0 64px}.hub-card h2,.career-card h2{font-size:22px;margin:8px 0}.hub-card p,.career-card p{color:var(--muted);line-height:1.75}.hub-card .tag,.target-count{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}.category-directory{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.category-entry{padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--white)}.category-entry h2{margin:10px 0}.subtopics{font-size:13px;color:var(--muted);line-height:1.8}.target-count{display:inline-block;margin-top:12px}.weather-form{display:flex;gap:10px;margin:22px 0;flex-wrap:wrap}.weather-form input{flex:1;min-width:180px;border:1px solid var(--line);border-radius:8px;padding:14px;background:var(--white);color:var(--ink)}.weather-form button{border:0;border-radius:8px;padding:13px 18px;background:var(--ink);color:#fff;cursor:pointer}.weather-status{min-height:24px;color:var(--muted);line-height:1.6}.weather-current{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}.weather-metric{padding:18px;border-radius:12px;background:var(--paper)}.weather-metric strong{display:block;font-size:clamp(24px,3vw,36px);margin-top:6px}.forecast-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:20px 0}.forecast-day{text-align:center;padding:14px 8px}.forecast-day span,.forecast-day small{display:block;color:var(--muted);margin:6px 0}.forecast-day strong{font-size:16px}.api-credit{font-size:12px;color:var(--muted);line-height:1.7}.career-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:24px 0 60px}.career-card ul{padding-left:20px;line-height:1.9;color:var(--muted)}.career-warning{border-left:4px solid var(--coral);padding:16px 20px;background:var(--white);line-height:1.8}.loading{opacity:.65;pointer-events:none}@media(max-width:850px){.hub-hero{grid-template-columns:1fr;padding-top:42px}.hub-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.forecast-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:600px){.hub-grid,.category-directory,.career-grid,.weather-current{grid-template-columns:1fr}.forecast-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.weather-form button{width:100%}.hub-panel,.hub-card,.weather-panel,.career-card{padding:18px}}
+
+
+/* Motion layer — restrained, layout-safe, and accessible. */
+@keyframes eo-fade-up{from{opacity:0;transform:translate3d(0,18px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes eo-fade-in{from{opacity:0}to{opacity:1}}
+@keyframes eo-float{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-8px,0)}}
+@keyframes eo-orbit{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes eo-sheen{from{background-position:140% 0}to{background-position:-140% 0}}
+.hero-copy{animation:eo-fade-up .75s cubic-bezier(.2,.7,.2,1) both}
+.hero-art{animation:eo-fade-in 1s ease-out both}
+.hero-art img{animation:eo-fade-up .9s .12s cubic-bezier(.2,.7,.2,1) both}
+.hero-art .orbit-one{animation:eo-orbit 48s linear infinite}
+.hero-art .orbit-two{animation:eo-orbit 64s linear infinite reverse}
+.hero-note{animation:eo-float 5s ease-in-out 1s infinite}
+.ticker-track{will-change:transform}
+.story-card,.category-tile,.experiment-card,.hub-card,.career-card,.weather-metric{transition:transform .28s cubic-bezier(.2,.7,.2,1),box-shadow .28s ease,border-color .28s ease}
+.story-card:hover,.category-tile:hover,.experiment-card:hover,.hub-card:hover,.career-card:hover{transform:translateY(-5px)}
+.story-card .story-image img{transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .4s ease}
+.story-card:hover .story-image img{transform:scale(1.035)}
+.story-card .card-arrow,.text-link,.round-arrow,.circle-link,.button,.icon-button,.lang-toggle{transition:transform .22s ease,background-color .22s ease,color .22s ease,box-shadow .22s ease}
+.story-card:hover .card-arrow{transform:translate(3px,-3px)}
+.button:hover,.round-arrow:hover,.circle-link:hover{transform:translateY(-2px)}
+.button:active,.round-arrow:active,.circle-link:active{transform:translateY(0) scale(.97)}
+.main-nav a{transition:color .2s ease,background-color .2s ease}
+.main-nav a::after{transition:transform .22s ease}
+.reveal-on-scroll{opacity:0;transform:translate3d(0,18px,0);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1);transition-delay:var(--reveal-delay,0ms)}
+.reveal-on-scroll.is-visible{opacity:1;transform:translate3d(0,0,0)}
+:where(a,button,input,select,textarea):focus-visible{scroll-margin-top:100px}
+@media(hover:none){.story-card:hover,.category-tile:hover,.experiment-card:hover,.hub-card:hover,.career-card:hover{transform:none}.story-card:hover .story-image img{transform:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0ms!important}.reveal-on-scroll{opacity:1;transform:none}}
