@@ -9,7 +9,7 @@ const menu=$('.menu-toggle');const nav=$('.main-nav');function closeMenu(){nav?.
 const currentPath=location.pathname;
 if(currentPath.includes('/articles/')){
  const prefix='../';
- const sharedLinks=[['index.html','Home','होम'],['categories.html','Topics','विषय'],['explore.html','Discover','खोजें'],['weather.html','Weather','मौसम'],['future.html','Future','भविष्य'],['experiments.html','Try it','खुद आज़माएँ'],['about.html','About','हमारे बारे में']];
+ const sharedLinks=[['index.html','Home','होम'],['categories.html','Topics','विषय'],['explore.html','Discover','खोजें'],['weather.html','Weather','मौसम'],['time.html','Time & Earth','समय और पृथ्वी'],['future.html','Future','भविष्य'],['experiments.html','Try it','खुद आज़माएँ'],['about.html','About','हमारे बारे में']];
  const mainNav=$('.main-nav');
  if(mainNav){
   sharedLinks.forEach(([path,en,hi])=>{
@@ -21,7 +21,7 @@ if(currentPath.includes('/articles/')){
  }
  const footerLinks=$('.footer-links');
  if(footerLinks){
-  [['categories.html','Topics','विषय'],['weather.html','Weather','मौसम'],['future.html','Future & careers','भविष्य और करियर']].forEach(([path,en,hi])=>{
+  [['categories.html','Topics','विषय'],['weather.html','Weather','मौसम'],['time.html','Time & Earth','समय और पृथ्वी'],['future.html','Future & careers','भविष्य और करियर']].forEach(([path,en,hi])=>{
    if([...footerLinks.querySelectorAll('a')].some(a=>a.getAttribute('href')===prefix+path))return;
    const link=document.createElement('a');link.href=prefix+path;link.dataset.en=en;link.dataset.hi=hi;link.textContent=root.lang==='hi'?hi:en;footerLinks.appendChild(link);
   });
