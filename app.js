@@ -27,4 +27,12 @@ if(currentPath.includes('/articles/')){
   });
  }
 }
+
+/* Progressive reveal on scroll; gracefully falls back when unsupported. */
+const revealTargets=$('.section-heading,.story-card,.manifesto-inner,.category-tile,.experiment-card,.hub-card,.career-card,.weather-panel,.hub-hero');
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window){
+ revealTargets.forEach((el,index)=>{el.classList.add('reveal-on-scroll');el.style.setProperty('--reveal-delay',(index%4)*70+'ms')});
+ const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target)}}),{threshold:.12,rootMargin:'0px 0px -35px 0px'});
+ revealTargets.forEach(el=>revealObserver.observe(el));
+}else{revealTargets.forEach(el=>el.classList.add('is-visible'))}
 })();
