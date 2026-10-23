@@ -1,1 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450"><rect width="800" height="450" rx="28" fill="#edf2f5"/><rect x="170" y="100" width="460" height="245" rx="20" fill="#3c5261"/><rect x="195" y="125" width="330" height="195" rx="12" fill="#243a49" stroke="#9db3bf" stroke-width="7"/><rect x="540" y="125" width="65" height="195" rx="8" fill="#d5e0e5"/><circle cx="573" cy="170" r="12" fill="#486b7b"/><circle cx="573" cy="220" r="12" fill="#486b7b"/><circle cx="573" cy="270" r="12" fill="#486b7b"/><path d="M245 180q35-35 70 0t70 0t70 0M245 220q35-35 70 0t70 0t70 0" fill="none" stroke="#efbd59" stroke-width="8" stroke-linecap="round"/><ellipse cx="355" cy="280" rx="65" ry="20" fill="#a9d7e4"/><text x="400" y="395" font-family="Arial,sans-serif" font-size="26" fill="#304d5b" text-anchor="middle">MICROWAVES MAKE POLAR MOLECULES RESPOND</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">How a microwave oven heats food</title>
+<desc id="desc">Educational cutaway illustration of a microwave oven with a bowl of water-rich food inside, curved microwave energy waves entering the cavity, and water molecules responding to the alternating electric field.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f0f7f8"/><stop offset="1" stop-color="#c9e0e7"/></linearGradient>
+ <linearGradient id="shell" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#526a78"/><stop offset="1" stop-color="#263d4b"/></linearGradient>
+ <linearGradient id="cavity" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#173241"/><stop offset="1" stop-color="#31586b"/></linearGradient>
+ <linearGradient id="food" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffdb8b"/><stop offset="1" stop-color="#e99b47"/></linearGradient>
+ <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="20" stdDeviation="20" flood-color="#254653" flood-opacity=".22"/></filter>
+</defs>
+<rect width="1200" height="800" rx="40" fill="url(#bg)"/>
+<circle cx="1040" cy="130" r="92" fill="#fff" opacity=".35"/><circle cx="140" cy="680" r="110" fill="#fff" opacity=".3"/>
+<g font-family="Arial,Helvetica,sans-serif"><rect x="68" y="60" width="265" height="48" rx="24" fill="#174c5a"/><text x="200" y="91" font-size="20" font-weight="700" letter-spacing="2" fill="#fff" text-anchor="middle">EVERYDAY TECH</text><text x="72" y="158" font-size="32" font-weight="700" fill="#173d4b">What happens inside a microwave?</text><text x="74" y="193" font-size="20" fill="#47717b">Electromagnetic energy transfers into food</text></g>
+<g filter="url(#shadow)">
+ <rect x="120" y="240" width="830" height="440" rx="34" fill="url(#shell)" stroke="#718b98" stroke-width="6"/>
+ <rect x="158" y="278" width="615" height="360" rx="20" fill="url(#cavity)" stroke="#8ca8b4" stroke-width="6"/>
+ <rect x="790" y="278" width="124" height="360" rx="16" fill="#dce8eb" stroke="#a5bac2" stroke-width="4"/>
+ <rect x="811" y="303" width="82" height="64" rx="12" fill="#1e3c4b"/><text x="852" y="345" font-family="Arial,Helvetica,sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#8fe4d8">2:30</text>
+ <circle cx="852" cy="414" r="17" fill="#7895a1" stroke="#fff" stroke-opacity=".6" stroke-width="3"/><circle cx="852" cy="474" r="17" fill="#7895a1" stroke="#fff" stroke-opacity=".6" stroke-width="3"/><circle cx="852" cy="534" r="17" fill="#7895a1" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+ <rect x="185" y="302" width="560" height="310" rx="12" fill="#21485a" stroke="#6f9ba9" stroke-width="3"/>
+ <path d="M220 535 Q465 575 710 535" fill="none" stroke="#b2d7df" stroke-width="7" opacity=".75"/>
+ <ellipse cx="465" cy="535" rx="155" ry="42" fill="#a8d7e2" stroke="#d6f0f2" stroke-width="5"/>
+ <path d="M335 450 Q345 540 465 548 Q585 540 595 450 L575 430 L355 430Z" fill="#eff8f9" stroke="#9fc8d2" stroke-width="5"/>
+ <ellipse cx="465" cy="448" rx="130" ry="37" fill="url(#food)" stroke="#fff0bf" stroke-width="5"/>
+ <g fill="#f5b74f" stroke="#fff0c8" stroke-width="2"><circle cx="407" cy="441" r="14"/><circle cx="449" cy="456" r="12"/><circle cx="488" cy="436" r="16"/><circle cx="529" cy="452" r="11"/><circle cx="463" cy="423" r="9"/></g>
+</g>
+<!-- waves in the oven cavity -->
+<g fill="none" stroke-linecap="round">
+ <path d="M220 340 q28 -34 56 0 t56 0 t56 0" stroke="#62d8f2" stroke-width="8"/>
+ <path d="M220 375 q28 -34 56 0 t56 0 t56 0" stroke="#62d8f2" stroke-width="8"/>
+ <path d="M220 410 q28 -34 56 0 t56 0 t56 0" stroke="#62d8f2" stroke-width="8"/>
+ <path d="M575 330 q28 -34 56 0 t56 0 t56 0" stroke="#f6c45e" stroke-width="8"/>
+ <path d="M575 365 q28 -34 56 0 t56 0 t56 0" stroke="#f6c45e" stroke-width="8"/>
+ <path d="M575 400 q28 -34 56 0 t56 0 t56 0" stroke="#f6c45e" stroke-width="8"/>
+</g>
+<!-- molecule diagram -->
+<g transform="translate(1010 360)">
+ <circle cx="0" cy="0" r="36" fill="#e15e55" stroke="#fff" stroke-width="5"/><circle cx="-49" cy="-43" r="22" fill="#f5f9fc" stroke="#79a5b5" stroke-width="4"/><circle cx="49" cy="-43" r="22" fill="#f5f9fc" stroke="#79a5b5" stroke-width="4"/>
+ <path d="M-25 -23 L-39 -34 M25 -23 L39 -34" stroke="#dbeaf0" stroke-width="12" stroke-linecap="round"/>
+ <g font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" text-anchor="middle"><text x="0" y="7" fill="#fff">O</text><text x="-49" y="-36" fill="#345b6b">H</text><text x="49" y="-36" fill="#345b6b">H</text></g>
+ <path d="M-60 52 Q0 82 60 52" fill="none" stroke="#f2a94a" stroke-width="6" stroke-linecap="round"/><path d="M49 41 L62 52 L48 63" fill="none" stroke="#f2a94a" stroke-width="6" stroke-linecap="round"/>
+</g>
+<g font-family="Arial,Helvetica,sans-serif"><text x="1010" y="465" font-size="23" font-weight="700" fill="#214e5b" text-anchor="middle">Water molecule</text><text x="1010" y="496" font-size="19" fill="#456f79" text-anchor="middle">responds to the</text><text x="1010" y="521" font-size="19" fill="#456f79" text-anchor="middle">alternating field</text></g>
+<!-- connector and legend -->
+<path d="M735 390 C825 390 850 300 920 300" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="8 10" opacity=".9"/>
+<g font-family="Arial,Helvetica,sans-serif"><rect x="165" y="704" width="950" height="58" rx="18" fill="#fff" fill-opacity=".78"/><circle cx="203" cy="733" r="8" fill="#62d8f2"/><text x="222" y="740" font-size="19" fill="#264f5d">Microwaves transfer energy</text><circle cx="507" cy="733" r="8" fill="#f6c45e"/><text x="526" y="740" font-size="19" fill="#264f5d">Molecules respond</text><circle cx="777" cy="733" r="8" fill="#e99b47"/><text x="796" y="740" font-size="19" fill="#264f5d">Food warms</text></g>
+<rect x="38" y="38" width="1124" height="724" rx="34" fill="none" stroke="#fff" stroke-width="4" opacity=".8"/>
+</svg>
