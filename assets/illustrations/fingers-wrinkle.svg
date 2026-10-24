@@ -1,1 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" role="img" aria-labelledby="title desc"><title>#087f8c</title><desc>Wet fingers wrinkle</desc><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8f3f0"/><stop offset="1" stop-color="#ffffff"/></linearGradient><linearGradient id="bubble"><stop stop-color="#80d7fa" stop-opacity=".65"/><stop offset=".35" stop-color="#ff7fc8" stop-opacity=".55"/><stop offset=".65" stop-color="#f9db66" stop-opacity=".5"/><stop offset="1" stop-color="#70d9b1" stop-opacity=".55"/></linearGradient><linearGradient id="glass"><stop stop-color="#ffffff" stop-opacity=".8"/><stop offset="1" stop-color="#9ec5e4" stop-opacity=".4"/></linearGradient><linearGradient id="apple"><stop stop-color="#e7f3cf"/><stop offset=".5" stop-color="#dcebc0"/><stop offset="1" stop-color="#b76d3c"/></linearGradient></defs><rect width="360" height="360" rx="30" fill="url(#bg)"/><circle cx="285" cy="65" r="34" fill="#d8f3f0" opacity=".6"/><circle cx="62" cy="290" r="50" fill="#d8f3f0" opacity=".4"/><rect x="24" y="24" width="312" height="312" rx="24" fill="#ffffff" fill-opacity=".35" stroke="#ffffff" stroke-opacity=".85" stroke-width="2"/>Two fingertips submerged in water, visible skin creases</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Fingers wrinkling in water</title>
+<desc id="desc">Close-up illustration of fingertips underwater with visible skin creases and ripples.</desc>
+<defs>
+ <linearGradient id="water" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#bcebe6"/><stop offset="1" stop-color="#eaf9f7"/></linearGradient>
+ <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7c7a5"/><stop offset=".55" stop-color="#e7a47f"/><stop offset="1" stop-color="#c9785d"/></linearGradient>
+ <linearGradient id="nail" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff0e7"/><stop offset="1" stop-color="#e9b8a4"/></linearGradient>
+</defs>
+<rect width="1200" height="800" rx="32" fill="url(#water)"/>
+<g fill="none" stroke="#fff" stroke-width="10" opacity=".8"><path d="M55 220Q170 180 285 220T515 220T745 220T975 220T1200 220"/><path d="M0 285Q130 245 260 285T520 285T780 285T1040 285T1300 285"/></g>
+<g transform="translate(0 28)">
+ <path d="M275 800V505Q275 448 320 422Q356 402 387 438L435 495V294Q435 229 488 220Q547 214 557 282L575 455V245Q575 178 634 178Q692 182 695 250L704 462V300Q704 236 760 238Q816 242 816 310L820 505Q842 468 880 480Q921 495 910 550L885 670Q871 735 826 772L804 800Z" fill="url(#skin)" stroke="#b96f58" stroke-width="9" stroke-linejoin="round"/>
+ <path d="M470 282Q493 263 521 282M607 237Q634 219 662 240M731 295Q756 278 784 298" fill="none" stroke="url(#nail)" stroke-width="28" stroke-linecap="round"/>
+ <g fill="none" stroke="#a85f50" stroke-width="7" stroke-linecap="round" opacity=".9">
+  <path d="M454 365q24 -16 48 0t48 0"/><path d="M458 389q24 -16 48 0t48 0"/><path d="M591 332q24 -16 48 0t48 0"/><path d="M595 356q24 -16 48 0t48 0"/><path d="M719 382q24 -16 48 0t48 0"/><path d="M722 406q24 -16 48 0t48 0"/><path d="M324 565q36 -20 72 0t72 0"/><path d="M328 591q36 -20 72 0t72 0"/>
+ </g>
+</g>
+<g fill="none" stroke="#5aaeb5" stroke-width="8" opacity=".85"><path d="M90 650q65 -32 130 0t130 0"/><path d="M850 120q70 -30 140 0t140 0"/><path d="M900 690q60 -25 120 0t120 0"/></g>
+<g fill="#fff" opacity=".7"><circle cx="180" cy="130" r="8"/><circle cx="1030" cy="390" r="10"/><circle cx="970" cy="565" r="6"/><circle cx="210" cy="430" r="7"/></g>
+</svg>
