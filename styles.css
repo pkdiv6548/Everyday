@@ -432,3 +432,9 @@ body{font-feature-settings:"kern" 1,"liga" 1;text-rendering:optimizeLegibility}
 
 /* Discover API image fallback: never show a broken-image icon or stale artwork. */
 .story-image img.image-unavailable{visibility:hidden}.story-image img{background:transparent}
+
+/* Honest fallback for failed image requests: no broken icon and no unrelated substitute image. */
+.image-fallback{box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:140px;width:100%;height:100%;padding:22px;text-align:center;color:var(--muted);background:linear-gradient(135deg,rgba(25,76,68,.08),rgba(197,159,87,.10));border:1px dashed var(--line);border-radius:inherit;overflow:hidden}
+.image-fallback-mark{font-size:28px;line-height:1;color:var(--accent,#39776b)}
+.image-fallback-label{font-size:12px;line-height:1.5;max-width:34ch}
+.article-cover+.image-fallback{min-height:220px;aspect-ratio:16/9}
