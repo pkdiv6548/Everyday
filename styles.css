@@ -438,3 +438,12 @@ body{font-feature-settings:"kern" 1,"liga" 1;text-rendering:optimizeLegibility}
 .image-fallback-mark{font-size:28px;line-height:1;color:var(--accent,#39776b)}
 .image-fallback-label{font-size:12px;line-height:1.5;max-width:34ch}
 .article-cover+.image-fallback{min-height:220px;aspect-ratio:16/9}
+
+
+/* Mobile announcement bar: keep language changes from breaking the header rhythm. */
+@media(max-width:650px){
+  .announcement{box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;align-content:center;gap:3px;min-height:0;height:auto;padding:7px 16px;overflow:hidden;text-align:center;line-height:1.25;font-size:9px;letter-spacing:.035em;}
+  .announcement span[data-en],.announcement span[data-hi]{display:block;max-width:100%;min-width:0;white-space:normal;overflow-wrap:anywhere;text-align:center;}
+  .announcement .announce-dot{display:none;}
+  .site-header{top:0;}
+}
