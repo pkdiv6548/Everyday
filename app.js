@@ -29,7 +29,7 @@ const menu=$('.menu-toggle');const nav=$('.main-nav');function closeMenu(){nav?.
 }
 
 
-/* Image safety net: replace failed images with an honest, labelled placeholder instead of a blank area or broken icon. */
+/* Image safety net: keep a labelled fallback beside a failed image without removing the image node (modal code may reuse it). */
 document.addEventListener('error',event=>{
  const img=event.target;
  if(!(img instanceof HTMLImageElement)||img.dataset.fallbackHandled==='true')return;
@@ -37,6 +37,7 @@ document.addEventListener('error',event=>{
  const alt=(img.getAttribute('alt')||'').trim();
  const fallback=document.createElement('div');
  fallback.className='image-fallback';
+ fallback.dataset.imageFallback='true';
  fallback.setAttribute('role','img');
  fallback.setAttribute('aria-label',alt||'Image unavailable');
  const mark=document.createElement('span');
@@ -45,9 +46,15 @@ document.addEventListener('error',event=>{
  mark.textContent='◈';
  const label=document.createElement('span');
  label.className='image-fallback-label';
- label.textContent=alt|| (document.documentElement.lang==='hi'?'चित्र उपलब्ध नहीं':'Image unavailable');
+ label.textContent=alt||(document.documentElement.lang==='hi'?'चित्र उपलब्ध नहीं':'Image unavailable');
  fallback.append(mark,label);
- img.replaceWith(fallback);
+ img.insertAdjacentElement('beforebegin',fallback);
+ img.style.display='none';
+ img.addEventListener('load',()=>{
+   fallback.remove();
+   img.style.display='';
+   img.dataset.fallbackHandled='false';
+ },{once:true});
 },true);
 
 /* Progressive reveal on scroll; gracefully falls back when unsupported. */
