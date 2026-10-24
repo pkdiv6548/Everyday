@@ -28,6 +28,28 @@ const menu=$('.menu-toggle');const nav=$('.main-nav');function closeMenu(){nav?.
  }
 }
 
+
+/* Image safety net: replace failed images with an honest, labelled placeholder instead of a blank area or broken icon. */
+document.addEventListener('error',event=>{
+ const img=event.target;
+ if(!(img instanceof HTMLImageElement)||img.dataset.fallbackHandled==='true')return;
+ img.dataset.fallbackHandled='true';
+ const alt=(img.getAttribute('alt')||'').trim();
+ const fallback=document.createElement('div');
+ fallback.className='image-fallback';
+ fallback.setAttribute('role','img');
+ fallback.setAttribute('aria-label',alt||'Image unavailable');
+ const mark=document.createElement('span');
+ mark.className='image-fallback-mark';
+ mark.setAttribute('aria-hidden','true');
+ mark.textContent='◈';
+ const label=document.createElement('span');
+ label.className='image-fallback-label';
+ label.textContent=alt|| (document.documentElement.lang==='hi'?'चित्र उपलब्ध नहीं':'Image unavailable');
+ fallback.append(mark,label);
+ img.replaceWith(fallback);
+},true);
+
 /* Progressive reveal on scroll; gracefully falls back when unsupported. */
 const revealTargets=$('.section-heading,.story-card,.manifesto-inner,.category-tile,.experiment-card,.hub-card,.career-card,.weather-panel,.hub-hero');
 if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window){
