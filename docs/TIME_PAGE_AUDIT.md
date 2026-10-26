@@ -30,7 +30,7 @@ The first priority-ordered implementation pass has been committed. This is **sou
 | TME-12 | Implemented for live lists | Currency, earthquake and holiday values now use DOM nodes and `textContent`; verify malformed provider responses in tests/browser. |
 | TME-13 | Partially implemented | Localized selector accessible name and `aria-busy` states added; full keyboard and screen-reader review remains pending. |
 | TME-14 | Implemented in source; browser review pending | Provider links added; solar, currency, earthquake and holiday cards expose update/date context. Validate timestamp clarity in browser. |
-| TME-15 | Implemented in repository; first CI run passed | Added `scripts/time-page-regression-check.mjs` and wired it into the content-audit workflow. Run `40332821339` passed; rerun against the newest commit is pending. |
+| TME-15 | Implemented in repository; first CI run passed | Added `scripts/time-page-regression-check.mjs` and wired it into the content-audit workflow. Latest run `40332975910` passed on commit `71a7cb809cd7f3127ba23a0815e066486ecac2b3`. |
 | TME-16 | Pending | Requires rendered-browser QA at the specified viewport sizes, themes, languages, and offline/API-failure states. |
 | TME-17 | Implemented in source | Added canonical and Open Graph metadata; rendered preview and canonical-target review remain pending. |
 
