@@ -113,3 +113,11 @@ Tracking branch: `main`
 - Added a dark-mode override so active/hover filter chips use the lime accent background, dark green text, and matching border. Commit: `5df41168b9c407aa39c4beecd6f23c4bd332229f`.
 - Bumped Service Worker cache `v89 → v90` to refresh clients. Commit: `06b82b065e183f43173a93d3ebf97aa3120fa563`; README version updated in the next docs commit.
 - The new CSS/cache commits still need their own CI/deployment completion. Visual browser contrast testing remains unverified, so T05 is in progress.
+
+
+### T03 — Science filter coverage regression fix
+- Follow-up source review found the “Science explained” filter included only 7 of the 9 static story-card categories; `nature` and `space` were omitted.
+- Expanded the filter list to include both categories. Commit: `6848d1a10095913f85e43830843f75bfaedd0a9a`.
+- Added a regression check to `scripts/category-coverage.mjs` that compares the Science filter list against all category values used by static Explore cards. Missing categories now fail the category-coverage audit. Commit: `7570b1f178e4c749288deac2d43d7a3fad4a7d93`.
+- Bumped Service Worker cache `v90 → v91` to refresh clients. Commit: `2e095fa2940c9346912f67ea1e4c5241f2e4d1ac`; README updated in `642c2b6fab02ed8d0ac9d2e944c80632b7a6a943`.
+- Automated CI is required to confirm the new regression check and deployment. Browser interaction testing is still not verified.
