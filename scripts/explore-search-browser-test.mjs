@@ -16,8 +16,11 @@ try {
   const search = page.locator('#story-search');
   const sort = page.locator('#story-sort');
   const cards = page.locator('.explore-grid .story-card[data-category]');
-  const visibleCards = () => cards.evaluateAll(items => items.filter(item => !item.hidden));
-  const titles = async () => (await visibleCards()).map(item => item.querySelector('h2,h3,.story-title')?.textContent.trim() || item.textContent.trim());
+  const visibleCards = () => cards.evaluateAll(items => items.filter(item => !item.hidden).map(item => ({
+    category: item.dataset.category,
+    title: item.querySelector('h2,h3,.story-title')?.textContent.trim() || item.textContent.trim()
+  })));
+  const titles = async () => (await visibleCards()).map(item => item.title);
 
   const allCount = await cards.count();
   assert.ok(allCount > 0, 'Discover should render story cards');
@@ -33,7 +36,7 @@ try {
   assert.equal(await page.locator('.filter-chip[data-filter="space"]').getAttribute('aria-pressed'), 'true');
   const filtered = await visibleCards();
   assert.ok(filtered.length > 0, 'Search + Space category should have matching results');
-  assert.ok(filtered.every(item => item.dataset.category === 'space'), 'Every visible result must belong to selected category');
+  assert.ok(filtered.every(item => item.category === 'space'), 'Every visible result must belong to selected category');
   assert.equal(new URL(page.url()).searchParams.get('category'), 'space', 'Category should be in URL');
 
   // Sorting should affect state and visible ordering.
