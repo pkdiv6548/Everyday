@@ -4,6 +4,13 @@ Last updated: 2026-10-26
 Repository: `pkdiv6548/Everyday`  
 Tracking branch: `main`
 
+
+### Current task status summary (updated 2026-10-26)
+- Complete: 2/24 (T01–T02).
+- In progress: 3/24 (T03–T05; includes code fixes that still need browser-level verification).
+- Pending/not started: 19/24 (T06–T24).
+- Total unfinished tasks, counting both In progress and Pending: 22/24.
+
 ## How to use this tracker
 
 - `Pending`: not yet worked through in this staged plan.
@@ -31,7 +38,7 @@ Tracking branch: `main`
 | T02 | 1 — Critical checks | P0 | Audit JavaScript syntax, local paths, images, and key HTML pages | Automated checks pass; all discovered failures are logged | Complete |
 | T03 | 1 — Critical checks | P0 | Verify navigation, Search, category filters, sorting, reset, and empty states | Expected behavior is confirmed in a browser or each untestable case is clearly marked | In progress |
 | T04 | 1 — Critical checks | P0 | Verify English/Hindi toggle and translation parity | Primary UI and story text change correctly; remaining untranslated content is logged | In progress |
-| T05 | 1 — Critical checks | P1 | Inspect dark mode, responsive layout, and visual defects | No confirmed high-impact layout/theme issue remains; tested viewport sizes are recorded | Pending |
+| T05 | 1 — Critical checks | P1 | Inspect dark mode, responsive layout, and visual defects | No confirmed high-impact layout/theme issue remains; tested viewport sizes are recorded | In progress |
 | T06 | 2 — Content | P1 | Recalculate coverage for all 19 categories | Counts and gaps are generated from current files and match the documented baseline | Pending |
 | T07 | 2 — Content | P1 | Review the 424 held-out generic-template story records | Each record is accepted, rewritten, or kept unpublished with a reason; no filler is republished to inflate counts | Pending |
 | T08 | 2 — Content | P1 | Review 6 held-out duplicate-slug records | Each duplicate has a documented disposition and active catalogs remain free of slug collisions | Pending |
