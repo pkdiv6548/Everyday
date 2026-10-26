@@ -18,7 +18,9 @@ jobs:
         with:
           node-version: 20
       - name: Check JavaScript syntax
-        run: node --check app.js && node --check stories-extra.js && node --check scripts/category-coverage.mjs
+        run: node --check app.js && node --check stories-extra.js && node --check scripts/category-coverage.mjs && node --check scripts/explore-state-check.mjs
+      - name: Check Discover URL state regressions
+        run: node scripts/explore-state-check.mjs
       - name: Audit local paths and image reuse
         run: node scripts/content-audit.mjs
       - name: Audit category coverage and story integrity
