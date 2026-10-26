@@ -306,3 +306,8 @@ Tracking branch: `main`
 - Inspected six article cover illustrations and their article titles: banana browning, bread rising, wrinkled fingers, autumn leaves, lightning/thunder, and metal versus wood.
 - Corrected three cover alt texts that described a generic or mismatched scene rather than the actual illustration/topic: `banana-browns.html`, `bread-rises.html`, and `metal-feels-cold.html`.
 - This is a targeted sample, not a complete 55-page visual audit. T09 remains In Progress until all candidate images and repeated assets are manually reviewed.
+
+
+### T09 — Discover card alt-text parity
+- Updated the three corresponding Discover-card image descriptions for banana browning, bread rising, and metal-versus-wood thermal conductivity so card alt text matches the improved article-cover descriptions.
+- Automated CI passed on commit `e01a7b1983` before this follow-up edit; this newest edit requires its own CI/deployment verification.
