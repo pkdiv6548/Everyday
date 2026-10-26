@@ -28,11 +28,10 @@ await page.route('https://nagerholidays.com/**', route => {
 
 try {
   await page.goto('http://127.0.0.1:4173/time.html', { waitUntil: 'domcontentloaded' });
-  await page.waitForTimeout(1200);
-  console.log('Browser test diagnostics:', JSON.stringify({requests, currency: await page.locator('#currency-list').innerText(), currencyStatus: await page.locator('#currency-status').innerText(), quakes: await page.locator('#earthquake-list').innerText(), holidays: await page.locator('#holiday-list').innerText(), consoleErrors}));
-  await page.waitForSelector('#currency-list .data-row');
-  await page.waitForSelector('#earthquake-list .data-row');
-  await page.waitForSelector('#holiday-list .data-row');
+  await Promise.all([page.waitForSelector('#currency-list .data-row'), page.waitForSelector('#earthquake-list .data-row'), page.waitForSelector('#holiday-list .data-row')]);
+  await page.keyboard.press('Tab');
+  assert.equal(await page.evaluate(() => document.activeElement.classList.contains('skip-link')), true, 'Keyboard focus should start at the skip link');
+  assert.equal(await page.locator('#zone-select').getAttribute('aria-label'), 'Time zone');
   assert.notEqual(await page.locator('#local-clock').textContent(), '--:--:--');
   assert.equal(await page.locator('#sunrise').textContent(), '06:20:00');
   assert.equal(await page.locator('#currency-list').getByText('1 EUR → INR').count(), 1);
@@ -60,7 +59,7 @@ try {
   await page.waitForFunction(() => document.querySelector('#currency-status').textContent.includes('unavailable') || document.querySelector('#currency-status').textContent.includes('उपलब्ध नहीं'));
   assert.notEqual(await page.locator('#currency-list').textContent(), '');
   assert.deepEqual(consoleErrors, [], 'Browser should not report console/page errors');
-  console.log('PASS — Time page browser integration: mocked API success, language-switch request count, dark theme, responsive widths, and API failure state.');
+  console.log('PASS — Time page browser integration: mocked API success, language-switch request count, keyboard focus, dark theme, responsive widths, and API failure state.');
 } finally {
   await browser.close();
 }
