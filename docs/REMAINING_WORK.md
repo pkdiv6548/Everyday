@@ -3,41 +3,42 @@
 Last checked: 2026-10-26
 
 ## Verified fixes
-- Corrected the static HTML audit so it does not treat HTML fragments inside inline JavaScript strings as real page links or image tags.
-- Corrected local image validation to ignore query strings and fragments when checking file existence.
-- Replaced the duplicate Discover-card image for `why-rain-smells` and changed that article's cover to a separate local illustration.
-- Aligned the Weather page heading with the seven-day forecast actually requested by the API.
-- Bumped the service-worker cache key to `everyday-oddities-v55`.
-- Removed 485 generic-template records from the active public story library and preserved them in `data/stories-review-queue.json` for later editorial rewriting. These records were not deleted.
-- Replaced 296 repeated generic takeaways in the active story records with topic-specific notes derived from the corresponding explanation.
-- Added a content-audit rule to flag the generic boilerplate patterns that caused the issue.
+- Corrected the static HTML audit so it ignores HTML fragments assembled inside inline JavaScript strings.
+- Corrected local image validation to ignore query strings and fragments when checking asset existence.
+- Replaced the duplicate Discover-card image for `why-rain-smells` and gave its article a separate local cover illustration.
+- Aligned the Weather heading with the seven-day forecast requested by the API.
+- Bumped the service-worker cache to `everyday-oddities-v56` after the latest story-data changes.
+- Moved 485 generic-template records out of the active story library and preserved them in `data/stories-review-queue.json`.
+- Replaced 296 repeated generic takeaways in active records with topic-specific notes derived from the corresponding explanation.
+- Preserved 6 duplicate cross-catalog records in `data/stories-duplicate-review.json` and removed them from the active dynamic list; their bespoke static article cards remain active.
+- Added audit checks for generic boilerplate and duplicate slugs across the static and dynamic catalogs.
 
 ## Current catalog baseline
-- Active dynamic records: 473 (all have unique slugs).
+- Active dynamic records: 467; unique dynamic slugs: 467.
 - Static Discover cards: 55.
-- Unique combined catalog slugs: 522.
-- Generic-template records held for rewrite: 485.
-- Active story-data JavaScript size: approximately 580 KB, down from approximately 1.27 MB.
-- The latest successful pre-cleanup audit found no broken local paths, missing local story image assets or duplicate story images. The audit is running again against the cleaned story catalog and the new boilerplate detector.
+- Unique combined catalog slugs: 522, with no cross-catalog duplicate slugs.
+- Records held out for review: 485 generic-template records and 6 duplicate-slug records.
+- Active story-data JavaScript: approximately 573 KB, down from approximately 1.27 MB before the cleanup.
+- Latest inspected content-audit run passed JavaScript syntax, local-path/image checks and story-integrity checks. The report still shows 19/19 categories below the 50-record target; this is a content-completeness gap, not a broken-path or duplicate-integrity error.
 
 ## Minimum category target — still incomplete
-The target is 50 distinct, reviewed stories per category (950 category assignments minimum). The latest coverage calculation after removing generic records showed these gaps:
+The target is 50 distinct, reviewed stories per category (950 category assignments minimum). The latest coverage report shows:
 
 | Category | Current | Target | Still needed |
 |---|---:|---:|---:|
 | Human Body | 29 | 50 | 21 |
-| Space & Universe | 25 | 50 | 25 |
+| Space & Universe | 24 | 50 | 26 |
 | Nature & Wildlife | 34 | 50 | 16 |
-| Science Explained | 33 | 50 | 17 |
+| Science Explained | 32 | 50 | 18 |
 | Psychology & Mind | 25 | 50 | 25 |
 | History & Civilizations | 29 | 50 | 21 |
 | Technology & AI | 32 | 50 | 18 |
 | Everyday Mysteries | 26 | 50 | 24 |
-| Earth & Weather | 31 | 50 | 19 |
+| Earth & Weather | 30 | 50 | 20 |
 | Food Science | 33 | 50 | 17 |
-| Optical Illusions | 31 | 50 | 19 |
+| Optical Illusions | 30 | 50 | 20 |
 | Micro World | 25 | 50 | 25 |
-| Materials & Objects | 28 | 50 | 22 |
+| Materials & Objects | 26 | 50 | 24 |
 | Geography & World | 33 | 50 | 17 |
 | Mathematics & Numbers | 25 | 50 | 25 |
 | Plants & Botany | 33 | 50 | 17 |
@@ -45,14 +46,14 @@ The target is 50 distinct, reviewed stories per category (950 category assignmen
 | Unsolved Questions | 26 | 50 | 24 |
 | Future & Career Intelligence | 30 | 50 | 20 |
 
-Counts are catalog coverage, not a claim that every active story has received expert review. The 485 held-out records need topic-specific answers, explanations, takeaways, credible sources and a manual relevance check before they can return to the public catalog.
+The 485 held-out records need topic-specific answers, explanations, takeaways, credible sources and manual image-relevance checks before they can return to the public catalog. The six duplicate records must be reviewed against their existing static articles before any reuse.
 
 ## Remaining work — in priority order
-1. Confirm the newest GitHub Actions content-audit run passes with the boilerplate detector and the latest GitHub Pages deployment succeeds.
-2. Rewrite the held-out stories in reviewed batches; do not restore generic placeholder content just to reach the 50-per-category target.
-3. Review active stories for near-duplicates, shallow or repeated explanations, title/content mismatch, source reliability, publication/review dates, and full Hindi/English parity.
-4. Manually review image relevance, alt text, licensing/provenance and API-sourced media; automated checks cannot determine whether an illustration visually matches a story.
-5. Browser-test Discover search, every category filter, sorting/reset/empty states, Hindi toggle, dark mode, navigation and mobile layouts.
+1. Confirm the newest GitHub Actions audit passes on the final cache-version commit and the latest GitHub Pages deployment succeeds.
+2. Rewrite held-out stories in reviewed batches; do not restore generic placeholder content just to reach the 50-per-category target.
+3. Review active stories for near-duplicates, shallow or repeated explanations, title/content mismatch, source reliability, review dates and full Hindi/English parity.
+4. Manually review image relevance, alt text, licensing/provenance and API-sourced media.
+5. Browser-test Discover search, category filters, sorting/reset/empty states, Hindi toggle, dark mode, navigation and mobile layouts.
 6. Browser-test Weather for valid/invalid city input, API failure/retry, location permission denial, forecast date/units and responsive layout.
 7. Test all Experiments interactions, explanations, keyboard controls and safety notes.
 8. Test PWA installation, offline fallback, stale-cache upgrades and recovery after reconnecting.
