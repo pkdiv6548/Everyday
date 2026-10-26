@@ -311,3 +311,9 @@ Tracking branch: `main`
 ### T09 — Discover card alt-text parity
 - Updated the three corresponding Discover-card image descriptions for banana browning, bread rising, and metal-versus-wood thermal conductivity so card alt text matches the improved article-cover descriptions.
 - Automated CI passed on commit `e01a7b1983` before this follow-up edit; this newest edit requires its own CI/deployment verification.
+
+### T03 — Navigation event-binding defect (fixed in code; verification pending)
+- Static runtime inspection found `$('.main-nav a').forEach(...)` even though `$` is the single-element `querySelector` helper. When a matching navigation link exists, this can throw a `TypeError` and abort the remainder of the shared script, preventing later initializers from running.
+- Changed the selector to `$$('.main-nav a')`, which uses the `querySelectorAll` helper and returns an iterable array of all navigation links.
+- Commit: `c73c68872281abb98e621482302c26fb8b5c9321`.
+- Status: fixed in code; CI and live-browser behavior still need to be verified. T03 remains In progress.
