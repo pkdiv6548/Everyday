@@ -97,3 +97,11 @@ Tracking branch: `main`
 - Expanded the Science explained filter to include `light`, `physics`, `water`, `materials`, `food`, `body`, and `sound`. Commit: `345ecd0b1c9636c91714baf389bce30da20ad059`.
 - Bumped Service Worker cache `v87 → v88` so clients can pick up the updated filter logic. Commit: `74de41b073805f9c13bae99dde88a8c691fc8b18`; README cache version updated in the next documentation commit.
 - Browser interaction testing remains unverified; the available live-site page fetch did not load through the web viewer, so no claim of manual browser verification is made. T03 stays in progress until browser checks can be completed on the deployed version.
+
+
+### Follow-up verification — language selector correction
+- Re-fetched `app.js` from `main` and confirmed the placeholder and aria-label selectors were still using the single-element helper. The earlier report had incorrectly stated this was fixed; that claim was not verified against the current file.
+- Corrected both selectors to use `$$` and verified the exact selectors are present once each in the updated source. Commit: `2d97b663560fa37f68ad236f120e94e449275b92`.
+- Bumped Service Worker cache `v88 → v89` to invalidate the previous cached app version. Commit: `5ab01484f98a9c5cba51e2d52e237eb0db64d143`; README updated in the following documentation commit.
+- Content audit passed for the prior code revision `a3f1a386`; the audit for this new fix and the Pages deployment for the current head still need to complete.
+- Manual browser verification has not been performed, so T04 remains In Progress.
