@@ -26,7 +26,7 @@ await page.route('https://nagerholidays.com/**', route => {
 });
 
 try {
-  await page.goto('http://127.0.0.1:4173/time.html', { waitUntil: 'networkidle' });
+  await page.goto('http://127.0.0.1:4173/time.html', { waitUntil: 'domcontentloaded' });
   await page.waitForSelector('#currency-list .data-row');
   await page.waitForSelector('#earthquake-list .data-row');
   await page.waitForSelector('#holiday-list .data-row');
