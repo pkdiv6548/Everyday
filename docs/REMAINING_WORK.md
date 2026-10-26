@@ -64,6 +64,8 @@ The 485 held-out records need topic-specific answers, explanations, takeaways, c
 
 - Discover: Search and category-filter state now updates the URL query parameters (`q` and `category`) using `history.replaceState`, allowing filtered views to be copied and reopened without a full-page reload. Automated/browser verification is still pending.
 
+- Discover accessibility: the search input's accessible name and placeholder now follow the selected language; the sort select inherits its translated visible label instead of retaining a hard-coded English accessible name. Automated/browser verification remains pending.
+
 ## Remaining work — in priority order
 1. Confirm the newest GitHub Actions audit passes on the final cache-version commit and the latest GitHub Pages deployment succeeds.
 2. Rewrite held-out stories in reviewed batches; do not restore generic placeholder content just to reach the 50-per-category target.
