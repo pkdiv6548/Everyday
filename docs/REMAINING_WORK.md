@@ -19,6 +19,7 @@ Last checked: 2026-10-26
 - Localized Weather API/network failures in Hindi and English, made the geocoding cache language-aware, and prevented stale city/location requests from replacing a newer forecast.
 - Static-checked all 10 Experiments buttons: each target exists, each result has English and Hindi text, and no duplicate IDs were found.
 - Replaced all 10 external Unsplash experiment-card backgrounds with matching local SVG illustrations already included in the service-worker core cache, removing third-party image requests from the Experiments page.
+- Extended the content audit to inspect inline CSS `url(...)` backgrounds as well as `<img src>` attributes, so future external or broken background-image URLs are not silently missed.
 
 ## Current catalog baseline
 - Active dynamic records: 477; unique dynamic slugs: 477.
