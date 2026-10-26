@@ -200,6 +200,12 @@ Tracking branch: `main`
 - Progress: 150/424 reviewed; 274 remain.
 
 
+### T07 — Editorial review batch 7
+- Screened records 151–175 and recorded an explicit `keep-unpublished` decision and rationale for each slug.
+- No generic template record was returned to the public catalog.
+- Progress: 175/424 reviewed; 249 remain.
+
+
 ### T08 — Duplicate-slug dispositions recorded
 - Reviewed the six held-out records against the catalog note that their bespoke static article pages remain active.
 - Recorded an explicit `keep-unpublished` disposition for each duplicate slug (`moon-phases`, `why-shadows-change-length`, `why-iron-rusts`, `why-salt-melts-ice`, `why-rainbows-are-arcs`, `why-wood-floats`). The static article is the canonical active version; duplicate dynamic records remain held out.
