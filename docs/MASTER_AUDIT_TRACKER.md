@@ -5,20 +5,17 @@ Repository: `pkdiv6548/Everyday`
 Tracking branch: `main`
 
 
-### Current task status summary (updated 2026-10-26)
-- Complete: 4/24 (T01–T02, T06, T08).
-- In progress: 6/24 (T03–T05, T07, T09 and T10; browser verification, editorial review, image relevance, and source/provenance review remain outstanding).
-- Pending/not started: 14/24 (T11–T24).
-- Total unfinished tasks, counting both In progress and Pending: 20/24.
+### Interim status summary — code/deployment checkpoint (2026-10-26)
+- Interim checkpoint: **24/24 tasks counted complete for the current code/deployment phase**, per the user's instruction.
+- This is a workflow milestone, not a claim that every original acceptance criterion is already satisfied. It means the current repository baseline has been committed, automated CI is green, and GitHub Pages deployment succeeded for commit `189541a1ab`.
+- Live browser verification is explicitly deferred to a later phase and must not be reported as completed.
+- Known non-browser gaps (category target 50/category, factual/source/media provenance review, bilingual editorial quality, and heuristic image review) remain documented below and in `docs/REMAINING_WORK.md`; this interim count does not certify those items as fully resolved.
 
 ## How to use this tracker
 
-- `Pending`: not yet worked through in this staged plan.
-- `In progress`: actively being investigated or changed.
-- `Fixed in code`: a code/document change exists, but it has not yet been verified in the live browser.
-- `Verified`: acceptance criteria were checked and evidence is recorded.
-- Do not mark a task `Verified` based on a successful deployment alone. CI, deployment, and real-browser behavior are separate checks.
-- Work one task at a time. Record new findings under the matching task before moving on.
+- `Interim code/deploy checkpoint complete`: counted as complete for the current phase by the user's explicit instruction; does not mean live behavior or manual editorial/source review has been certified.
+- `Live verification deferred`: browser behavior, responsive layout, offline/PWA and accessibility behavior will be verified in the later live-audit phase.
+- Keep the interim checkpoint distinct from the original full acceptance criteria. A green CI run and successful deployment are evidence of those pipeline stages only.
 
 ## Baseline verified from repository records
 
@@ -34,30 +31,30 @@ Tracking branch: `main`
 
 | ID | Stage | Priority | Task | Acceptance criteria | Status |
 |---|---|---|---|---|---|
-| T01 | 1 — Baseline | P0 | Create and maintain this master pending-issues tracker; verify current branch and CI/deployment state | Tracker exists on main and records evidence, known gaps, and statuses without treating deploy as browser verification | Complete |
-| T02 | 1 — Critical checks | P0 | Audit JavaScript syntax, local paths, images, and key HTML pages | Automated checks pass; all discovered failures are logged | Complete |
-| T03 | 1 — Critical checks | P0 | Verify navigation, Search, category filters, sorting, reset, and empty states | Expected behavior is confirmed in a browser or each untestable case is clearly marked | In progress |
-| T04 | 1 — Critical checks | P0 | Verify English/Hindi toggle and translation parity | Primary UI and story text change correctly; remaining untranslated content is logged | In progress |
-| T05 | 1 — Critical checks | P1 | Inspect dark mode, responsive layout, and visual defects | No confirmed high-impact layout/theme issue remains; tested viewport sizes are recorded | In progress |
-| T06 | 2 — Content | P1 | Recalculate coverage for all 19 categories | Counts and gaps are generated from current files and match the documented baseline | Complete |
-| T07 | 2 — Content | P1 | Review the 424 held-out generic-template story records | Each record is accepted, rewritten, or kept unpublished with a reason; no filler is republished to inflate counts | In progress |
-| T08 | 2 — Content | P1 | Review 6 held-out duplicate-slug records | Each duplicate has a documented disposition and active catalogs remain free of slug collisions | Complete |
-| T09 | 2 — Content | P1 | Check story-to-image relevance and repeated imagery | Mismatches and duplicates are logged and corrected with appropriate assets | In progress |
-| T10 | 2 — Content | P1 | Review factual sources, image alt text, licensing, and provenance | Published stories have credible sources and media metadata; uncertain claims are qualified | In progress |
-| T11 | 2 — Content | P1 | Bring each category to at least 50 reviewed stories | All 19 categories meet the target with unique, reviewed stories; no placeholders used | Pending |
-| T12 | 3 — APIs/PWA | P1 | Test Weather API input, permissions, failure/retry, dates, and units | Valid and invalid city/network/location scenarios behave correctly in browser tests | Pending |
-| T13 | 3 — APIs/PWA | P1 | Audit Service Worker installation, cache updates, and recovery | Install and upgrade flows are tested; failures do not strand users on a broken cache | Pending |
-| T14 | 3 — APIs/PWA | P1 | Test offline fallback and cached pages/assets | Documented pages work offline where promised; missing offline capabilities are explicit | Pending |
-| T15 | 3 — APIs/PWA | P2 | Test PWA installation and mobile behavior | Installability and core mobile use are verified on supported browsers/devices | Pending |
-| T16 | 3 — APIs/PWA | P2 | Test every interactive experiment | Buttons, results, keyboard behavior, bilingual text, and safety notes pass checks | Pending |
-| T17 | 4 — Quality | P2 | Run accessibility review | Labels, keyboard access, focus, semantics, contrast, and reduced-motion support are checked | Pending |
-| T18 | 4 — Quality | P2 | Review SEO and metadata | Titles, descriptions, canonical/indexing behavior, and page-specific metadata are checked | Pending |
-| T19 | 4 — Quality | P2 | Review loading performance and layout stability | Heavy assets, repeated requests, image sizing, and layout shift are measured and prioritized | Pending |
-| T20 | 4 — Quality | P2 | Run responsive/regression checks across key pages | Mobile, tablet, and desktop behavior is checked after fixes | Pending |
-| T21 | 5 — Release readiness | P2 | Review external resources and API data handling | External requests, attribution, error handling, and client-visible secrets are checked | Pending |
-| T22 | 5 — Release readiness | P2 | Assess scalability and the 10,000-concurrent-user goal | A test plan and evidence-based capacity assessment exist; no unsupported capacity claim is made | Pending |
-| T23 | 5 — Release readiness | P1 | Run final automated regression audit | Required CI checks pass on the release candidate | Pending |
-| T24 | 5 — Release readiness | P1 | Deploy and verify the final release | Latest main commit is deployed and critical live behaviors are manually verified | Pending |
+| T01 | 1 — Baseline | P0 | Create and maintain this master pending-issues tracker; verify current branch and CI/deployment state | Tracker exists on main and records evidence, known gaps, and statuses without treating deploy as browser verification | Interim code/deploy checkpoint complete; live verification deferred |
+| T02 | 1 — Critical checks | P0 | Audit JavaScript syntax, local paths, images, and key HTML pages | Automated checks pass; all discovered failures are logged | Interim code/deploy checkpoint complete; live verification deferred |
+| T03 | 1 — Critical checks | P0 | Verify navigation, Search, category filters, sorting, reset, and empty states | Expected behavior is confirmed in a browser or each untestable case is clearly marked | Interim code/deploy checkpoint complete; live verification deferred |
+| T04 | 1 — Critical checks | P0 | Verify English/Hindi toggle and translation parity | Primary UI and story text change correctly; remaining untranslated content is logged | Interim code/deploy checkpoint complete; live verification deferred |
+| T05 | 1 — Critical checks | P1 | Inspect dark mode, responsive layout, and visual defects | No confirmed high-impact layout/theme issue remains; tested viewport sizes are recorded | Interim code/deploy checkpoint complete; live verification deferred |
+| T06 | 2 — Content | P1 | Recalculate coverage for all 19 categories | Counts and gaps are generated from current files and match the documented baseline | Interim code/deploy checkpoint complete; live verification deferred |
+| T07 | 2 — Content | P1 | Review the 424 held-out generic-template story records | Each record is accepted, rewritten, or kept unpublished with a reason; no filler is republished to inflate counts | Interim code/deploy checkpoint complete; live verification deferred |
+| T08 | 2 — Content | P1 | Review 6 held-out duplicate-slug records | Each duplicate has a documented disposition and active catalogs remain free of slug collisions | Interim code/deploy checkpoint complete; live verification deferred |
+| T09 | 2 — Content | P1 | Check story-to-image relevance and repeated imagery | Mismatches and duplicates are logged and corrected with appropriate assets | Interim code/deploy checkpoint complete; live verification deferred |
+| T10 | 2 — Content | P1 | Review factual sources, image alt text, licensing, and provenance | Published stories have credible sources and media metadata; uncertain claims are qualified | Interim code/deploy checkpoint complete; live verification deferred |
+| T11 | 2 — Content | P1 | Bring each category to at least 50 reviewed stories | All 19 categories meet the target with unique, reviewed stories; no placeholders used | Interim code/deploy checkpoint complete; live verification deferred |
+| T12 | 3 — APIs/PWA | P1 | Test Weather API input, permissions, failure/retry, dates, and units | Valid and invalid city/network/location scenarios behave correctly in browser tests | Interim code/deploy checkpoint complete; live verification deferred |
+| T13 | 3 — APIs/PWA | P1 | Audit Service Worker installation, cache updates, and recovery | Install and upgrade flows are tested; failures do not strand users on a broken cache | Interim code/deploy checkpoint complete; live verification deferred |
+| T14 | 3 — APIs/PWA | P1 | Test offline fallback and cached pages/assets | Documented pages work offline where promised; missing offline capabilities are explicit | Interim code/deploy checkpoint complete; live verification deferred |
+| T15 | 3 — APIs/PWA | P2 | Test PWA installation and mobile behavior | Installability and core mobile use are verified on supported browsers/devices | Interim code/deploy checkpoint complete; live verification deferred |
+| T16 | 3 — APIs/PWA | P2 | Test every interactive experiment | Buttons, results, keyboard behavior, bilingual text, and safety notes pass checks | Interim code/deploy checkpoint complete; live verification deferred |
+| T17 | 4 — Quality | P2 | Run accessibility review | Labels, keyboard access, focus, semantics, contrast, and reduced-motion support are checked | Interim code/deploy checkpoint complete; live verification deferred |
+| T18 | 4 — Quality | P2 | Review SEO and metadata | Titles, descriptions, canonical/indexing behavior, and page-specific metadata are checked | Interim code/deploy checkpoint complete; live verification deferred |
+| T19 | 4 — Quality | P2 | Review loading performance and layout stability | Heavy assets, repeated requests, image sizing, and layout shift are measured and prioritized | Interim code/deploy checkpoint complete; live verification deferred |
+| T20 | 4 — Quality | P2 | Run responsive/regression checks across key pages | Mobile, tablet, and desktop behavior is checked after fixes | Interim code/deploy checkpoint complete; live verification deferred |
+| T21 | 5 — Release readiness | P2 | Review external resources and API data handling | External requests, attribution, error handling, and client-visible secrets are checked | Interim code/deploy checkpoint complete; live verification deferred |
+| T22 | 5 — Release readiness | P2 | Assess scalability and the 10,000-concurrent-user goal | A test plan and evidence-based capacity assessment exist; no unsupported capacity claim is made | Interim code/deploy checkpoint complete; live verification deferred |
+| T23 | 5 — Release readiness | P1 | Run final automated regression audit | Required CI checks pass on the release candidate | Interim code/deploy checkpoint complete; live verification deferred |
+| T24 | 5 — Release readiness | P1 | Deploy and verify the final release | Latest main commit is deployed and critical live behaviors are manually verified | Interim code/deploy checkpoint complete; live verification deferred |
 
 ## Task execution log
 
@@ -329,3 +326,11 @@ Tracking branch: `main`
 - Wired the check and syntax validation into `.github/workflows/content-audit.yml` so these two regressions are caught on future pushes and pull requests.
 - Code fix commit: `909108e4f4142ccc4e476585687bd1b7ae4da978`; regression script commit: `96fa095cddbfcea2cdf217c94bae53150e44f71e`; workflow commit: `74fbce6bfaa765ef25d71df3ad52f962a45d7e98`.
 - Verification is pending until the workflow for the latest main commit completes. This guard checks two known selectors only; it is not a full browser test or a general JavaScript static analysis.
+
+
+### User-directed interim checkpoint — 2026-10-26
+- The user explicitly requested that all 24 tasks be counted complete for the current code/deployment phase, with live verification deferred until later.
+- Baseline evidence before this tracker update: content audit run [40330414962](https://github.com/pkdiv6548/Everyday/actions/runs/40330414962) passed for commit `189541a1ab`; Pages deployment run [40330415077](https://github.com/pkdiv6548/Everyday/actions/runs/40330415077) succeeded for the same commit.
+- The tracker-only commit made to record this decision will itself trigger a new content audit and Pages deployment; those new run results must be checked before calling the updated tracker deployed.
+- Explicitly deferred: live-browser checks for T03–T05 and T12–T20/T23–T24; human fact/source/licensing verification (T07/T10); the 50-reviewed-stories-per-category target (T11); and any runtime/performance conclusions that cannot be established from source code alone (T21–T22).
+- This status convention is an interim reporting choice requested by the user. It must not be interpreted as evidence that the deferred acceptance criteria have passed.
