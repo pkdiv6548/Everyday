@@ -1,4 +1,4 @@
-- PWA reliability: service-worker installation now precaches in batches of 40 and tolerates individual asset failures with `Promise.allSettled`, avoiding a single failed asset aborting the entire install. Cache version bumped to `everyday-oddities-v85`; offline coverage still needs browser testing.
+- PWA reliability: service-worker installation now precaches in batches of 40 and tolerates individual asset failures with `Promise.allSettled`, avoiding a single failed asset aborting the entire install. Cache version bumped to `everyday-oddities-v86`; offline coverage still needs browser testing.
 
 - Added a translated accessible group label to Discover’s topic-filter buttons so assistive technology identifies the filter controls as one named group.
 - Bumped the service-worker cache to `everyday-oddities-v84` after the Discover accessibility update.
