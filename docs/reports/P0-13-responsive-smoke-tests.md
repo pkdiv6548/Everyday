@@ -1,6 +1,6 @@
 # P0-13 — Responsive Smoke Tests
 
-**Status:** Test added; awaiting GitHub Actions verification.
+**Status:** PASS — responsive smoke test passed in GitHub Actions.
 
 ## Scope
 
@@ -29,4 +29,4 @@ This is an automated Chromium smoke test, not a substitute for manual testing on
 
 ## Result
 
-Awaiting GitHub Actions completion. Mark PASS only after the dedicated responsive test passes.
+The dedicated responsive test passed on commit `199c66899a58aee4238ba80c2d192063e43456b2` in GitHub Actions run `40414036332`. The responsive test reported success; the broader multi-page smoke test also passed, and the workflow completed successfully. The deployed-route smoke-test step passed in this workflow run, but the separately tracked P0-02 live deployment verification task remains on HOLD as requested.
