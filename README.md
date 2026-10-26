@@ -39,6 +39,8 @@ A bilingual (English/Hindi), responsive science and knowledge-discovery website 
 - 10,000 daily visitors and 10,000 concurrent users are different workloads. Capacity must be verified by measured load tests; GitHub Pages is static hosting, not an application server.
 - `scripts/category-coverage.mjs` counts static Discover cards and dynamic records toward the 50-story category target, and checks bilingual fields, source URLs, unique slugs/images and local assets. `tests/load/` contains a manual k6 plan; it is not run automatically or against production.
 
+- Discover search/category filters keep the URL synchronized with the current view; cache version is `everyday-oddities-v82`.
+
 ## Run locally
 Open `index.html` in a browser. For service-worker/PWA testing, serve the folder through a local HTTP server.
 
