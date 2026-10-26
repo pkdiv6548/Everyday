@@ -1,3 +1,4 @@
+- Fixed Discover reset consistency: Clear search & filters now resets the sort dropdown to Featured order and restores the original story order.
 - Fixed Discover sorting after language changes: when A–Z or Z–A is selected, switching language now reapplies the sort using the currently displayed titles.
 - Fixed Discover sorting reset: choosing Featured order now restores the original card sequence instead of preserving a prior A–Z/Z–A order.
 
