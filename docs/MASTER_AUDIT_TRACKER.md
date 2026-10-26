@@ -300,3 +300,9 @@ Tracking branch: `main`
 - Content audit run `40327849587` completed successfully; all configured checks passed, including the source/provenance candidate scanner.
 - Deployment run `40327849516` was still running at the previous check; latest status is recorded in the Actions page rather than assumed successful.
 - Added article-page scan count to the provenance scanner output; this is reporting-only and does not automatically certify sources, image licences, or factual accuracy.
+
+
+### T09 — Manual cover-alt review (targeted sample)
+- Inspected six article cover illustrations and their article titles: banana browning, bread rising, wrinkled fingers, autumn leaves, lightning/thunder, and metal versus wood.
+- Corrected three cover alt texts that described a generic or mismatched scene rather than the actual illustration/topic: `banana-browns.html`, `bread-rises.html`, and `metal-feels-cold.html`.
+- This is a targeted sample, not a complete 55-page visual audit. T09 remains In Progress until all candidate images and repeated assets are manually reviewed.
