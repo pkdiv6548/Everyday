@@ -46,6 +46,10 @@ for (const item of records) {
     issues.push('Incomplete bilingual content: ' + slug);
   }
   if (sourceUrl && !/^https:\/\//.test(sourceUrl)) issues.push('Source URL must use HTTPS: ' + slug);
+  const genericContent = /is best understood by separating observations from assumptions|use evidence and clear definitions to explore|use the linked reference to explore the topic further|use the linked source to explore the topic further|use this explanation as a starting point and consult the linked source|observe the example safely and compare it with the explanation above/i;
+  if (genericContent.test([answer, answerHi, body, bodyHi, takeaway, takeawayHi].join(' '))) {
+    issues.push('Generic boilerplate content: ' + slug);
+  }
 }
 for (const [image, slugs] of dynamicImages) if (slugs.length > 1) issues.push('Repeated dynamic image: ' + image + ' used by ' + slugs.join(', '));
 
