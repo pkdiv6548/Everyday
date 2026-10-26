@@ -163,6 +163,13 @@ Tracking branch: `main`
 - Progress after this batch: 50/424 reviewed; 374 remain. T07 stays in progress.
 
 
+### T03 — Discover URL-state regression coverage
+- Added `scripts/explore-state-check.mjs` with checks for search query (`q`), category, sort mode, restoring URL state, and Clear Filters reset behavior.
+- Wired the regression script into `.github/workflows/content-audit.yml`; the workflow now runs its syntax check and regression checks on pushes and pull requests.
+- Bumped service-worker cache to `everyday-oddities-v93` so deployed clients refresh updated app assets.
+- This improves automated regression coverage, but T03 remains In Progress until the new Actions run passes and interactive browser testing confirms actual behavior.
+
+
 ### T07 — Editorial review batch 3
 - Screened records 51–75 from the held-out queue and recorded an explicit disposition and reason for each slug.
 - All 25 remain unpublished because the existing copy is generic, not yet a fact-checked topic-specific explanation. This prevents filler content from being used to inflate the public category counts.
