@@ -279,3 +279,11 @@ Tracking branch: `main`
 - Wired the script into `.github/workflows/content-audit.yml` and added a JavaScript syntax check.
 - Findings are intentionally heuristic candidates, not automatic claims of factual error or copyright infringement; each must be checked against the actual page, claim, image origin, and applicable licence.
 - Acceptance is not met yet: run the new CI audit, triage the findings, and manually verify sources and media provenance before marking T10 complete.
+
+
+### T10 — First source/provenance audit results (2026-10-26)
+- The corrected provenance audit passed in CI: [run 40326920717](https://github.com/pkdiv6548/Everyday/actions/runs/40326920717). Pages deployment for the same commit also passed: [run 40326920849](https://github.com/pkdiv6548/Everyday/actions/runs/40326920849).
+- Heuristic scan reported **126 review candidates** across article pages: 53 generic-alt-text candidates, 49 covers without obvious visible credit text, and 24 generic source labels. These are review candidates, not confirmed defects; source links may still point to valid sources and visible credit is not always legally required.
+- Manual follow-up: inspect each source label and destination, verify factual claims, confirm image origin/licence/attribution obligations, and improve alt text only where it fails to describe the image meaningfully.
+- Category audit in the same successful CI run found **0 content-integrity issues**, but all 19 categories remain below the target of 50 stories: Human Body 31, Space & Universe 31, Nature & Wildlife 34, Science Explained 32, Psychology & Mind 32, History & Civilizations 31, Technology & AI 34, Everyday Mysteries 31, Earth & Weather 30, Food Science 33, Optical Illusions 30, Micro World 32, Materials & Objects 31, Geography & World 35, Mathematics & Numbers 32, Plants & Botany 33, Inventions & Discoveries 31, Unsolved Questions 31, Future & Career Intelligence 31.
+- T10 remains **In progress** because the candidate list has not yet been manually triaged. CI success validates the scanner and checks, not all source/licensing claims.
