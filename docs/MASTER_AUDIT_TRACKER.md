@@ -7,8 +7,8 @@ Tracking branch: `main`
 
 ### Current task status summary (updated 2026-10-26)
 - Complete: 4/24 (T01–T02, T06, T08).
-- In progress: 5/24 (T03–T05, T07 and T09; browser verification, editorial review and image relevance review remain outstanding).
-- Pending/not started: 15/24 (T10–T24).
+- In progress: 6/24 (T03–T05, T07, T09 and T10; browser verification, editorial review, image relevance, and source/provenance review remain outstanding).
+- Pending/not started: 14/24 (T11–T24).
 - Total unfinished tasks, counting both In progress and Pending: 20/24.
 
 ## How to use this tracker
@@ -43,7 +43,7 @@ Tracking branch: `main`
 | T07 | 2 — Content | P1 | Review the 424 held-out generic-template story records | Each record is accepted, rewritten, or kept unpublished with a reason; no filler is republished to inflate counts | In progress |
 | T08 | 2 — Content | P1 | Review 6 held-out duplicate-slug records | Each duplicate has a documented disposition and active catalogs remain free of slug collisions | Complete |
 | T09 | 2 — Content | P1 | Check story-to-image relevance and repeated imagery | Mismatches and duplicates are logged and corrected with appropriate assets | In progress |
-| T10 | 2 — Content | P1 | Review factual sources, image alt text, licensing, and provenance | Published stories have credible sources and media metadata; uncertain claims are qualified | Pending |
+| T10 | 2 — Content | P1 | Review factual sources, image alt text, licensing, and provenance | Published stories have credible sources and media metadata; uncertain claims are qualified | In progress |
 | T11 | 2 — Content | P1 | Bring each category to at least 50 reviewed stories | All 19 categories meet the target with unique, reviewed stories; no placeholders used | Pending |
 | T12 | 3 — APIs/PWA | P1 | Test Weather API input, permissions, failure/retry, dates, and units | Valid and invalid city/network/location scenarios behave correctly in browser tests | Pending |
 | T13 | 3 — APIs/PWA | P1 | Audit Service Worker installation, cache updates, and recovery | Install and upgrade flows are tested; failures do not strand users on a broken cache | Pending |
@@ -272,3 +272,10 @@ Tracking branch: `main`
 - Updated `data/stories-duplicate-review.json` with review date, count summary, and per-slug decisions. Commit: `747893380d87441f9c2c7f0f34f5e2ca5c98888d`.
 - Acceptance check: all 6 held-out duplicate slugs have a documented disposition; no duplicate was reintroduced into the active catalog.
 - Outcome: T08 complete.
+
+
+### T10 — Source and media provenance audit (in progress)
+- Added `scripts/source-provenance-audit.mjs` to flag article pages without a dedicated source section, source sections without links, generic/placeholder source labels, generic alt-text candidates, and missing visible cover-credit candidates.
+- Wired the script into `.github/workflows/content-audit.yml` and added a JavaScript syntax check.
+- Findings are intentionally heuristic candidates, not automatic claims of factual error or copyright infringement; each must be checked against the actual page, claim, image origin, and applicable licence.
+- Acceptance is not met yet: run the new CI audit, triage the findings, and manually verify sources and media provenance before marking T10 complete.
