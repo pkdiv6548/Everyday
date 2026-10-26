@@ -120,3 +120,16 @@ Tasks are intentionally granular and ordered by priority/dependency. No applicat
 - Hourora API documentation describes the current-time endpoint and rate limit: https://hourora.app/en/developers
 - Nager.Date project documentation lists Community WebApi v3 end-of-life as 2027-01-31 and v4 as supported: https://github.com/nager/Nager.Date
 - Frankfurter documents the `quotes` parameter for filtering currencies: https://frankfurter.dev/
+
+
+## Follow-up implementation — 2026-10-26
+
+The 13 follow-up audit tasks (TIME-A01 through TIME-A13) were addressed in source where feasible:
+- Language changes no longer invoke the live-data refresh; they update local clocks and show a localized note that data status was not refreshed.
+- Currency and holiday error states use DOM nodes and `textContent`, and their panels show localized loading/error messages.
+- Holiday date calculation uses `Intl.DateTimeFormat().formatToParts()` in the India timezone instead of relying on locale output order.
+- World clocks now calculate locally without a redundant Hourora network request; quick clocks include all selectable zones, city labels, and timezone offsets.
+- The service-worker cache was bumped to v96 and `time.html` is included in its core precache.
+- Regression checks were expanded for these behaviors and CI wiring remains in place.
+
+Still requiring a real browser session (not established by source inspection or CI): API availability/CORS and response-schema checks; actual 320/375/768/1024/1440 px layout; keyboard/screen-reader tests; offline reload after install; and external social-preview rendering. These must be recorded as runtime verification, not inferred from source checks.
