@@ -43,6 +43,7 @@ try {
     await route.fulfill({ json: forecast(latitude === 12 ? 22 : latitude === 14 ? 44 : 33) });
   });
 
+  await page.addInitScript(() => { Object.defineProperty(navigator, 'geolocation', { configurable: true, value: { getCurrentPosition() {} } }); });
   await page.goto('http://127.0.0.1:4173/weather.html', { waitUntil:'domcontentloaded' });
   const city = page.locator('#city-input');
   const submit = page.locator('#weather-form button[type="submit"]');
