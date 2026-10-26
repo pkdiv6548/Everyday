@@ -37,12 +37,15 @@ try {
     for (const width of widths) {
       await page.setViewportSize({ width, height: 900 });
       await page.waitForTimeout(50);
-      const layout = await page.evaluate(() => ({
-        viewport: document.documentElement.clientWidth,
-        document: document.documentElement.scrollWidth,
-        title: document.title
-      }));
-      report.push({ route, width, documentWidth: layout.document, overflow: layout.document > layout.viewport + 1 });
+      const layout = await page.evaluate(() => {
+        const viewport = document.documentElement.clientWidth;
+        const offenders = [...document.querySelectorAll('body *')].map(el => {
+          const rect = el.getBoundingClientRect();
+          return { tag: el.tagName.toLowerCase(), id: el.id, className: typeof el.className === 'string' ? el.className : '', left: Math.round(rect.left), right: Math.round(rect.right), width: Math.round(rect.width), display: getComputedStyle(el).display };
+        }).filter(el => el.width > 0 && el.right > viewport + 1 && el.display !== 'none').sort((a,b) => b.right-a.right).slice(0,8);
+        return { viewport, document: document.documentElement.scrollWidth, title: document.title, offenders };
+      });
+      report.push({ route, width, documentWidth: layout.document, overflow: layout.document > layout.viewport + 1, offenders: layout.offenders });
     }
     const navLinks = await page.locator('.main-nav a').count();
     assert.ok(navLinks > 0, `Primary navigation links missing on ${route}`);
