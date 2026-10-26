@@ -89,3 +89,11 @@ Tracking branch: `main`
 - Bumped Service Worker cache `v86 → v87` to refresh the updated app script. Commit: `057870730a1307d9c4bcb6821f6882bf4f992add`.
 - README updated to v87 in the documentation commit listed by GitHub history.
 - T03 remains in progress until current CI/deployment and browser behavior are verified. T04 is now in progress for the dedicated bilingual audit.
+
+
+### T03 — CI confirmation and science filter fix
+- Confirmed the Content Audit and GitHub Pages deployment both succeeded for tracker commit `e329e2cb57c9ed44d225e643b9e6c924987b60b0`: [Content Audit run 40321153917](https://github.com/pkdiv6548/Everyday/actions/runs/40321153917), [Pages deployment run 40321153874](https://github.com/pkdiv6548/Everyday/actions/runs/40321153874).
+- Additional static review of `explore.html` found 55 static story cards across nine category values. The “Science explained” chip was only matching `physics` and `sound`, which omitted related categories such as light, water, materials, food science, and human body.
+- Expanded the Science explained filter to include `light`, `physics`, `water`, `materials`, `food`, `body`, and `sound`. Commit: `345ecd0b1c9636c91714baf389bce30da20ad059`.
+- Bumped Service Worker cache `v87 → v88` so clients can pick up the updated filter logic. Commit: `74de41b073805f9c13bae99dde88a8c691fc8b18`; README cache version updated in the next documentation commit.
+- Browser interaction testing remains unverified; the available live-site page fetch did not load through the web viewer, so no claim of manual browser verification is made. T03 stays in progress until browser checks can be completed on the deployed version.
