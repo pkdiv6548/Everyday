@@ -118,7 +118,7 @@ if (fs.existsSync(extraStoriesPath)) {
       }
     }
     console.log('Extra story records by topic:', Object.fromEntries([...extraStoryCounts.entries()].sort()));
-    console.log('Topics below 50 extra-story records:', [...new Set(records.map(r => r[1]))].filter(topic => (extraStoryCounts.get(topic) || 0) < 50).length);
+    console.log('Raw story-topic keys below 50 records (not planned category totals):', [...new Set(records.map(r => r[1]))].filter(topic => (extraStoryCounts.get(topic) || 0) < 50).length);
   } else {
     issues.push({ type: 'story-data-parse-error', file: 'stories-extra.js', value: 'Could not locate story array' });
   }
