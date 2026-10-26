@@ -18,11 +18,13 @@ jobs:
         with:
           node-version: 20
       - name: Check JavaScript syntax
-        run: node --check app.js && node --check stories-extra.js && node --check scripts/category-coverage.mjs && node --check scripts/explore-state-check.mjs && node --check scripts/image-relevance-audit.mjs && node --check scripts/source-provenance-audit.mjs && node --check scripts/runtime-selector-check.mjs
+        run: node --check app.js && node --check stories-extra.js && node --check scripts/category-coverage.mjs && node --check scripts/explore-state-check.mjs && node --check scripts/image-relevance-audit.mjs && node --check scripts/source-provenance-audit.mjs && node --check scripts/runtime-selector-check.mjs && node --check scripts/time-page-regression-check.mjs
       - name: Check Discover URL state regressions
         run: node scripts/explore-state-check.mjs
       - name: Check shared runtime selector regressions
         run: node scripts/runtime-selector-check.mjs
+      - name: Check Time page regressions
+        run: node scripts/time-page-regression-check.mjs
       - name: Audit local paths and image reuse
         run: node scripts/content-audit.mjs
       - name: Report potential story-image relevance issues
