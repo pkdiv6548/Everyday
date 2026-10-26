@@ -23,7 +23,7 @@ A bilingual (English/Hindi), responsive science and knowledge-discovery website 
 - Media provenance and licence notes for reviewed image sources in `data/media-manifest.json`
 - Interactive mini-experiments and article reading progress/share controls
 - PWA manifest and service-worker offline fallback; the current service-worker cache version is v54. Offline behavior and cache updates still require real-browser verification.
-- Weather lookup using Open-Meteo Geocoding + Forecast APIs; the page advertises current conditions and a five-day outlook. API failure states, location permission handling and live forecast accuracy still require browser testing.
+- Weather lookup using Open-Meteo Geocoding + Forecast APIs; the page advertises current conditions and a seven-day outlook. API failure states, location permission handling and live forecast accuracy still require browser testing.
 - Content/category plan and story-schema in `data/`; editorial image/source and scalability standards in `docs/`
 
 ## Open API policy
