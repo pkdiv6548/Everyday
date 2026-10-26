@@ -334,3 +334,12 @@ Tracking branch: `main`
 - The tracker-only commit made to record this decision will itself trigger a new content audit and Pages deployment; those new run results must be checked before calling the updated tracker deployed.
 - Explicitly deferred: live-browser checks for T03–T05 and T12–T20/T23–T24; human fact/source/licensing verification (T07/T10); the 50-reviewed-stories-per-category target (T11); and any runtime/performance conclusions that cannot be established from source code alone (T21–T22).
 - This status convention is an interim reporting choice requested by the user. It must not be interpreted as evidence that the deferred acceptance criteria have passed.
+
+
+## Separate audit workstream — Time & Earth page
+- Page-specific audit plan: [`docs/TIME_PAGE_AUDIT.md`](TIME_PAGE_AUDIT.md).
+- Audit plan commit: `5ac67495ec734b0417a031637ff2c6c41b3b095c`.
+- The plan contains **17 new tasks (TME-01–TME-17)** for the `time.html` page. These are separate from the earlier 24-task interim code/deployment checkpoint and do not change that historical count.
+- Scope limitation: the available page reader returned a cache-miss error and direct runtime network access was unavailable, so this is a source/API-contract audit, not completed visual/live-browser verification. Browser acceptance is explicitly tracked as TME-16.
+- Highest-priority confirmed code findings include dark-mode “Get time” contrast, non-ticking world-clock display, refresh omitting world time, missing required SunriseSunset.io backlink, dynamic API content not re-localizing on language switch, caching claim not implemented, stale solar values after refresh failure, and `time.html` missing from the service-worker precache list.
+- No application code has been changed as part of this audit-plan commit; the next phase is to execute TME tasks one by one, starting with P1 items.
