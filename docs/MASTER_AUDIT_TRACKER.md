@@ -105,3 +105,11 @@ Tracking branch: `main`
 - Bumped Service Worker cache `v88 → v89` to invalidate the previous cached app version. Commit: `5ab01484f98a9c5cba51e2d52e237eb0db64d143`; README updated in the following documentation commit.
 - Content audit passed for the prior code revision `a3f1a386`; the audit for this new fix and the Pages deployment for the current head still need to complete.
 - Manual browser verification has not been performed, so T04 remains In Progress.
+
+
+### T05 — dark-mode filter contrast fix
+- Confirmed the Pages deployment for tracker revision `2c5d698c` succeeded: [deployment run 40322263563](https://github.com/pkdiv6548/Everyday/actions/runs/40322263563). The content audit for that revision also succeeded: [audit run 40322263810](https://github.com/pkdiv6548/Everyday/actions/runs/40322263810).
+- CSS review found a contrast issue: in dark mode, active/hover filter chips inherited a light `var(--ink)` background but forced white text, reducing readability.
+- Added a dark-mode override so active/hover filter chips use the lime accent background, dark green text, and matching border. Commit: `5df41168b9c407aa39c4beecd6f23c4bd332229f`.
+- Bumped Service Worker cache `v89 → v90` to refresh clients. Commit: `06b82b065e183f43173a93d3ebf97aa3120fa563`; README version updated in the next docs commit.
+- The new CSS/cache commits still need their own CI/deployment completion. Visual browser contrast testing remains unverified, so T05 is in progress.
