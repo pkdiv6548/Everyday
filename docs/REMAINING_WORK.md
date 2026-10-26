@@ -7,10 +7,10 @@ Last checked: 2026-10-26
 - Corrected local image validation to ignore query strings and fragments when checking asset existence.
 - Replaced the duplicate Discover-card image for `why-rain-smells` and gave its article a separate local cover illustration.
 - Aligned the Weather heading with the seven-day forecast requested by the API.
-- Bumped the service-worker cache to `everyday-oddities-v64` after the latest story-data changes.
+- Bumped the service-worker cache to `everyday-oddities-v65` after the latest story-data changes.
 - Moved 485 generic-template records out of the active story library and preserved them in `data/stories-review-queue.json`.
 - Replaced 296 repeated generic takeaways in active records with topic-specific notes derived from the corresponding explanation.
-- Rewrote and republished 13 records with topic-specific bilingual answers, explanations and takeaways.
+- Rewrote and republished 16 records with topic-specific bilingual answers, explanations and takeaways.
 - Preserved 6 duplicate cross-catalog records in `data/stories-duplicate-review.json` and removed them from the active dynamic list; their bespoke static article cards remain active.
 - Added audit checks for generic boilerplate and duplicate slugs across the static and dynamic catalogs.
 - Corrected the Geography, Plants and Inventions category-card links to their matching Discover filters.
@@ -22,10 +22,10 @@ Last checked: 2026-10-26
 - Extended the content audit to inspect inline CSS `url(...)` backgrounds as well as `<img src>` attributes, so future external or broken background-image URLs are not silently missed.
 
 ## Current catalog baseline
-- Active dynamic records: 480; unique dynamic slugs: 480.
+- Active dynamic records: 483; unique dynamic slugs: 483.
 - Static Discover cards: 55.
-- Unique combined catalog slugs: 535, with no cross-catalog duplicate slugs.
-- Records held out for review: 472 generic-template records and 6 duplicate-slug records.
+- Unique combined catalog slugs: 538, with no cross-catalog duplicate slugs.
+- Records held out for review: 469 generic-template records and 6 duplicate-slug records.
 - Active story-data JavaScript: approximately 580 KB by source-character count (UTF-8 byte size differs), down substantially from the pre-cleanup catalog.
 - Latest inspected content-audit run passed JavaScript syntax, local-path/image checks and story-integrity checks. The report still shows 19/19 categories below the 50-record target; this is a content-completeness gap, not a broken-path or duplicate-integrity error.
 
@@ -45,13 +45,13 @@ The target is 50 distinct, reviewed stories per category (950 category assignmen
 | Earth & Weather | 30 | 50 | 20 |
 | Food Science | 33 | 50 | 17 |
 | Optical Illusions | 30 | 50 | 20 |
-| Micro World | 26 | 50 | 24 |
+| Micro World | 27 | 50 | 23 |
 | Materials & Objects | 27 | 50 | 23 |
 | Geography & World | 33 | 50 | 17 |
-| Mathematics & Numbers | 26 | 50 | 24 |
+| Mathematics & Numbers | 27 | 50 | 23 |
 | Plants & Botany | 33 | 50 | 17 |
 | Inventions & Discoveries | 24 | 50 | 26 |
-| Unsolved Questions | 27 | 50 | 23 |
+| Unsolved Questions | 28 | 50 | 22 |
 | Future & Career Intelligence | 30 | 50 | 20 |
 
 The 485 held-out records need topic-specific answers, explanations, takeaways, credible sources and manual image-relevance checks before they can return to the public catalog. The six duplicate records must be reviewed against their existing static articles before any reuse.
