@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: 20
       - name: Check JavaScript syntax
-        run: node --check app.js && node --check stories-extra.js && node --check scripts/category-coverage.mjs && node --check scripts/explore-state-check.mjs && node --check scripts/image-relevance-audit.mjs && node --check scripts/source-provenance-audit.mjs && node --check scripts/runtime-selector-check.mjs && node --check scripts/time-page-regression-check.mjs && node --check scripts/time-page-browser-test.mjs && node --check scripts/site-smoke-test.mjs
+        run: node --check app.js && node --check stories-extra.js && node --check sw.js && node --check tests/load/k6-site.js && node --check scripts/category-coverage.mjs && node --check scripts/content-audit.mjs && node --check scripts/explore-state-check.mjs && node --check scripts/image-relevance-audit.mjs && node --check scripts/source-provenance-audit.mjs && node --check scripts/runtime-selector-check.mjs && node --check scripts/time-page-regression-check.mjs && node --check scripts/time-page-browser-test.mjs && node --check scripts/site-smoke-test.mjs
       - name: Check Discover URL state regressions
         run: node scripts/explore-state-check.mjs
       - name: Check shared runtime selector regressions
