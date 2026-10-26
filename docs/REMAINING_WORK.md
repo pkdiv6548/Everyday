@@ -12,6 +12,7 @@
 Last checked: 2026-10-26
 
 ## Verified fixes
+- Added `scripts/explore-state-check.mjs` and wired it into GitHub Actions to regression-check Discover URL persistence for search (`q`), category, sorting, restoring query state on load, and reset behavior. Cache bumped to `everyday-oddities-v93` so deployed clients can pick up current assets.
 - Corrected the static HTML audit so it ignores HTML fragments assembled inside inline JavaScript strings.
 - Corrected local image validation to ignore query strings and fragments when checking asset existence.
 - Replaced the duplicate Discover-card image for `why-rain-smells` and gave its article a separate local cover illustration.
