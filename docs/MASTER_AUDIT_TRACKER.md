@@ -28,8 +28,8 @@ Tracking branch: `main`
 | ID | Stage | Priority | Task | Acceptance criteria | Status |
 |---|---|---|---|---|---|
 | T01 | 1 — Baseline | P0 | Create and maintain this master pending-issues tracker; verify current branch and CI/deployment state | Tracker exists on main and records evidence, known gaps, and statuses without treating deploy as browser verification | Complete |
-| T02 | 1 — Critical checks | P0 | Audit JavaScript syntax, local paths, images, and key HTML pages | Automated checks pass; all discovered failures are logged | In progress |
-| T03 | 1 — Critical checks | P0 | Verify navigation, Search, category filters, sorting, reset, and empty states | Expected behavior is confirmed in a browser or each untestable case is clearly marked | Pending |
+| T02 | 1 — Critical checks | P0 | Audit JavaScript syntax, local paths, images, and key HTML pages | Automated checks pass; all discovered failures are logged | Complete |
+| T03 | 1 — Critical checks | P0 | Verify navigation, Search, category filters, sorting, reset, and empty states | Expected behavior is confirmed in a browser or each untestable case is clearly marked | In progress |
 | T04 | 1 — Critical checks | P0 | Verify English/Hindi toggle and translation parity | Primary UI and story text change correctly; remaining untranslated content is logged | Pending |
 | T05 | 1 — Critical checks | P1 | Inspect dark mode, responsive layout, and visual defects | No confirmed high-impact layout/theme issue remains; tested viewport sizes are recorded | Pending |
 | T06 | 2 — Content | P1 | Recalculate coverage for all 19 categories | Counts and gaps are generated from current files and match the documented baseline | Pending |
@@ -62,3 +62,14 @@ Tracking branch: `main`
 - Browser-based verification is not implied by the successful workflows.
 - Tracker commit: `739a6f0d86e78ce1e9d6150856a2b7d906d3ca4e`.
 - Outcome: T01 complete. T02 started; automated audit details are being inspected.
+
+
+### T02 — Static technical audit
+- Used the successful Content Audit run on commit `6196fcdb477c0a07e562b46bc12ae7d2a157e789`: [run 40320456785](https://github.com/pkdiv6548/Everyday/actions/runs/40320456785).
+- JavaScript syntax checks passed for `app.js`, `stories-extra.js`, and `scripts/category-coverage.mjs`.
+- Content audit reported: 74 HTML pages, 55 article pages, 528 active dynamic records, 55 static cards, 583 combined unique slugs.
+- Audit results: 0 broken local paths, 0 missing story image assets, 0 missing image alt attributes, 0 repeated story cover images, 0 externally hosted image source strings, and 0 content integrity issues.
+- Known gap found by the coverage check: 19/19 planned categories remain below the 50-story target; this is tracked in T06/T11, not a syntax/path failure.
+- CI also emitted environment deprecation warnings for Node.js 20 / action runtime and a `punycode` deprecation warning; the checks still passed. These warnings should be reviewed separately if they persist.
+- Limitation: this is static/CI evidence, not a manual browser test.
+- Outcome: T02 complete; T03 started.
