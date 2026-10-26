@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { chromium } from 'playwright';
 
-const base = (process.env.SITE_BASE_URL || 'http://127.0.0.1:4173').replace(/\\/$/, '');
+const base = process.env.SITE_BASE_URL || 'http://127.0.0.1:4173';
 const routes = [
   '/', '/categories.html', '/explore.html', '/weather.html', '/time.html',
   '/future.html', '/experiments.html', '/about.html',
