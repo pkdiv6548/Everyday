@@ -1,6 +1,6 @@
 # P0-11 — Service Worker Registration Audit
 
-**Status:** Implemented; automated verification is wired into GitHub Actions.  
+**Status:** PASS — automated verification completed successfully in GitHub Actions run 40413260524.  
 **Scope:** Registration path, scope, duplicate registration behavior, and graceful rendering when service workers are blocked.
 
 ## Findings
@@ -31,4 +31,4 @@ This test runs in a local HTTP server/Chromium context. It validates path select
 
 ## Result
 
-**Registration implementation reviewed; regression test added.** Final PASS status depends on the new GitHub Actions run completing successfully.
+**PASS — registration path, scope, duplicate-registration check, and graceful rendering checks completed successfully in GitHub Actions.**
