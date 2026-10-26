@@ -61,6 +61,7 @@ The target is 50 distinct, reviewed stories per category (950 category assignmen
 | Inventions & Discoveries | 31 | 50 | 19 |
 | Unsolved Questions | 31 | 50 | 19 |
 | Future & Career Intelligence | 31 | 50 | 19 |
+| **Total category assignments** | **605** | **950** | **345** |
 
 The 424 remaining generic-template records need topic-specific answers, explanations, takeaways, credible sources and manual image-relevance checks before they can return to the public catalog. The six duplicate records must be reviewed against their existing static articles before any reuse.
 
