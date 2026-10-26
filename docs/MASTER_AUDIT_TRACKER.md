@@ -6,10 +6,10 @@ Tracking branch: `main`
 
 
 ### Current task status summary (updated 2026-10-26)
-- Complete: 2/24 (T01–T02).
-- In progress: 3/24 (T03–T05; includes code fixes that still need browser-level verification).
-- Pending/not started: 19/24 (T06–T24).
-- Total unfinished tasks, counting both In progress and Pending: 22/24.
+- Complete: 3/24 (T01–T02, T08).
+- In progress: 4/24 (T03–T06; includes code fixes or coverage work that still need verification).
+- Pending/not started: 18/24 (T06–T07 and T09–T24).
+- Total unfinished tasks, counting both In progress and Pending: 21/24.
 
 ## How to use this tracker
 
@@ -41,7 +41,7 @@ Tracking branch: `main`
 | T05 | 1 — Critical checks | P1 | Inspect dark mode, responsive layout, and visual defects | No confirmed high-impact layout/theme issue remains; tested viewport sizes are recorded | In progress |
 | T06 | 2 — Content | P1 | Recalculate coverage for all 19 categories | Counts and gaps are generated from current files and match the documented baseline | Pending |
 | T07 | 2 — Content | P1 | Review the 424 held-out generic-template story records | Each record is accepted, rewritten, or kept unpublished with a reason; no filler is republished to inflate counts | Pending |
-| T08 | 2 — Content | P1 | Review 6 held-out duplicate-slug records | Each duplicate has a documented disposition and active catalogs remain free of slug collisions | Pending |
+| T08 | 2 — Content | P1 | Review 6 held-out duplicate-slug records | Each duplicate has a documented disposition and active catalogs remain free of slug collisions | Complete |
 | T09 | 2 — Content | P1 | Check story-to-image relevance and repeated imagery | Mismatches and duplicates are logged and corrected with appropriate assets | Pending |
 | T10 | 2 — Content | P1 | Review factual sources, image alt text, licensing, and provenance | Published stories have credible sources and media metadata; uncertain claims are qualified | Pending |
 | T11 | 2 — Content | P1 | Bring each category to at least 50 reviewed stories | All 19 categories meet the target with unique, reviewed stories; no placeholders used | Pending |
@@ -137,3 +137,11 @@ Tracking branch: `main`
 - Bumped Service Worker cache `v91 → v92`. Commit: `d0ca3d39a29097c5c82074f0c2d3c16d62f1d447`; README updated in `58343f2ec0be16906003e5fb6d6ae09fdc94c732`.
 - Automated audit/deployment for the new changes are pending. Browser-level reload/share testing remains unverified.
 - Additional uncovered gap: Explore currently has filter chips for 19 planned categories, but the 55 static cards only cover 9 category values. The other category filters can legitimately return zero cards because the extra-story catalog is not rendered as Explore cards. This needs a dedicated catalogue-integration task rather than disguising the missing coverage.
+
+
+### T08 — Duplicate-slug dispositions recorded
+- Reviewed the six held-out records against the catalog note that their bespoke static article pages remain active.
+- Recorded an explicit `keep-unpublished` disposition for each duplicate slug (`moon-phases`, `why-shadows-change-length`, `why-iron-rusts`, `why-salt-melts-ice`, `why-rainbows-are-arcs`, `why-wood-floats`). The static article is the canonical active version; duplicate dynamic records remain held out.
+- Updated `data/stories-duplicate-review.json` with review date, count summary, and per-slug decisions. Commit: `747893380d87441f9c2c7f0f34f5e2ca5c98888d`.
+- Acceptance check: all 6 held-out duplicate slugs have a documented disposition; no duplicate was reintroduced into the active catalog.
+- Outcome: T08 complete.
