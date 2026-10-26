@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
 import { chromium } from 'playwright';
 
 const base = process.env.SITE_BASE_URL || 'http://127.0.0.1:4173';
@@ -8,6 +10,8 @@ const routes = [
   '/articles/why-sky-blue.html'
 ];
 const widths = [320, 375, 768, 1024, 1440];
+const screenshotDir = path.join('artifacts', 'site-smoke', process.env.SITE_BASE_URL ? 'live' : 'local');
+fs.mkdirSync(screenshotDir, { recursive: true });
 const browser = await chromium.launch({ headless: true });
 const failures = [];
 const report = [];
@@ -46,6 +50,10 @@ try {
         return { viewport, document: document.documentElement.scrollWidth, title: document.title, offenders };
       });
       report.push({ route, width, documentWidth: layout.document, overflow: layout.document > layout.viewport + 1, offenders: layout.offenders });
+      if (route === '/' && [375, 1440].includes(width)) {
+        const suffix = width === 375 ? 'mobile' : 'desktop';
+        await page.screenshot({ path: path.join(screenshotDir, `homepage-${suffix}.png`), fullPage: true });
+      }
     }
     const navLinks = await page.locator('.main-nav a').count();
     assert.ok(navLinks > 0, `Primary navigation links missing on ${route}`);
