@@ -59,7 +59,16 @@ try {
   await page.waitForFunction(() => document.querySelector('#currency-status').textContent.includes('unavailable') || document.querySelector('#currency-status').textContent.includes('उपलब्ध नहीं'));
   assert.notEqual(await page.locator('#currency-list').textContent(), '');
   assert.deepEqual(consoleErrors, [], 'Browser should not report console/page errors');
-  console.log('PASS — Time page browser integration: mocked API success, language-switch request count, keyboard focus, dark theme, responsive widths, and API failure state.');
+  const offlineContext = await browser.newContext({ serviceWorkers: 'allow' });
+  const offlinePage = await offlineContext.newPage();
+  await offlinePage.goto('http://127.0.0.1:4173/time.html', { waitUntil: 'domcontentloaded' });
+  await Promise.race([offlinePage.evaluate(() => navigator.serviceWorker.ready.then(() => true)), new Promise((_, reject) => setTimeout(() => reject(new Error('Service worker did not become ready')), 20000))]);
+  await offlineContext.setOffline(true);
+  await offlinePage.reload({ waitUntil: 'domcontentloaded' });
+  assert.equal(await offlinePage.title(), 'Time & Open Data | Everyday Oddities', 'Time page should reload from the service-worker cache offline');
+  await offlineContext.setOffline(false);
+  await offlineContext.close();
+  console.log('PASS — Time page browser integration: mocked API success, language-switch request count, keyboard focus, dark theme, responsive widths, API failure state, and offline reload.');
 } finally {
   await browser.close();
 }
