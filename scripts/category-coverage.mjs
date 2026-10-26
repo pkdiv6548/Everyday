@@ -80,6 +80,17 @@ while ((card = cardPattern.exec(html))) {
 for (const [image, slugs] of staticImages) if (slugs.length > 1) issues.push('Repeated static story image: ' + image + ' used by ' + slugs.join(', '));
 for (const slug of staticSlugs) if (dynamicSlugs.has(slug)) issues.push('Duplicate slug across static and dynamic catalogs: ' + slug);
 
+const appSource = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
+const scienceFilterMatch = appSource.match(/activeFilter==='science'\?\[([^\]]+)\]\.includes\(category\)/);
+if (!scienceFilterMatch) {
+  issues.push('Science filter category list is missing or has an unexpected format');
+} else {
+  const scienceFilterCategories = [...scienceFilterMatch[1].matchAll(/'([^']+)'/g)].map(match => match[1]);
+  for (const tag of staticByTag.keys()) {
+    if (!scienceFilterCategories.includes(tag)) issues.push('Science filter omits static category: ' + tag);
+  }
+}
+
 const dynamicMapping = {
   'human-body': ['body'], 'space-universe': ['space'], 'nature-wildlife': ['nature'],
   'science-explained': ['physics', 'sound'], 'psychology-mind': ['psychology'],
