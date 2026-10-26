@@ -1,37 +1,29 @@
 # P0-08 — Discover/Search Regression Tests
 
-- Repository: `pkdiv6548/Everyday`
-- Status: **PASS — browser regression test and full CI workflow succeeded**
-- Verified commit: `ba8b40360632e8c9ca2ea517eb9ac5fd98a53ce2`
-- Successful run: [GitHub Actions 40411437127](https://github.com/pkdiv6548/Everyday/actions/runs/40411437127)
+- **Status:** Additional edge-case coverage added; final CI verification for the latest change is pending.
+- **Repository:** `pkdiv6548/Everyday`
+- **Date:** 2026-10-27
 
-## Coverage added
+## Existing verified coverage
+The existing browser regression test `scripts/explore-search-browser-test.mjs` covers search matching, combined category filters, A–Z/Z–A sorting, URL synchronization/restoration, invalid URL values, reset behavior, and unexpected browser runtime errors.
 
-Created `scripts/explore-search-browser-test.mjs` and added it to `.github/workflows/content-audit.yml`. The browser test verifies:
+The prior full CI run [40411437127](https://github.com/pkdiv6548/Everyday/actions/runs/40411437127) completed successfully for the existing tests and site smoke tests. This run predates the additional edge-case test below.
 
-1. Discover renders story cards.
-2. Search narrows the visible story list and writes the query to the URL.
-3. Search and category filters combine correctly.
-4. Category state is synchronized to the URL.
-5. A–Z and Z–A sort order is correct.
-6. Search, category and sort state restore after navigation/reload.
-7. Unsupported category/sort values fall back safely while valid search state remains.
-8. Clear filters restores the full story list, Featured sorting, All stories, and a clean query string.
-9. The tested interactions do not emit unexpected browser runtime errors.
+## New edge-case coverage
+Added `scripts/explore-search-edge-cases-test.mjs` to test:
+1. A query with no matches hides all story cards.
+2. The no-results message becomes visible.
+3. The results status reports zero matches.
+4. A matching query restores results and hides the empty state.
+5. A query containing spaces and an ampersand is preserved correctly through URL encoding.
+6. These interactions do not emit unexpected browser runtime errors.
 
-## CI verification
+Updated `.github/workflows/content-audit.yml` to syntax-check the new test and execute it in a dedicated Playwright step.
 
-The GitHub Actions run completed with overall **success**. Its logs explicitly show:
+## Current verification
+- Confirmed the new test file exists on the default branch.
+- Confirmed the workflow contains both the syntax-check command and dedicated edge-case test step.
+- The prior run's success does **not** verify the newly added step. Latest-change CI completion and its result must still be checked before marking all of P0-08 as fully PASS.
 
-- `PASS — Discover/search regressions: matching, combined filters, A–Z/Z–A ordering, URL synchronization and restoration, invalid URL values, reset, and runtime errors.`
-- `PASS — interactive controls: mobile navigation open/close, theme toggle, language toggle, Discover search/filter/sort/reset, URL state, accessibility state, and browser runtime errors.`
-- Multi-page site smoke tests passed on nine routes and five viewport widths per route.
-- Existing Time-page browser integration tests passed.
-- Local paths/content audit and category coverage/story-integrity audit steps completed successfully.
-
-During test development, CI exposed a defect in the new test harness: Playwright serialized DOM nodes into plain objects, while the assertion initially expected live DOM properties. The test was corrected to return explicit `category` and `title` values, and a subsequent run passed. This was a test-code defect; it did not establish an application defect.
-
-## Limitations
-
-- This is an automated test of Discover search/filter/sort and URL-state behavior, not a manual audit of every page or control.
-- The separate P0-02 live deployment verification task remains on HOLD as requested. The successful workflow's deployed-route smoke step is useful CI evidence but does not change that task's status.
+## Boundaries
+No live manual browser session against GitHub Pages is claimed here. P0-02 live deployment verification remains on HOLD as requested.
