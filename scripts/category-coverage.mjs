@@ -78,6 +78,7 @@ while ((card = cardPattern.exec(html))) {
   } else issues.push('Missing static story image: ' + slug);
 }
 for (const [image, slugs] of staticImages) if (slugs.length > 1) issues.push('Repeated static story image: ' + image + ' used by ' + slugs.join(', '));
+for (const slug of staticSlugs) if (dynamicSlugs.has(slug)) issues.push('Duplicate slug across static and dynamic catalogs: ' + slug);
 
 const dynamicMapping = {
   'human-body': ['body'], 'space-universe': ['space'], 'nature-wildlife': ['nature'],
