@@ -25,6 +25,12 @@ jobs:
         run: node scripts/runtime-selector-check.mjs
       - name: Check Time page regressions
         run: node scripts/time-page-regression-check.mjs
+      - name: Install Chromium browser test dependency
+        run: npm install --no-save playwright && npx playwright install --with-deps chromium
+      - name: Start local static server
+        run: python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/everyday-http.log 2>&1 &
+      - name: Run Time page browser integration tests
+        run: node scripts/time-page-browser-test.mjs
       - name: Audit local paths and image reuse
         run: node scripts/content-audit.mjs
       - name: Report potential story-image relevance issues
