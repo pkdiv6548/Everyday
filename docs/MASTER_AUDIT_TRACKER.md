@@ -287,3 +287,10 @@ Tracking branch: `main`
 - Manual follow-up: inspect each source label and destination, verify factual claims, confirm image origin/licence/attribution obligations, and improve alt text only where it fails to describe the image meaningfully.
 - Category audit in the same successful CI run found **0 content-integrity issues**, but all 19 categories remain below the target of 50 stories: Human Body 31, Space & Universe 31, Nature & Wildlife 34, Science Explained 32, Psychology & Mind 32, History & Civilizations 31, Technology & AI 34, Everyday Mysteries 31, Earth & Weather 30, Food Science 33, Optical Illusions 30, Micro World 32, Materials & Objects 31, Geography & World 35, Mathematics & Numbers 32, Plants & Botany 33, Inventions & Discoveries 31, Unsolved Questions 31, Future & Career Intelligence 31.
 - T10 remains **In progress** because the candidate list has not yet been manually triaged. CI success validates the scanner and checks, not all source/licensing claims.
+
+
+### T10 — CI verification and reporting refinement
+- Verified the latest content audit run `40327565007` completed successfully; its JavaScript syntax, Discover URL-state, local-path/image reuse, image-relevance candidate, source/provenance candidate, and category/story-integrity steps all passed.
+- Verified Pages deployment run `40327564502` completed successfully for commit `a3ddcc1baf`.
+- Improved `scripts/source-provenance-audit.mjs` to print the number of article pages scanned as well as candidate counts, making the audit output easier to interpret.
+- This does not complete T10: heuristic flags still require manual claim/source, alt-text, image-origin and licence review. The reporting refinement triggers another CI run.
