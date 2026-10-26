@@ -7,6 +7,9 @@ const serviceWorker = readFileSync('sw.js', 'utf8');
 
 const checks = [
   ['dark-mode world-clock button has explicit contrasting colors', /body\.dark-mode \.clock-form button\{background:var\(--lime\);color:#17332f/.test(page)],
+  ['dark-mode API errors use a high-contrast foreground', /body\.dark-mode \.api-error\{color:#ff9b8e!important/.test(page)],
+  ['world-clock copy accurately describes local calculation', page.includes('The clock is calculated locally; Hourora is checked when you request a zone.')],
+  ['Hindi source description does not falsely claim response caching', page.includes('इस पेज में इन प्रतिक्रियाओं को कैश करने की सुविधा नहीं है') && !page.includes('बाकी API प्रतिक्रियाएँ अनावश्यक अनुरोध कम करने के लिए इस पेज के सत्र में कैश की जाती हैं')],
   ['world clock has a ticking render function', /function renderWorldClocks\(\)/.test(page) && /setInterval\(localClock,1000\)/.test(page)],
   ['public-data refresh includes the world clock', /Promise\.allSettled\(\[loadWorldTime\(\),loadSun\(\)/.test(page)],
   ['world-clock requests are guarded against duplicates', /let worldRequestActive=false/.test(page)],
