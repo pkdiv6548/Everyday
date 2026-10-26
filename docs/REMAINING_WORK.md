@@ -7,7 +7,7 @@ Last checked: 2026-10-26
 - Corrected local image validation to ignore query strings and fragments when checking asset existence.
 - Replaced the duplicate Discover-card image for `why-rain-smells` and gave its article a separate local cover illustration.
 - Aligned the Weather heading with the seven-day forecast requested by the API.
-- Bumped the service-worker cache to `everyday-oddities-v76` after the latest story-data changes.
+- Bumped the service-worker cache to `everyday-oddities-v77` after the latest story-data changes.
 - Moved 485 generic-template records out of the active story library and preserved them in `data/stories-review-queue.json`.
 - Replaced 296 repeated generic takeaways in active records with topic-specific notes derived from the corresponding explanation.
 - Rewrote and republished 49 records with topic-specific bilingual answers, explanations and takeaways.
@@ -55,6 +55,8 @@ The target is 50 distinct, reviewed stories per category (950 category assignmen
 | Future & Career Intelligence | 31 | 50 | 19 |
 
 The 485 held-out records need topic-specific answers, explanations, takeaways, credible sources and manual image-relevance checks before they can return to the public catalog. The six duplicate records must be reviewed against their existing static articles before any reuse.
+
+- Added stale-request guards to weather geocoding and forecast requests so older searches cannot trigger unnecessary follow-up requests or overwrite the current result.
 
 ## Remaining work — in priority order
 1. Confirm the newest GitHub Actions audit passes on the final cache-version commit and the latest GitHub Pages deployment succeeds.
