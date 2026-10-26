@@ -7,7 +7,7 @@ Last checked: 2026-10-26
 - Corrected local image validation to ignore query strings and fragments when checking asset existence.
 - Replaced the duplicate Discover-card image for `why-rain-smells` and gave its article a separate local cover illustration.
 - Aligned the Weather heading with the seven-day forecast requested by the API.
-- Bumped the service-worker cache to `everyday-oddities-v62` after the latest story-data changes.
+- Bumped the service-worker cache to `everyday-oddities-v63` after the latest story-data changes.
 - Moved 485 generic-template records out of the active story library and preserved them in `data/stories-review-queue.json`.
 - Replaced 296 repeated generic takeaways in active records with topic-specific notes derived from the corresponding explanation.
 - Rewrote and republished 10 records with topic-specific bilingual answers, explanations and takeaways.
@@ -18,6 +18,7 @@ Last checked: 2026-10-26
 - Added a combined Science Explained filter and corrected category links for Science Explained, Everyday Mysteries and Unsolved Questions; verified that all category filter links map to an existing Discover filter.
 - Localized Weather API/network failures in Hindi and English, made the geocoding cache language-aware, and prevented stale city/location requests from replacing a newer forecast.
 - Static-checked all 10 Experiments buttons: each target exists, each result has English and Hindi text, and no duplicate IDs were found.
+- Replaced all 10 external Unsplash experiment-card backgrounds with matching local SVG illustrations already included in the service-worker core cache, removing third-party image requests from the Experiments page.
 
 ## Current catalog baseline
 - Active dynamic records: 477; unique dynamic slugs: 477.
