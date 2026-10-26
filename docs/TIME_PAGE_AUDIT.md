@@ -26,11 +26,11 @@ The first priority-ordered implementation pass has been committed. This is **sou
 | TME-08 | Implemented in source | Solar values clear on request failure; successful solar response reports its date and update time. |
 | TME-09 | Implemented in source | Quick-zone clocks are calculated locally and continue ticking even if the time provider is unavailable. |
 | TME-10 | Implemented in source | Added `time.html` to service-worker precache and bumped the cache version to v95; fresh-install/offline browser test pending. |
-| TME-11 | Implemented in source; CI pending | Refresh/world-clock duplicate requests are guarded; each API panel now announces loading, error/success and freshness where available. Verify concurrent failures in browser. |
+| TME-11 | Implemented in source; static checks pass | Refresh/world-clock duplicate requests are guarded; each API panel now announces loading, error/success and freshness where available. Verify concurrent failures in browser. |
 | TME-12 | Implemented for live lists | Currency, earthquake and holiday values now use DOM nodes and `textContent`; verify malformed provider responses in tests/browser. |
 | TME-13 | Partially implemented | Localized selector accessible name and `aria-busy` states added; full keyboard and screen-reader review remains pending. |
 | TME-14 | Implemented in source; browser review pending | Provider links added; solar, currency, earthquake and holiday cards expose update/date context. Validate timestamp clarity in browser. |
-| TME-15 | Implemented in repository; first CI run passed | Added `scripts/time-page-regression-check.mjs` and wired it into the content-audit workflow. Latest run `40332975910` passed on commit `71a7cb809cd7f3127ba23a0815e066486ecac2b3`. |
+| TME-15 | Implemented in repository; CI passed | Added `scripts/time-page-regression-check.mjs` and wired it into the content-audit workflow. Latest content-audit run `40333683849` passed on main commit `60b639a8fcf215eae9c3e99214454491f04faef6`. |
 | TME-16 | Pending | Requires rendered-browser QA at the specified viewport sizes, themes, languages, and offline/API-failure states. |
 | TME-17 | Implemented in source | Added canonical and Open Graph metadata; rendered preview and canonical-target review remain pending. |
 
@@ -60,8 +60,8 @@ Verification was performed against the current repository source and GitHub Acti
 
 ### Verification evidence
 
-- Regression/content-audit CI on source commit: `fb336bbe557f1cc9e0bf8f19c243d1a380fe2ea7` — passed.
-- Pages deployment for that same source commit was still running when this verification note was written; check Actions before treating the latest fix as live.
+- Latest regression/content-audit CI run `40333683849` — **passed** on main commit `60b639a8fcf215eae9c3e99214454491f04faef6`.
+- Latest GitHub Pages build/deployment run `40333680441` — **completed successfully** on that same main commit. This confirms the Pages deployment workflow completed; it does not substitute for inspecting the rendered live page in a browser.
 - Live page retrieval attempt: cache miss. No screenshot, console log, live API response or offline-browser result is available from this pass.
 
 ## Confirmed source-level findings
