@@ -26,7 +26,7 @@ Last checked: 2026-10-26
 - Static Discover cards: 55.
 - Unique combined catalog slugs: 535, with no cross-catalog duplicate slugs.
 - Records held out for review: 472 generic-template records and 6 duplicate-slug records.
-- Active story-data JavaScript: approximately 578 KB, down from approximately 1.27 MB before the cleanup.
+- Active story-data JavaScript: approximately 580 KB by source-character count (UTF-8 byte size differs), down substantially from the pre-cleanup catalog.
 - Latest inspected content-audit run passed JavaScript syntax, local-path/image checks and story-integrity checks. The report still shows 19/19 categories below the 50-record target; this is a content-completeness gap, not a broken-path or duplicate-integrity error.
 
 ## Minimum category target — still incomplete
