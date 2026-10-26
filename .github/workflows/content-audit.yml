@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: 20
       - name: Check JavaScript syntax
-        run: node --check scripts/service-worker-registration-test.mjs && node --check scripts/weather-race-condition-test.mjs && node --check scripts/weather-api-validation-test.mjs && node --check app.js && node --check stories-extra.js && node --check sw.js && node --check tests/load/k6-site.js && node --check scripts/category-coverage.mjs && node --check scripts/content-audit.mjs && node --check scripts/explore-state-check.mjs && node --check scripts/image-relevance-audit.mjs && node --check scripts/source-provenance-audit.mjs && node --check scripts/runtime-selector-check.mjs && node --check scripts/time-page-regression-check.mjs && node --check scripts/time-page-browser-test.mjs && node --check scripts/interactive-controls-test.mjs && node --check scripts/explore-search-browser-test.mjs && node --check scripts/explore-search-edge-cases-test.mjs && node --check scripts/site-smoke-test.mjs
+        run: node --check scripts/offline-cache-recovery-test.mjs && node --check scripts/service-worker-registration-test.mjs && node --check scripts/weather-race-condition-test.mjs && node --check scripts/weather-api-validation-test.mjs && node --check app.js && node --check stories-extra.js && node --check sw.js && node --check tests/load/k6-site.js && node --check scripts/category-coverage.mjs && node --check scripts/content-audit.mjs && node --check scripts/explore-state-check.mjs && node --check scripts/image-relevance-audit.mjs && node --check scripts/source-provenance-audit.mjs && node --check scripts/runtime-selector-check.mjs && node --check scripts/time-page-regression-check.mjs && node --check scripts/time-page-browser-test.mjs && node --check scripts/interactive-controls-test.mjs && node --check scripts/explore-search-browser-test.mjs && node --check scripts/explore-search-edge-cases-test.mjs && node --check scripts/site-smoke-test.mjs
       - name: Check Discover URL state regressions
         run: node scripts/explore-state-check.mjs
       - name: Check shared runtime selector regressions
@@ -97,6 +97,16 @@ jobs:
           node scripts/service-worker-registration-test.mjs
           SERVER_PID=$(pgrep -f "http.server 4173" | head -n 1 || true)
           if [ -n "$SERVER_PID" ]; then kill "$SERVER_PID" || true; fi
+      - name: Run offline and cache recovery browser tests
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/everyday-offline-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 20); do
+            if curl --silent --fail http://127.0.0.1:4173/ > /dev/null; then break; fi
+            sleep 0.5
+          done
+          node scripts/offline-cache-recovery-test.mjs
       - name: Run multi-page site browser smoke test
         run: |
           python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/everyday-smoke-http.log 2>&1 &
