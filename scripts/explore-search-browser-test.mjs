@@ -56,7 +56,7 @@ try {
   assert.equal(await page.locator('#story-search').inputValue(), 'stars', 'Search query should restore after navigation/reload');
   assert.equal(await page.locator('#story-sort').inputValue(), 'za', 'Sort mode should restore after navigation/reload');
   assert.equal(await page.locator('.filter-chip[data-filter="space"]').getAttribute('aria-pressed'), 'true', 'Category should restore after navigation/reload');
-  assert.ok((await visibleCards()).every(item => item.dataset.category === 'space'), 'Restored category should filter visible cards');
+  assert.ok((await visibleCards()).every(item => item.category === 'space'), 'Restored category should filter visible cards');
 
   // Invalid query values should not break rendering; defaults should be used where appropriate.
   await page.goto(base + '?q=stars&category=not-a-category&sort=invalid', { waitUntil: 'domcontentloaded' });
