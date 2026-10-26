@@ -57,3 +57,12 @@ jobs:
         run: node scripts/source-provenance-audit.mjs
       - name: Audit category coverage and story integrity
         run: node scripts/category-coverage.mjs
+      - name: Upload site smoke-test screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-smoke-screenshots-${{ github.run_id }}
+          path: artifacts/site-smoke/**/*.png
+          if-no-files-found: ignore
+          retention-days: 14
+
