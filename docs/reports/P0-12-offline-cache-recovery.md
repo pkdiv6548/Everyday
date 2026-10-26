@@ -1,6 +1,6 @@
 # P0-12 — Offline and Cache Recovery
 
-**Status:** Test and CI integration added; final result pending GitHub Actions.
+**Status:** PASS — dedicated offline/cache-recovery browser test passed in GitHub Actions.
 
 ## Existing implementation reviewed
 
@@ -23,10 +23,15 @@ File: `scripts/offline-cache-recovery-test.mjs`
 
 The test is wired into `.github/workflows/content-audit.yml` and added to the JavaScript syntax-check sequence.
 
+## Verification
+
+GitHub Actions run: https://github.com/pkdiv6548/Everyday/actions/runs/40413454795
+
+- JavaScript syntax check: PASS.
+- Dedicated offline/cache-recovery browser test: PASS.
+- Local multi-page browser smoke test: PASS.
+- The overall workflow ended in failure at the separate deployed GitHub Pages smoke-test step because `stories-extra.js?v=8` returned HTTP 503 while opening `/explore.html`. This is a deployment/network check associated with P0-02, which remains explicitly on HOLD; it does not invalidate the passing local P0-12 offline test. Do not interpret that single 503 as proof the site is down.
+
 ## Limitations
 
-This is a local Chromium test, not a direct test of the currently deployed GitHub Pages instance. It exercises browser offline emulation and the worker's fallback path, but does not simulate every possible browser cache eviction, storage quota, or device-specific PWA lifecycle condition. P0-02 remains on HOLD.
-
-## Result
-
-Awaiting GitHub Actions run for the test integration commit. Do not mark this audit PASS until that run completes successfully.
+This is a local Chromium test, not a comprehensive test of the currently deployed GitHub Pages instance. It exercises browser offline emulation and the worker's fallback path, but does not simulate every possible browser cache eviction, storage quota, or device-specific PWA lifecycle condition. P0-02 remains on HOLD.
