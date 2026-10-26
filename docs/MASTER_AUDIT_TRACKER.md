@@ -317,3 +317,9 @@ Tracking branch: `main`
 - Changed the selector to `$$('.main-nav a')`, which uses the `querySelectorAll` helper and returns an iterable array of all navigation links.
 - Commit: `c73c68872281abb98e621482302c26fb8b5c9321`.
 - Status: fixed in code; CI and live-browser behavior still need to be verified. T03 remains In progress.
+
+### T05 — Progressive-reveal selector defect (fixed in code; verification pending)
+- Continued static runtime inspection found `revealTargets` used the single-element `$` helper for a comma-separated selector matching multiple page elements, then called `.forEach()`. This could throw a `TypeError` on pages where the shared script reaches the progressive-reveal block, preventing the reveal animation setup and any remaining script work from completing.
+- Changed the selector to `$$('.section-heading,.story-card,.manifesto-inner,.category-tile,.experiment-card,.hub-card,.career-card,.weather-panel,.hub-hero')` so it collects all targets.
+- Commit: `005a355fcff5cd3862b7a6697913ad3ed141045c`.
+- Status: fixed in code; CI and live-browser/viewport verification remain outstanding. T05 remains In progress.
