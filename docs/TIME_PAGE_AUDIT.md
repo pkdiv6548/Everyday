@@ -34,6 +34,36 @@ The first priority-ordered implementation pass has been committed. This is **sou
 | TME-16 | Pending | Requires rendered-browser QA at the specified viewport sizes, themes, languages, and offline/API-failure states. |
 | TME-17 | Implemented in source | Added canonical and Open Graph metadata; rendered preview and canonical-target review remain pending. |
 
+## Verification pass — 2026-10-26
+
+Verification was performed against the current repository source and GitHub Actions. The live page could not be fetched by the available browser/web retrieval path (it returned a cache miss), and the public API JSON endpoints were not accessible through that reader. Therefore, do not interpret source checks as live-browser/API acceptance.
+
+| Task | Source / static verification | Runtime verification |
+|---|---|---|
+| TME-01 | PASS. Dark button foreground/background pair is `#17332f` on `#d9f36a` (computed WCAG contrast approximately **10.95:1**). Dark-mode API error text `#ff9b8e` on `#1e302c` is approximately **6.82:1**. | Browser appearance not checked. |
+| TME-02 | PASS. Selected and quick clocks are recalculated from `Date` + IANA time zones on the one-second local clock interval. | Actual ticking/time-zone/DST behavior not browser-tested. |
+| TME-03 | PASS. Refresh includes `loadWorldTime()` and disables itself while in flight. | Click behavior not browser-tested. |
+| TME-04 | PASS. Visible SunriseSunset.io backlink exists beside solar data; provider documentation explicitly requires a visible backlink. | Link click not browser-tested. |
+| TME-05 | PARTIAL. Shared language-change event updates clock/status content; timezone/credit labels and the Hindi caching explanation were checked/fixed. Holiday names from the provider may still be English. | Full page toggle and all dynamic states not browser-tested. |
+| TME-06 | PARTIAL. Uses documented v4 route `/api/v4/Holidays/IN/{year}` and reads the v4 `name` field. | Live response, CORS, India data and next-year behavior not verified. |
+| TME-07 | PASS. English and Hindi explanatory copy no longer claims API response caching; no cache implementation is claimed. | Manual-refresh request counts not browser-tested. |
+| TME-08 | PASS. Solar values clear on failure; success reports source date and last update time. | Forced API failure not browser-tested. |
+| TME-09 | PASS. Quick-zone rendering is local and runs on the same one-second clock interval, independent of Hourora success. | Provider outage scenario not browser-tested. |
+| TME-10 | PARTIAL. Service-worker precache includes `time.html` and cache version is `everyday-oddities-v95`. | Fresh-install and already-installed offline reload not tested. |
+| TME-11 | PARTIAL. Source contains refresh/world-clock concurrency guards and panel loading/error/success statuses. | Concurrent refresh, timeout and partial API outage not runtime-tested. |
+| TME-12 | PARTIAL. Currency, earthquake and holiday data rows use DOM nodes and `textContent`; fixed error messages remain static strings. | Malformed payload/injection simulation not runtime-tested. |
+| TME-13 | PARTIAL. Status elements use `role=status` and `aria-live=polite`; selector accessible name is localized and loading controls use `aria-busy`. | Keyboard-only, focus, screen-reader and full contrast review not performed. |
+| TME-14 | PARTIAL. All five source/provider links are present; solar, currency, earthquake and holiday statuses expose date/update context. | Link navigation and timestamp clarity not browser-tested. |
+| TME-15 | PASS. Regression script is wired into CI; latest test step passed on commit `fb336bbe557f1cc9e0bf8f19c243d1a380fe2ea7`. | Automated tests are source-pattern guards, not a browser integration suite. |
+| TME-16 | NOT VERIFIED. Responsive CSS has a single-column breakpoint at 700px and explicit dark-mode rules. | Required viewport, visual, keyboard, API-failure and offline checks remain outstanding because rendered-page access was unavailable. |
+| TME-17 | PASS at source level. Canonical URL and Open Graph title/description/url metadata exist. | Search/social preview and duplicate-canonical behavior not externally validated. |
+
+### Verification evidence
+
+- Regression/content-audit CI on source commit: `fb336bbe557f1cc9e0bf8f19c243d1a380fe2ea7` — passed.
+- Pages deployment for that same source commit was still running when this verification note was written; check Actions before treating the latest fix as live.
+- Live page retrieval attempt: cache miss. No screenshot, console log, live API response or offline-browser result is available from this pass.
+
 ## Confirmed source-level findings
 
 1. **Dark-mode “Get time” contrast defect.** The inline button style uses `background:var(--ink);color:#fff`, while the shared dark theme changes `--ink` to a pale color. The button can therefore become pale with white text.
