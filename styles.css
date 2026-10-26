@@ -458,3 +458,7 @@ body{font-feature-settings:"kern" 1,"liga" 1;text-rendering:optimizeLegibility}
   .main-nav a{flex:0 0 auto;min-height:44px;padding:11px 6px!important;}
   .menu-toggle{z-index:1202!important;}
 }
+
+
+/* Dark-theme filter contrast: use a dark label on the light lime active chip. */
+.dark-mode .filter-chip.active,.dark-mode .filter-chip:hover{background:var(--lime)!important;color:#17332f!important;border-color:var(--lime)!important}
