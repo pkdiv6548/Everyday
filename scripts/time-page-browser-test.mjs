@@ -57,8 +57,19 @@ try {
   for (const width of [320, 375, 768, 1024, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     await page.waitForTimeout(80);
-    const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
-    assert.equal(overflow, false, `Unexpected horizontal overflow at viewport width ${width}px`);
+    const overflow = await page.evaluate(() => {
+      const viewportWidth = document.documentElement.clientWidth;
+      const offenders = [...document.querySelectorAll('body *')].filter(el => {
+        const rect = el.getBoundingClientRect();
+        const style = getComputedStyle(el);
+        return rect.width > 0 && rect.right > viewportWidth + 1 && style.position !== 'fixed';
+      }).slice(0, 12).map(el => {
+        const rect = el.getBoundingClientRect();
+        return { tag: el.tagName.toLowerCase(), id: el.id, className: typeof el.className === 'string' ? el.className : '', left: Math.round(rect.left), right: Math.round(rect.right), width: Math.round(rect.width) };
+      });
+      return { hasOverflow: document.documentElement.scrollWidth > viewportWidth, viewportWidth, documentWidth: document.documentElement.scrollWidth, offenders };
+    });
+    assert.equal(overflow.hasOverflow, false, `Unexpected horizontal overflow at viewport width ${width}px: ${JSON.stringify(overflow)}`);
   }
 
   assert.deepEqual(consoleErrors, [], 'Browser should not report console/page errors before deliberate API failure');
