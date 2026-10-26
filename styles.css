@@ -475,3 +475,11 @@ body{font-feature-settings:"kern" 1,"liga" 1;text-rendering:optimizeLegibility}
   .menu-toggle{display:grid!important;place-items:center;min-width:40px;min-height:40px;padding:0;margin-left:auto;cursor:pointer;position:relative;z-index:1101;line-height:1;flex:0 0 40px}
   .header-actions{position:relative;z-index:1102;gap:6px}
 }
+
+
+/* Bound oversized hero artwork on tablet widths to prevent document-level horizontal scroll. */
+@media (min-width:651px) and (max-width:900px){
+  .hero,.hero-art{min-width:0;max-width:100%}
+  .hero-art{overflow:hidden}
+  .hero-art img{width:100%;max-width:100%;left:0}
+}
