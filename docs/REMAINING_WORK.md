@@ -1,3 +1,5 @@
+- Fixed Discover sorting reset: choosing Featured order now restores the original card sequence instead of preserving a prior A–Z/Z–A order.
+
 # Remaining work — Everyday Oddities
 
 Last checked: 2026-10-26
