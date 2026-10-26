@@ -19,7 +19,7 @@ A bilingual (English/Hindi), responsive science and knowledge-discovery website 
 - English/Hindi language toggle, responsive navigation, dark mode and accessible focus styles
 - Search, topic filters (including psychology, technology/AI, maths, micro-world, history and future skills), result count, reset controls and alphabetical sorting on Discover
 - Category directory cards link into the corresponding Discover filter, including plants, geography, inventions and unsolved science
-- 516 active bilingual dynamic story records and 55 static Discover cards (571 unique combined slugs). A further 436 generic-template records are preserved in `data/stories-review-queue.json`, and 6 duplicate catalog records in `data/stories-duplicate-review.json`; these are held out for review, not deleted.
+- 519 active bilingual dynamic story records and 55 static Discover cards (574 unique combined slugs). A further 433 generic-template records are preserved in `data/stories-review-queue.json`, and 6 duplicate catalog records in `data/stories-duplicate-review.json`; these are held out for review, not deleted.
 - Media provenance and licence notes for reviewed image sources in `data/media-manifest.json`
 - Interactive mini-experiments and article reading progress/share controls
 - PWA manifest and service-worker offline fallback; the current service-worker cache version is v77. Offline behavior and cache updates still require real-browser verification.
