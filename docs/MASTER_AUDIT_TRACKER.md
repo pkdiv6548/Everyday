@@ -294,3 +294,9 @@ Tracking branch: `main`
 - Verified Pages deployment run `40327564502` completed successfully for commit `a3ddcc1baf`.
 - Improved `scripts/source-provenance-audit.mjs` to print the number of article pages scanned as well as candidate counts, making the audit output easier to interpret.
 - This does not complete T10: heuristic flags still require manual claim/source, alt-text, image-origin and licence review. The reporting refinement triggers another CI run.
+
+
+### T10 — Latest CI and deployment verification
+- Content audit run `40327849587` completed successfully; all configured checks passed, including the source/provenance candidate scanner.
+- Deployment run `40327849516` was still running at the previous check; latest status is recorded in the Actions page rather than assumed successful.
+- Added article-page scan count to the provenance scanner output; this is reporting-only and does not automatically certify sources, image licences, or factual accuracy.
