@@ -6,10 +6,10 @@ Tracking branch: `main`
 
 
 ### Current task status summary (updated 2026-10-26)
-- Complete: 3/24 (T01–T02, T08).
-- In progress: 4/24 (T03–T06; includes code fixes or coverage work that still need verification).
-- Pending/not started: 18/24 (T06–T07 and T09–T24).
-- Total unfinished tasks, counting both In progress and Pending: 21/24.
+- Complete: 4/24 (T01–T02, T06, T08).
+- In progress: 3/24 (T03–T05; code fixes exist, but browser verification remains outstanding).
+- Pending/not started: 17/24 (T07 and T09–T24).
+- Total unfinished tasks, counting both In progress and Pending: 20/24.
 
 ## How to use this tracker
 
@@ -39,7 +39,7 @@ Tracking branch: `main`
 | T03 | 1 — Critical checks | P0 | Verify navigation, Search, category filters, sorting, reset, and empty states | Expected behavior is confirmed in a browser or each untestable case is clearly marked | In progress |
 | T04 | 1 — Critical checks | P0 | Verify English/Hindi toggle and translation parity | Primary UI and story text change correctly; remaining untranslated content is logged | In progress |
 | T05 | 1 — Critical checks | P1 | Inspect dark mode, responsive layout, and visual defects | No confirmed high-impact layout/theme issue remains; tested viewport sizes are recorded | In progress |
-| T06 | 2 — Content | P1 | Recalculate coverage for all 19 categories | Counts and gaps are generated from current files and match the documented baseline | Pending |
+| T06 | 2 — Content | P1 | Recalculate coverage for all 19 categories | Counts and gaps are generated from current files and match the documented baseline | Complete |
 | T07 | 2 — Content | P1 | Review the 424 held-out generic-template story records | Each record is accepted, rewritten, or kept unpublished with a reason; no filler is republished to inflate counts | Pending |
 | T08 | 2 — Content | P1 | Review 6 held-out duplicate-slug records | Each duplicate has a documented disposition and active catalogs remain free of slug collisions | Complete |
 | T09 | 2 — Content | P1 | Check story-to-image relevance and repeated imagery | Mismatches and duplicates are logged and corrected with appropriate assets | Pending |
@@ -137,6 +137,15 @@ Tracking branch: `main`
 - Bumped Service Worker cache `v91 → v92`. Commit: `d0ca3d39a29097c5c82074f0c2d3c16d62f1d447`; README updated in `58343f2ec0be16906003e5fb6d6ae09fdc94c732`.
 - Automated audit/deployment for the new changes are pending. Browser-level reload/share testing remains unverified.
 - Additional uncovered gap: Explore currently has filter chips for 19 planned categories, but the 55 static cards only cover 9 category values. The other category filters can legitimately return zero cards because the extra-story catalog is not rendered as Explore cards. This needs a dedicated catalogue-integration task rather than disguising the missing coverage.
+
+
+### T06 — Category coverage recalculated
+- Re-ran `scripts/category-coverage.mjs` through the latest successful Content Audit workflow on revision `9f9ffe50ae`: [audit run 40323744340](https://github.com/pkdiv6548/Everyday/actions/runs/40323744340).
+- The report confirmed 528 active dynamic records, 55 static Discover cards, 583 unique combined slugs, and zero content-integrity issues.
+- Category totals matched `docs/REMAINING_WORK.md`: 605/950 category assignments; 345 assignments still needed; all 19 categories remain below 50 stories.
+- T06 acceptance criteria are met because the current counts and gaps are generated and match the documented baseline. This does **not** mean T11’s 50-reviewed-stories-per-category goal is complete.
+- The latest Pages deployment also succeeded on the same revision: [deployment run 40323744552](https://github.com/pkdiv6548/Everyday/actions/runs/40323744552).
+- Outcome: T06 complete; next content workstream is T07, while T03–T05 still need browser verification.
 
 
 ### T08 — Duplicate-slug dispositions recorded
