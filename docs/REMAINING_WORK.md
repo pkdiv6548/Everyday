@@ -13,7 +13,7 @@ Last checked: 2026-10-26
 - Bumped the service-worker cache to `everyday-oddities-v77` after the latest story-data changes.
 - Moved 485 generic-template records out of the active story library and preserved them in `data/stories-review-queue.json`.
 - Replaced 296 repeated generic takeaways in active records with topic-specific notes derived from the corresponding explanation.
-- Rewrote and republished 52 records with topic-specific bilingual answers, explanations and takeaways.
+- Rewrote and republished 55 records with topic-specific bilingual answers, explanations and takeaways.
 - Preserved 6 duplicate cross-catalog records in `data/stories-duplicate-review.json` and removed them from the active dynamic list; their bespoke static article cards remain active.
 - Added audit checks for generic boilerplate and duplicate slugs across the static and dynamic catalogs.
 - Corrected the Geography, Plants and Inventions category-card links to their matching Discover filters.
@@ -25,10 +25,10 @@ Last checked: 2026-10-26
 - Extended the content audit to inspect inline CSS `url(...)` backgrounds as well as `<img src>` attributes, so future external or broken background-image URLs are not silently missed.
 
 ## Current catalog baseline
-- Active dynamic records: 519; unique dynamic slugs: 519.
+- Active dynamic records: 522; unique dynamic slugs: 522.
 - Static Discover cards: 55.
-- Unique combined catalog slugs: 574, with no cross-catalog duplicate slugs.
-- Records held out for review: 433 generic-template records and 6 duplicate-slug records.
+- Unique combined catalog slugs: 577, with no cross-catalog duplicate slugs.
+- Records held out for review: 430 generic-template records and 6 duplicate-slug records.
 - Active story-data JavaScript: approximately 580 KB by source-character count (UTF-8 byte size differs), down substantially from the pre-cleanup catalog.
 - Latest inspected content-audit run passed JavaScript syntax, local-path/image checks and story-integrity checks. The report still shows 19/19 categories below the 50-record target; this is a content-completeness gap, not a broken-path or duplicate-integrity error.
 
@@ -48,13 +48,13 @@ The target is 50 distinct, reviewed stories per category (950 category assignmen
 | Earth & Weather | 30 | 50 | 20 |
 | Food Science | 33 | 50 | 17 |
 | Optical Illusions | 30 | 50 | 20 |
-| Micro World | 30 | 50 | 20 |
+| Micro World | 31 | 50 | 19 |
 | Materials & Objects | 30 | 50 | 20 |
 | Geography & World | 35 | 50 | 15 |
-| Mathematics & Numbers | 30 | 50 | 20 |
+| Mathematics & Numbers | 31 | 50 | 19 |
 | Plants & Botany | 33 | 50 | 17 |
 | Inventions & Discoveries | 30 | 50 | 20 |
-| Unsolved Questions | 29 | 50 | 21 |
+| Unsolved Questions | 30 | 50 | 20 |
 | Future & Career Intelligence | 31 | 50 | 19 |
 
 The 485 held-out records need topic-specific answers, explanations, takeaways, credible sources and manual image-relevance checks before they can return to the public catalog. The six duplicate records must be reviewed against their existing static articles before any reuse.
