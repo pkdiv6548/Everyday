@@ -19,7 +19,7 @@ A bilingual (English/Hindi), responsive science and knowledge-discovery website 
 - English/Hindi language toggle, responsive navigation, dark mode and accessible focus styles
 - Search, topic filters (including psychology, technology/AI, maths, micro-world, history and future skills), result count, reset controls and alphabetical sorting on Discover
 - Category directory cards link into the corresponding Discover filter, including plants, geography, inventions and unsolved science
-- 958 bilingual dynamic story records and 55 static Discover cards; the automated category audit currently counts 1,007 unique combined slugs and reports all 19 categories at or above the 50-record technical target. This is catalog coverage, not proof that every record has passed expert editorial review.
+- 473 active bilingual dynamic story records and 55 static Discover cards (522 unique combined slugs). A further 485 generic-template records have been preserved in `data/stories-review-queue.json` for rewriting and are not shown as finished public stories.
 - Media provenance and licence notes for reviewed image sources in `data/media-manifest.json`
 - Interactive mini-experiments and article reading progress/share controls
 - PWA manifest and service-worker offline fallback; the current service-worker cache version is v54. Offline behavior and cache updates still require real-browser verification.
@@ -32,7 +32,7 @@ A bilingual (English/Hindi), responsive science and knowledge-discovery website 
 - For future integrations, prefer documented open-data/open-source APIs (for example Wikimedia Commons for licensed media metadata) and record attribution/licence. Do not use a source image until its subject match and usage rights are verified.
 
 ## Content quality and scale
-- Content target: at least 50 distinct stories in each of 19 categories (950 category assignments minimum). Current automated report: 958 dynamic records, 55 static Discover cards, 1,007 unique combined slugs, and 0/19 categories below the 50-record threshold. Editorial review and image-to-story relevance still need manual validation.
+- Content target: at least 50 distinct reviewed stories in each of 19 categories (950 category assignments minimum). After removing generic filler, the current catalog is below this target in all 19 categories; see `docs/REMAINING_WORK.md` for exact gaps. Content quality and image-to-story relevance still require editorial review.
 - Each story should have a unique, relevant main image, alt text, source and licence metadata. Missing/mismatched media should be fixed before publication rather than replaced with unrelated imagery.
 - See `docs/CONTENT_QUALITY.md` and `docs/SCALABILITY.md` for editorial checks, API limits and load-testing guidance.
 - GitHub Actions runs JavaScript syntax checks plus `scripts/content-audit.mjs` to report broken local paths, missing image alt text, repeated article covers, duplicate dynamic-story image identifiers, missing local image assets and externally hosted image URLs. The audit is a technical baseline; unique image paths are checked automatically, but visual relevance still requires editorial review.
