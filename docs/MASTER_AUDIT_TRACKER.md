@@ -7,8 +7,8 @@ Tracking branch: `main`
 
 ### Current task status summary (updated 2026-10-26)
 - Complete: 4/24 (T01–T02, T06, T08).
-- In progress: 3/24 (T03–T05; code fixes exist, but browser verification remains outstanding).
-- Pending/not started: 17/24 (T07 and T09–T24).
+- In progress: 4/24 (T03–T05 and T07; browser verification and editorial review remain outstanding).
+- Pending/not started: 16/24 (T09–T24).
 - Total unfinished tasks, counting both In progress and Pending: 20/24.
 
 ## How to use this tracker
@@ -40,7 +40,7 @@ Tracking branch: `main`
 | T04 | 1 — Critical checks | P0 | Verify English/Hindi toggle and translation parity | Primary UI and story text change correctly; remaining untranslated content is logged | In progress |
 | T05 | 1 — Critical checks | P1 | Inspect dark mode, responsive layout, and visual defects | No confirmed high-impact layout/theme issue remains; tested viewport sizes are recorded | In progress |
 | T06 | 2 — Content | P1 | Recalculate coverage for all 19 categories | Counts and gaps are generated from current files and match the documented baseline | Complete |
-| T07 | 2 — Content | P1 | Review the 424 held-out generic-template story records | Each record is accepted, rewritten, or kept unpublished with a reason; no filler is republished to inflate counts | Pending |
+| T07 | 2 — Content | P1 | Review the 424 held-out generic-template story records | Each record is accepted, rewritten, or kept unpublished with a reason; no filler is republished to inflate counts | In progress |
 | T08 | 2 — Content | P1 | Review 6 held-out duplicate-slug records | Each duplicate has a documented disposition and active catalogs remain free of slug collisions | Complete |
 | T09 | 2 — Content | P1 | Check story-to-image relevance and repeated imagery | Mismatches and duplicates are logged and corrected with appropriate assets | Pending |
 | T10 | 2 — Content | P1 | Review factual sources, image alt text, licensing, and provenance | Published stories have credible sources and media metadata; uncertain claims are qualified | Pending |
@@ -146,6 +146,14 @@ Tracking branch: `main`
 - T06 acceptance criteria are met because the current counts and gaps are generated and match the documented baseline. This does **not** mean T11’s 50-reviewed-stories-per-category goal is complete.
 - The latest Pages deployment also succeeded on the same revision: [deployment run 40323744552](https://github.com/pkdiv6548/Everyday/actions/runs/40323744552).
 - Outcome: T06 complete; next content workstream is T07, while T03–T05 still need browser verification.
+
+
+### T07 — Editorial review batch 1
+- Added an explicit review ledger to `data/stories-review-queue.json` for the first 25 of 424 held-out generic-template records.
+- All 25 are recorded as `keep-unpublished` because their current explanations still use generic boilerplate and several title templates have grammar/content-quality defects; each has a documented reason and must be rewritten with a topic-specific explanation and credible source before reconsideration.
+- Queue remains safely held out of the active public catalog; no placeholder stories were republished.
+- Current progress: 25/424 reviewed; 399 records remain to be reviewed. T07 stays in progress.
+- Review ledger verified from main: 25 decisions recorded, 424 held-out records retained.
 
 
 ### T08 — Duplicate-slug dispositions recorded
