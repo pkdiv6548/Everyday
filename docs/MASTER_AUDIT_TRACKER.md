@@ -15,7 +15,7 @@ Tracking branch: `main`
 
 ## Baseline verified from repository records
 
-- Latest checked `main` commit when this tracker was prepared: `6196fcdb477c0a07e562b46bc12ae7d2a157e789`.
+- Baseline commit at tracker creation: `6196fcdb477c0a07e562b46bc12ae7d2a157e789`. The latest follow-up fixes are recorded in the execution log below.
 - GitHub Actions content audit for that commit: passed — [run 40320456785](https://github.com/pkdiv6548/Everyday/actions/runs/40320456785).
 - GitHub Pages deployment for that commit: passed — [run 40320457091](https://github.com/pkdiv6548/Everyday/actions/runs/40320457091).
 - Current story catalog baseline recorded in `docs/REMAINING_WORK.md`: 528 active dynamic records, 55 static Discover cards, 583 combined unique slugs, 424 generic-template records held for review and 6 duplicate records held for review.
@@ -73,3 +73,11 @@ Tracking branch: `main`
 - CI also emitted environment deprecation warnings for Node.js 20 / action runtime and a `punycode` deprecation warning; the checks still passed. These warnings should be reviewed separately if they persist.
 - Limitation: this is static/CI evidence, not a manual browser test.
 - Outcome: T02 complete; T03 started.
+
+
+### T03 — Interaction/runtime inspection (in progress)
+- Static code inspection found a runtime error in the progressive-reveal section: `revealTargets` used the single-element query helper `$` but was subsequently treated as a collection with `.forEach()`. This could throw a `TypeError` and prevent the reveal behavior from initializing.
+- Fixed `app.js` to use the multi-element helper `$$` for the selector list. Commit: `54d4d5640f01ca1ecd1c77572b480464795b1ba2`.
+- Bumped the Service Worker cache from `everyday-oddities-v85` to `everyday-oddities-v86` so the changed app script is eligible for a fresh cache. Commit: `1602922e73fd1a36955ed1a56d636f3097439ff8`.
+- Updated README and remaining-work documentation to v86: commits `d0dcb4891116649bcb2b436a478160a08eaba79d` and `12d6a0fde9741a87c91d831914da30cc443bc76b`.
+- Not yet marked fixed/verified: need successful CI on the newest commit, then browser verification of reveal animations, search, filters, sort/reset and language switching.
