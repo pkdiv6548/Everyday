@@ -10,6 +10,30 @@
 
 The deployed page URL could not be loaded in the available browser/web retrieval environment (the fetch returned a cache-miss error, and direct runtime network access was unavailable). Therefore this report does **not** claim visual/browser interaction verification. Findings below are grounded in the current `main` source (`time.html`, `app.js`, `styles.css`, `sw.js`, `manifest.webmanifest`) and provider documentation. UI appearance, live endpoint responses from the user's browser, viewport behavior and actual offline behavior must be checked in the later browser pass.
 
+## Implementation progress — 2026-10-26
+
+The first priority-ordered implementation pass has been committed. This is **source-level progress**, not a claim that the live page has passed browser acceptance.
+
+| Task IDs | Current status | Evidence / remaining verification |
+|---|---|---|
+| TME-01 | Implemented in source | Explicit dark-theme lime/dark-text button colors; contrast and appearance still need browser verification. |
+| TME-02 | Implemented in source | Selected and quick-zone clocks render from current device time using IANA zone formatting and tick each second. |
+| TME-03 | Implemented in source | Refresh now includes the selected world-clock service check; button has a disabled/busy state. |
+| TME-04 | Implemented in source | Visible SunriseSunset.io backlink added beside solar data. |
+| TME-05 | Implemented in source | Shared language-change event refreshes dynamic Time-page content; date and timezone labels use the chosen locale. Check both languages in browser. |
+| TME-06 | Migrated in source | Holiday URLs now use the documented Community API v4 route and response name field; live CORS/response/schema validation remains pending. |
+| TME-07 | Implemented in source | Removed the inaccurate claim that API responses are session-cached; this page does not currently implement an API response cache. |
+| TME-08 | Implemented in source | Solar values clear on request failure; successful solar response reports its date and update time. |
+| TME-09 | Implemented in source | Quick-zone clocks are calculated locally and continue ticking even if the time provider is unavailable. |
+| TME-10 | Implemented in source | Added `time.html` to service-worker precache and bumped the cache version to v95; fresh-install/offline browser test pending. |
+| TME-11 | Partially implemented | Refresh and world-clock duplicate requests are guarded; consistent per-panel loading and freshness states still need review. |
+| TME-12 | Implemented for live lists | Currency, earthquake and holiday values now use DOM nodes and `textContent`; verify malformed provider responses in tests/browser. |
+| TME-13 | Partially implemented | Localized selector accessible name and `aria-busy` states added; full keyboard and screen-reader review remains pending. |
+| TME-14 | Partially implemented | Provider links added and solar/currency freshness shown; consistent timestamps for every panel remain to be completed. |
+| TME-15 | Implemented in repository | Added `scripts/time-page-regression-check.mjs` and wired it into the content-audit workflow; latest CI run is still pending at time of this update. |
+| TME-16 | Pending | Requires rendered-browser QA at the specified viewport sizes, themes, languages, and offline/API-failure states. |
+| TME-17 | Implemented in source | Added canonical and Open Graph metadata; rendered preview and canonical-target review remain pending. |
+
 ## Confirmed source-level findings
 
 1. **Dark-mode “Get time” contrast defect.** The inline button style uses `background:var(--ink);color:#fff`, while the shared dark theme changes `--ink` to a pale color. The button can therefore become pale with white text.
