@@ -7,8 +7,8 @@ Tracking branch: `main`
 
 ### Current task status summary (updated 2026-10-26)
 - Complete: 4/24 (T01–T02, T06, T08).
-- In progress: 4/24 (T03–T05 and T07; browser verification and editorial review remain outstanding).
-- Pending/not started: 16/24 (T09–T24).
+- In progress: 5/24 (T03–T05, T07 and T09; browser verification, editorial review and image relevance review remain outstanding).
+- Pending/not started: 15/24 (T10–T24).
 - Total unfinished tasks, counting both In progress and Pending: 20/24.
 
 ## How to use this tracker
@@ -42,7 +42,7 @@ Tracking branch: `main`
 | T06 | 2 — Content | P1 | Recalculate coverage for all 19 categories | Counts and gaps are generated from current files and match the documented baseline | Complete |
 | T07 | 2 — Content | P1 | Review the 424 held-out generic-template story records | Each record is accepted, rewritten, or kept unpublished with a reason; no filler is republished to inflate counts | In progress |
 | T08 | 2 — Content | P1 | Review 6 held-out duplicate-slug records | Each duplicate has a documented disposition and active catalogs remain free of slug collisions | Complete |
-| T09 | 2 — Content | P1 | Check story-to-image relevance and repeated imagery | Mismatches and duplicates are logged and corrected with appropriate assets | Pending |
+| T09 | 2 — Content | P1 | Check story-to-image relevance and repeated imagery | Mismatches and duplicates are logged and corrected with appropriate assets | In progress |
 | T10 | 2 — Content | P1 | Review factual sources, image alt text, licensing, and provenance | Published stories have credible sources and media metadata; uncertain claims are qualified | Pending |
 | T11 | 2 — Content | P1 | Bring each category to at least 50 reviewed stories | All 19 categories meet the target with unique, reviewed stories; no placeholders used | Pending |
 | T12 | 3 — APIs/PWA | P1 | Test Weather API input, permissions, failure/retry, dates, and units | Valid and invalid city/network/location scenarios behave correctly in browser tests | Pending |
@@ -180,6 +180,12 @@ Tracking branch: `main`
 - Screened the next 25 held-out records (records 76–100) and logged each slug's `keep-unpublished` disposition with its reason.
 - The active public catalog remains unchanged; no generic filler was reintroduced.
 - Progress: 100/424 reviewed; 324 remain.
+
+
+### T09 — Image relevance audit candidate reporting
+- Added `scripts/image-relevance-audit.mjs`, which scans article pages and reports likely title/alt/filename mismatches and missing alt text for manual visual review.
+- Wired the candidate report and syntax check into `.github/workflows/content-audit.yml`; cache bumped to `everyday-oddities-v94`.
+- This is a screening aid only; low keyword overlap is not proof of a wrong image. Manual visual review and any asset corrections remain outstanding, so T09 stays In Progress.
 
 
 ### T07 — Editorial review batch 5
