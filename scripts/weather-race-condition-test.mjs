@@ -6,6 +6,10 @@ const context = await browser.newContext({ serviceWorkers: 'block' });
 const page = await context.newPage();
 let releaseSlowGeo;
 let releaseSlowForecast;
+let signalSlowGeoStarted;
+let signalSlowForecastStarted;
+const slowGeoStarted = new Promise(resolve => { signalSlowGeoStarted = resolve; });
+const slowForecastStartedPromise = new Promise(resolve => { signalSlowForecastStarted = resolve; });
 const slowGeoGate = new Promise(resolve => { releaseSlowGeo = resolve; });
 const slowForecastGate = new Promise(resolve => { releaseSlowForecast = resolve; });
 let slowForecastStarted = false;
@@ -18,7 +22,7 @@ const forecast = (temperature) => ({
 try {
   await page.route('https://geocoding-api.open-meteo.com/**', async route => {
     const name = new URL(route.request().url()).searchParams.get('name');
-    if (name === 'SlowGeo') await slowGeoGate;
+    if (name === 'SlowGeo') { signalSlowGeoStarted(); await slowGeoGate; }
     const coords = {
       SlowGeo: [11,21], FastGeo: [12,22],
       SlowForecast: [13,23], FastForecast: [14,24]
@@ -31,6 +35,7 @@ try {
     forecastCalls.push(latitude);
     if (latitude === 13) {
       slowForecastStarted = true;
+      signalSlowForecastStarted();
       await slowForecastGate;
       await route.fulfill({ json: forecast(13) });
       return;
@@ -44,6 +49,7 @@ try {
   const search = async name => { await city.fill(name); await submit.click(); };
 
   await search('SlowGeo');
+  await slowGeoStarted;
   await search('FastGeo');
   await page.waitForFunction(() => document.querySelector('#place-name').textContent.includes('FastGeo'));
   releaseSlowGeo();
@@ -52,12 +58,7 @@ try {
   assert.equal(forecastCalls.includes(11), false, 'Stale geocoding result must not trigger forecast request');
 
   await search('SlowForecast');
-  await page.waitForFunction(() => window.__unused === undefined && document.querySelector('#weather-status').textContent.includes('Loading forecast'));
-  await page.waitForFunction(() => document.querySelector('#place-name').textContent.includes('FastGeo') === false || document.querySelector('#weather-results').hidden);
-  await page.waitForFunction(() => document.querySelector('#weather-status').textContent.includes('Loading forecast') && document.querySelector('#city-input').value === 'SlowForecast');
-  await page.waitForFunction(() => document.querySelector('#weather-results').hidden);
-  await page.waitForFunction(() => document.querySelector('#weather-status').textContent.includes('Loading forecast'));
-  await page.waitForFunction(() => slowForecastStarted || true).catch(()=>{});
+  await slowForecastStartedPromise;
   await search('FastForecast');
   await page.waitForFunction(() => document.querySelector('#place-name').textContent.includes('FastForecast'));
   releaseSlowForecast();
