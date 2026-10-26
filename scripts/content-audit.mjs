@@ -41,6 +41,28 @@ for (const file of htmlFiles) {
     const resolved = path.resolve(path.dirname(file), clean);
     if (resolved.startsWith(root) && !fs.existsSync(resolved)) issues.push({ type: 'broken-local-path', file: rel, value });
   }
+  // Audit CSS background images in inline style attributes as well as <img src> values.
+  const stylePattern = /\\bstyle\\s*=\\s*(["'])(.*?)\\1/gi;
+  const cssUrlPattern = /url\\(\\s*(["']?)(.*?)\\1\\s*\\)/gi;
+  let styleMatch;
+  while ((styleMatch = stylePattern.exec(markup))) {
+    let urlMatch;
+    cssUrlPattern.lastIndex = 0;
+    while ((urlMatch = cssUrlPattern.exec(styleMatch[2]))) {
+      const value = urlMatch[2].trim();
+      if (!value || /^(?:data:|blob:|#)/i.test(value)) continue;
+      if (/^(?:https?:)?\\/\\//i.test(value)) {
+        if (!externalImages.has(value)) externalImages.set(value, []);
+        externalImages.get(value).push(rel + ' [inline CSS background]');
+      } else {
+        const clean = decodeURIComponent(value.split(/[?#]/)[0]);
+        const resolved = path.resolve(path.dirname(file), clean);
+        if (resolved.startsWith(root) && !fs.existsSync(resolved)) issues.push({ type: 'broken-local-path', file: rel, value: 'CSS url(' + value + ')' });
+      }
+      if (!imageSources.has(value)) imageSources.set(value, []);
+      imageSources.get(value).push(rel + ' [inline CSS background]');
+    }
+  }
   while ((match = imgPattern.exec(markup))) {
     const attrs = match[1];
     const src = attr(attrs, 'src') || attr(attrs, 'data-src');
