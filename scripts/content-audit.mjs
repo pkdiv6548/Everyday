@@ -29,8 +29,11 @@ const attr = (text, name) => {
 for (const file of htmlFiles) {
   const content = fs.readFileSync(file, 'utf8');
   const rel = path.relative(root, file).replaceAll(path.sep, '/');
+  // Audit real HTML attributes, not markup assembled inside inline JavaScript strings.
+  // Keep script tags themselves so their src attributes are still checked.
+  const markup = content.replace(/(<script\\b[^>]*>)[\\s\\S]*?(<\\/script\\s*>)/gi, '$1$2');
   let match;
-  while ((match = hrefPattern.exec(content))) {
+  while ((match = hrefPattern.exec(markup))) {
     const value = match[2].trim();
     if (!value || value.startsWith('#') || /^(?:https?:|mailto:|tel:|javascript:|data:|blob:)/i.test(value)) continue;
     const clean = decodeURIComponent(value.split(/[?#]/)[0]);
@@ -38,7 +41,7 @@ for (const file of htmlFiles) {
     const resolved = path.resolve(path.dirname(file), clean);
     if (resolved.startsWith(root) && !fs.existsSync(resolved)) issues.push({ type: 'broken-local-path', file: rel, value });
   }
-  while ((match = imgPattern.exec(content))) {
+  while ((match = imgPattern.exec(markup))) {
     const attrs = match[1];
     const src = attr(attrs, 'src') || attr(attrs, 'data-src');
     const alt = attr(attrs, 'alt');
