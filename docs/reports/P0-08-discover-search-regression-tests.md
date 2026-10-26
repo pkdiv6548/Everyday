@@ -1,13 +1,11 @@
 # P0-08 — Discover/Search Regression Tests
 
-- **Status:** Additional edge-case coverage added; final CI verification for the latest change is pending.
+- **Status:** PASS — regression tests and the full GitHub Actions workflow succeeded.
 - **Repository:** `pkdiv6548/Everyday`
 - **Date:** 2026-10-27
 
 ## Existing verified coverage
-The existing browser regression test `scripts/explore-search-browser-test.mjs` covers search matching, combined category filters, A–Z/Z–A sorting, URL synchronization/restoration, invalid URL values, reset behavior, and unexpected browser runtime errors.
-
-The prior full CI run [40411437127](https://github.com/pkdiv6548/Everyday/actions/runs/40411437127) completed successfully for the existing tests and site smoke tests. This run predates the additional edge-case test below.
+The browser regression test `scripts/explore-search-browser-test.mjs` covers search matching, combined category filters, A–Z/Z–A sorting, URL synchronization/restoration, invalid URL values, reset behavior, and unexpected browser runtime errors.
 
 ## New edge-case coverage
 Added `scripts/explore-search-edge-cases-test.mjs` to test:
@@ -20,10 +18,18 @@ Added `scripts/explore-search-edge-cases-test.mjs` to test:
 
 Updated `.github/workflows/content-audit.yml` to syntax-check the new test and execute it in a dedicated Playwright step.
 
-## Current verification
-- Confirmed the new test file exists on the default branch.
-- Confirmed the workflow contains both the syntax-check command and dedicated edge-case test step.
-- The prior run's success does **not** verify the newly added step. Latest-change CI completion and its result must still be checked before marking all of P0-08 as fully PASS.
+## Final CI verification
+The latest full workflow run [40412021985](https://github.com/pkdiv6548/Everyday/actions/runs/40412021985) for commit `95f68ae2ca613a5a65198eb0fc839e015bea050c` completed with conclusion **success**.
+
+Verified successful steps include:
+- JavaScript syntax checks
+- Discover URL-state regression checks
+- Existing Discover search regression browser tests
+- **New Discover search edge-case browser tests**
+- Interactive controls browser tests
+- Multi-page site browser smoke tests
+- Deployed GitHub Pages route smoke tests
+- Remaining audit steps in the workflow
 
 ## Boundaries
-No live manual browser session against GitHub Pages is claimed here. P0-02 live deployment verification remains on HOLD as requested.
+This verifies the automated workflow, including its configured deployed-route smoke test; it is not a claim of a separate manual browser session against every live page. P0-02 live deployment verification remains on HOLD as requested.
