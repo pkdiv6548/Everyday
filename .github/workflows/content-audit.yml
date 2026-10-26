@@ -26,7 +26,7 @@ jobs:
       - name: Check Time page regressions
         run: node scripts/time-page-regression-check.mjs
       - name: Install Chromium browser test dependency
-        run: npm install --no-save playwright && npx playwright install --with-deps chromium
+        run: npm install --no-save playwright && npx playwright install chromium
       - name: Run Time page browser integration tests
         run: |
           python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/everyday-http.log 2>&1 &
