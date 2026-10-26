@@ -41,6 +41,8 @@ A bilingual (English/Hindi), responsive science and knowledge-discovery website 
 
 - Discover search/category filters keep the URL synchronized with the current view; cache version is `everyday-oddities-v82`.
 
+- Discover search input placeholder and accessible name now switch to Hindi with the site language; the sort control uses its translated visible label as its accessible name. Cache version: `everyday-oddities-v83`.
+
 ## Run locally
 Open `index.html` in a browser. For service-worker/PWA testing, serve the folder through a local HTTP server.
 
