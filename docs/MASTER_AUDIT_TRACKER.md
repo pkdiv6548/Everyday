@@ -30,7 +30,7 @@ Tracking branch: `main`
 | T01 | 1 — Baseline | P0 | Create and maintain this master pending-issues tracker; verify current branch and CI/deployment state | Tracker exists on main and records evidence, known gaps, and statuses without treating deploy as browser verification | Complete |
 | T02 | 1 — Critical checks | P0 | Audit JavaScript syntax, local paths, images, and key HTML pages | Automated checks pass; all discovered failures are logged | Complete |
 | T03 | 1 — Critical checks | P0 | Verify navigation, Search, category filters, sorting, reset, and empty states | Expected behavior is confirmed in a browser or each untestable case is clearly marked | In progress |
-| T04 | 1 — Critical checks | P0 | Verify English/Hindi toggle and translation parity | Primary UI and story text change correctly; remaining untranslated content is logged | Pending |
+| T04 | 1 — Critical checks | P0 | Verify English/Hindi toggle and translation parity | Primary UI and story text change correctly; remaining untranslated content is logged | In progress |
 | T05 | 1 — Critical checks | P1 | Inspect dark mode, responsive layout, and visual defects | No confirmed high-impact layout/theme issue remains; tested viewport sizes are recorded | Pending |
 | T06 | 2 — Content | P1 | Recalculate coverage for all 19 categories | Counts and gaps are generated from current files and match the documented baseline | Pending |
 | T07 | 2 — Content | P1 | Review the 424 held-out generic-template story records | Each record is accepted, rewritten, or kept unpublished with a reason; no filler is republished to inflate counts | Pending |
@@ -81,3 +81,11 @@ Tracking branch: `main`
 - Bumped the Service Worker cache from `everyday-oddities-v85` to `everyday-oddities-v86` so the changed app script is eligible for a fresh cache. Commit: `1602922e73fd1a36955ed1a56d636f3097439ff8`.
 - Updated README and remaining-work documentation to v86: commits `d0dcb4891116649bcb2b436a478160a08eaba79d` and `12d6a0fde9741a87c91d831914da30cc443bc76b`.
 - Not yet marked fixed/verified: need successful CI on the newest commit, then browser verification of reveal animations, search, filters, sort/reset and language switching.
+
+
+### Follow-up finding during T03 — bilingual control selectors
+- Code inspection found that `setLanguage()` used the single-element selector helper `$` for placeholder and aria-label translation, then called `.forEach()`. This is a second runtime TypeError risk and also would only target one element if it did not throw.
+- Fixed both selectors to use `$$` so every matching input/control can receive its English/Hindi placeholder and aria-label. Commit: `56b323e3914c0badc1c48fb6c86201127c1fa43c`.
+- Bumped Service Worker cache `v86 → v87` to refresh the updated app script. Commit: `057870730a1307d9c4bcb6821f6882bf4f992add`.
+- README updated to v87 in the documentation commit listed by GitHub history.
+- T03 remains in progress until current CI/deployment and browser behavior are verified. T04 is now in progress for the dedicated bilingual audit.
