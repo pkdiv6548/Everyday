@@ -60,7 +60,7 @@ The target is 50 distinct, reviewed stories per category (950 category assignmen
 | Unsolved Questions | 31 | 50 | 19 |
 | Future & Career Intelligence | 31 | 50 | 19 |
 
-The 485 held-out records need topic-specific answers, explanations, takeaways, credible sources and manual image-relevance checks before they can return to the public catalog. The six duplicate records must be reviewed against their existing static articles before any reuse.
+The 424 remaining generic-template records need topic-specific answers, explanations, takeaways, credible sources and manual image-relevance checks before they can return to the public catalog. The six duplicate records must be reviewed against their existing static articles before any reuse.
 
 - Added stale-request guards to weather geocoding and forecast requests so older searches cannot trigger unnecessary follow-up requests or overwrite the current result.
 
