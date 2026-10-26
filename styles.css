@@ -483,3 +483,14 @@ body{font-feature-settings:"kern" 1,"liga" 1;text-rendering:optimizeLegibility}
   .hero-art{overflow:hidden}
   .hero-art img{width:100%;max-width:100%;left:0}
 }
+
+/* Tablet navigation: switch to the compact menu before the full nav exceeds the viewport. */
+@media (min-width:651px) and (max-width:850px){
+  .site-header{padding-inline:24px;gap:14px}
+  .menu-toggle{display:block;margin-left:auto}
+  .main-nav{display:none;position:absolute;left:0;right:0;top:83px;background:var(--paper);padding:18px 24px;box-shadow:0 18px 25px #132b2617;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}
+  .main-nav.open{display:flex}
+  .main-nav a{padding:13px 5px;border-bottom:1px solid var(--line);font-size:14px}
+  .round-arrow{display:none}
+  .header-actions{gap:8px}
+}
