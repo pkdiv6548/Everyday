@@ -36,6 +36,7 @@ for (const name of files) {
     findings.push({type:'missing-visible-cover-credit-candidate',file:rel,detail:'Cover has no obvious visible credit text; verify ownership/licence and attribution requirements.'});
   }
 }
+console.log('Article pages scanned:', files.length);
 console.log('Story source/provenance review candidates:', findings.length);
 const counts = {};
 for (const item of findings) counts[item.type] = (counts[item.type] || 0) + 1;
