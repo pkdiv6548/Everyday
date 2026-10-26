@@ -121,3 +121,12 @@ Tracking branch: `main`
 - Added a regression check to `scripts/category-coverage.mjs` that compares the Science filter list against all category values used by static Explore cards. Missing categories now fail the category-coverage audit. Commit: `7570b1f178e4c749288deac2d43d7a3fad4a7d93`.
 - Bumped Service Worker cache `v90 → v91` to refresh clients. Commit: `2e095fa2940c9346912f67ea1e4c5241f2e4d1ac`; README updated in `642c2b6fab02ed8d0ac9d2e944c80632b7a6a943`.
 - Automated CI is required to confirm the new regression check and deployment. Browser interaction testing is still not verified.
+
+
+### T03 — Explore sort persistence
+- Confirmed the prior latest revision `c7a6bcf1` passed the Content Audit and Pages Deployment: [audit 40322704000](https://github.com/pkdiv6548/Everyday/actions/runs/40322704000), [deployment 40322704451](https://github.com/pkdiv6548/Everyday/actions/runs/40322704451).
+- Source review found Explore's sort control did not persist its selection in the URL, so reloading or sharing a filtered URL could lose the chosen sort order.
+- Updated `syncExploreUrl()` to set/remove the `sort` query parameter and restore supported values (`featured`, `az`, `za`) on page load. Commit: `5fb4012e093999baf193128e8e67040274282abf`.
+- Bumped Service Worker cache `v91 → v92`. Commit: `d0ca3d39a29097c5c82074f0c2d3c16d62f1d447`; README updated in `58343f2ec0be16906003e5fb6d6ae09fdc94c732`.
+- Automated audit/deployment for the new changes are pending. Browser-level reload/share testing remains unverified.
+- Additional uncovered gap: Explore currently has filter chips for 19 planned categories, but the 55 static cards only cover 9 category values. The other category filters can legitimately return zero cards because the extra-story catalog is not rendered as Explore cards. This needs a dedicated catalogue-integration task rather than disguising the missing coverage.
