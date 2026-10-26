@@ -260,6 +260,12 @@ Tracking branch: `main`
 - Progress: 400/424 reviewed; 24 remain.
 
 
+### T07 — Editorial screening complete
+- Screened records 401–424 and recorded `keep-unpublished` decisions.
+- All 424 queue records now have an initial screening decision; none was republished.
+- This completes the initial screening pass only. T07 remains **In Progress** because topic-specific rewrites, reliable sourcing, and bilingual editorial review are still outstanding.
+
+
 ### T08 — Duplicate-slug dispositions recorded
 - Reviewed the six held-out records against the catalog note that their bespoke static article pages remain active.
 - Recorded an explicit `keep-unpublished` disposition for each duplicate slug (`moon-phases`, `why-shadows-change-length`, `why-iron-rusts`, `why-salt-melts-ice`, `why-rainbows-are-arcs`, `why-wood-floats`). The static article is the canonical active version; duplicate dynamic records remain held out.
