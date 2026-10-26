@@ -32,6 +32,8 @@ try {
   await page.keyboard.press('Tab');
   assert.equal(await page.evaluate(() => document.activeElement.classList.contains('skip-link')), true, 'Keyboard focus should start at the skip link');
   assert.equal(await page.locator('#zone-select').getAttribute('aria-label'), 'Time zone');
+  assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), 'https://pkdiv6548.github.io/Everyday/time.html');
+  assert.equal(await page.locator('meta[property="og:title"]').getAttribute('content'), 'Time & Open Data | Everyday Oddities');
   assert.notEqual(await page.locator('#local-clock').textContent(), '--:--:--');
   assert.equal(await page.locator('#sunrise').textContent(), '06:20:00');
   assert.equal(await page.locator('#currency-list').getByText('1 EUR → INR').count(), 1);
@@ -43,6 +45,11 @@ try {
   await page.waitForFunction(() => document.documentElement.lang === 'hi');
   assert.equal(requests.length, requestsBeforeLanguageChange, 'Changing language must not refetch APIs');
   assert.equal(await page.locator('#local-clock-heading').textContent(), 'आपके डिवाइस का समय');
+  assert.equal(await page.locator('#zone-select').getAttribute('aria-label'), 'समय क्षेत्र', 'Accessible name should follow the selected language');
+  assert.equal(await page.locator('#quick-zones').getByText('सिडनी · ऑस्ट्रेलिया').count(), 1, 'Quick-zone labels should be localized');
+  await page.locator('.lang-toggle').click();
+  await page.waitForFunction(() => document.documentElement.lang === 'en');
+  assert.equal(requests.length, requestsBeforeLanguageChange, 'Switching back to English must not refetch APIs');
 
   await page.locator('.theme-toggle').click();
   assert.equal(await page.locator('body').evaluate(el => el.classList.contains('dark-mode')), true);
