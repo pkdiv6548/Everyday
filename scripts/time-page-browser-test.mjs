@@ -27,6 +27,8 @@ await page.route('https://nagerholidays.com/**', route => {
 
 try {
   await page.goto('http://127.0.0.1:4173/time.html', { waitUntil: 'domcontentloaded' });
+  await page.waitForTimeout(1200);
+  console.log('Browser test diagnostics:', JSON.stringify({requests, currency: await page.locator('#currency-list').innerText(), currencyStatus: await page.locator('#currency-status').innerText(), quakes: await page.locator('#earthquake-list').innerText(), holidays: await page.locator('#holiday-list').innerText(), consoleErrors}));
   await page.waitForSelector('#currency-list .data-row');
   await page.waitForSelector('#earthquake-list .data-row');
   await page.waitForSelector('#holiday-list .data-row');
