@@ -31,7 +31,7 @@ for (const file of htmlFiles) {
   const rel = path.relative(root, file).replaceAll(path.sep, '/');
   // Audit real HTML attributes, not markup assembled inside inline JavaScript strings.
   // Keep script tags themselves so their src attributes are still checked.
-  const markup = content.replace(/(<script\\b[^>]*>)[\\s\\S]*?(<\\/script\\s*>)/gi, '$1$2');
+  const markup = content.replace(/(<script\b[^>]*>)[\s\S]*?(<\/script\s*>)/gi, '$1$2');
   let match;
   while ((match = hrefPattern.exec(markup))) {
     const value = match[2].trim();
