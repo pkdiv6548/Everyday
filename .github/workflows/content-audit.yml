@@ -47,6 +47,8 @@ jobs:
             sleep 0.5
           done
           node scripts/site-smoke-test.mjs
+      - name: Smoke-test deployed GitHub Pages routes
+        run: SITE_BASE_URL=https://pkdiv6548.github.io/Everyday node scripts/site-smoke-test.mjs
       - name: Audit local paths and image reuse
         run: node scripts/content-audit.mjs
       - name: Report potential story-image relevance issues
