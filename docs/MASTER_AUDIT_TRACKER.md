@@ -323,3 +323,9 @@ Tracking branch: `main`
 - Changed the selector to `$$('.section-heading,.story-card,.manifesto-inner,.category-tile,.experiment-card,.hub-card,.career-card,.weather-panel,.hub-hero')` so it collects all targets.
 - Initial attempted fix commit: `005a355fcff5cd3862b7a6697913ad3ed141045c` did not actually change `app.js`; this was discovered during follow-up verification. The real code correction is included in commit `909108e4f4142ccc4e476585687bd1b7ae4da978`.
 - Status: corrected in code; CI and live-browser/viewport verification remain outstanding. T05 remains In progress.
+
+### T03/T05 — Selector regression guard added to CI
+- Added `scripts/runtime-selector-check.mjs` to assert the navigation link listener and progressive-reveal target list use the multi-element `$$` helper.
+- Wired the check and syntax validation into `.github/workflows/content-audit.yml` so these two regressions are caught on future pushes and pull requests.
+- Code fix commit: `909108e4f4142ccc4e476585687bd1b7ae4da978`; regression script commit: `96fa095cddbfcea2cdf217c94bae53150e44f71e`; workflow commit: `74fbce6bfaa765ef25d71df3ad52f962a45d7e98`.
+- Verification is pending until the workflow for the latest main commit completes. This guard checks two known selectors only; it is not a full browser test or a general JavaScript static analysis.
