@@ -7,7 +7,7 @@ Last checked: 2026-10-26
 - Corrected local image validation to ignore query strings and fragments when checking file existence.
 - Replaced the duplicate Discover-card image for `why-rain-smells` and changed that article's cover to a separate local illustration.
 - Aligned the Weather page heading with the seven-day forecast actually requested by the API.
-- Bumped the service-worker cache key to `everyday-oddities-v54`.
+- Bumped the service-worker cache key to `everyday-oddities-v55`.
 - Removed 485 generic-template records from the active public story library and preserved them in `data/stories-review-queue.json` for later editorial rewriting. These records were not deleted.
 - Replaced 296 repeated generic takeaways in the active story records with topic-specific notes derived from the corresponding explanation.
 - Added a content-audit rule to flag the generic boilerplate patterns that caused the issue.
