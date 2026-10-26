@@ -62,6 +62,8 @@ The 485 held-out records need topic-specific answers, explanations, takeaways, c
 
 - Added stale-request guards to weather geocoding and forecast requests so older searches cannot trigger unnecessary follow-up requests or overwrite the current result.
 
+- Discover: Search and category-filter state now updates the URL query parameters (`q` and `category`) using `history.replaceState`, allowing filtered views to be copied and reopened without a full-page reload. Automated/browser verification is still pending.
+
 ## Remaining work — in priority order
 1. Confirm the newest GitHub Actions audit passes on the final cache-version commit and the latest GitHub Pages deployment succeeds.
 2. Rewrite held-out stories in reviewed batches; do not restore generic placeholder content just to reach the 50-per-category target.
