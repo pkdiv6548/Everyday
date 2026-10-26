@@ -20,6 +20,13 @@ try {
   const page = await context.newPage();
   page.setDefaultTimeout(10000);
   page.on('pageerror', error => failures.push({ type: 'pageerror', page: page.url(), message: error.message }));
+  page.on('console', msg => {
+    if (msg.type() !== 'error') return;
+    const message = msg.text();
+    // Network-resource failures are tracked separately by response/local asset checks.
+    if (/Failed to load resource|net::ERR_|ERR_BLOCKED_BY_CLIENT/i.test(message)) return;
+    failures.push({ type: 'console-error', page: page.url(), message });
+  });
   page.on('response', response => {
     if (response.status() >= 400 && new URL(response.url()).origin === new URL(base).origin) {
       failures.push({ type: 'local-http-error', status: response.status(), url: response.url() });
