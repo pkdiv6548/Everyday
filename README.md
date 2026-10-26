@@ -19,10 +19,10 @@ A bilingual (English/Hindi), responsive science and knowledge-discovery website 
 - English/Hindi language toggle, responsive navigation, dark mode and accessible focus styles
 - Search, topic filters (including psychology, technology/AI, maths, micro-world, history and future skills), result count, reset controls and alphabetical sorting on Discover
 - Category directory cards link into the corresponding Discover filter, including plants, geography, inventions and unsolved science
-- 467 active bilingual dynamic story records and 55 static Discover cards (522 unique combined slugs). A further 485 generic-template records are preserved in `data/stories-review-queue.json`, and 6 duplicate catalog records in `data/stories-duplicate-review.json`; these are held out for review, not deleted.
+- 477 active bilingual dynamic story records and 55 static Discover cards (532 unique combined slugs). A further 475 generic-template records are preserved in `data/stories-review-queue.json`, and 6 duplicate catalog records in `data/stories-duplicate-review.json`; these are held out for review, not deleted.
 - Media provenance and licence notes for reviewed image sources in `data/media-manifest.json`
 - Interactive mini-experiments and article reading progress/share controls
-- PWA manifest and service-worker offline fallback; the current service-worker cache version is v58. Offline behavior and cache updates still require real-browser verification.
+- PWA manifest and service-worker offline fallback; the current service-worker cache version is v59. Offline behavior and cache updates still require real-browser verification.
 - Weather lookup using Open-Meteo Geocoding + Forecast APIs; the page advertises current conditions and a seven-day outlook. API failure states, location permission handling and live forecast accuracy still require browser testing.
 - Content/category plan and story-schema in `data/`; editorial image/source and scalability standards in `docs/`
 
@@ -32,7 +32,7 @@ A bilingual (English/Hindi), responsive science and knowledge-discovery website 
 - For future integrations, prefer documented open-data/open-source APIs (for example Wikimedia Commons for licensed media metadata) and record attribution/licence. Do not use a source image until its subject match and usage rights are verified.
 
 ## Content quality and scale
-- Content target: at least 50 distinct reviewed stories in each of 19 categories (950 category assignments minimum). After removing generic filler, the current catalog is below this target in all 19 categories; see `docs/REMAINING_WORK.md` for exact gaps. Content quality and image-to-story relevance still require editorial review.
+- Content target: at least 50 distinct reviewed stories in each of 19 categories (950 category assignments minimum). After removing generic filler and rewriting ten stories, the current catalog is below this target in all 19 categories; see `docs/REMAINING_WORK.md` for exact gaps. Content quality and image-to-story relevance still require editorial review.
 - Each story should have a unique, relevant main image, alt text, source and licence metadata. Missing/mismatched media should be fixed before publication rather than replaced with unrelated imagery.
 - See `docs/CONTENT_QUALITY.md` and `docs/SCALABILITY.md` for editorial checks, API limits and load-testing guidance.
 - GitHub Actions runs JavaScript syntax checks plus `scripts/content-audit.mjs` to report broken local paths, missing image alt text, repeated article covers, duplicate dynamic-story image identifiers, missing local image assets and externally hosted image URLs. The audit is a technical baseline; unique image paths are checked automatically, but visual relevance still requires editorial review.
