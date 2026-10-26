@@ -27,8 +27,8 @@ Tracking branch: `main`
 
 | ID | Stage | Priority | Task | Acceptance criteria | Status |
 |---|---|---|---|---|---|
-| T01 | 1 — Baseline | P0 | Create and maintain this master pending-issues tracker; verify current branch and CI/deployment state | Tracker exists on main and records evidence, known gaps, and statuses without treating deploy as browser verification | In progress |
-| T02 | 1 — Critical checks | P0 | Audit JavaScript syntax, local paths, images, and key HTML pages | Automated checks pass; all discovered failures are logged | Pending |
+| T01 | 1 — Baseline | P0 | Create and maintain this master pending-issues tracker; verify current branch and CI/deployment state | Tracker exists on main and records evidence, known gaps, and statuses without treating deploy as browser verification | Complete |
+| T02 | 1 — Critical checks | P0 | Audit JavaScript syntax, local paths, images, and key HTML pages | Automated checks pass; all discovered failures are logged | In progress |
 | T03 | 1 — Critical checks | P0 | Verify navigation, Search, category filters, sorting, reset, and empty states | Expected behavior is confirmed in a browser or each untestable case is clearly marked | Pending |
 | T04 | 1 — Critical checks | P0 | Verify English/Hindi toggle and translation parity | Primary UI and story text change correctly; remaining untranslated content is logged | Pending |
 | T05 | 1 — Critical checks | P1 | Inspect dark mode, responsive layout, and visual defects | No confirmed high-impact layout/theme issue remains; tested viewport sizes are recorded | Pending |
@@ -60,4 +60,5 @@ Tracking branch: `main`
 - Confirmed GitHub Pages deployment passed: [run 40320457091](https://github.com/pkdiv6548/Everyday/actions/runs/40320457091).
 - Confirmed the content target remains incomplete: 19/19 categories below 50; 345 category assignments recorded as remaining.
 - Browser-based verification is not implied by the successful workflows.
-- Outcome: tracker created; T01 can be marked complete after this file is committed to main.
+- Tracker commit: `739a6f0d86e78ce1e9d6150856a2b7d906d3ca4e`.
+- Outcome: T01 complete. T02 started; automated audit details are being inspected.
