@@ -156,6 +156,13 @@ Tracking branch: `main`
 - Review ledger verified from main: 25 decisions recorded, 424 held-out records retained.
 
 
+### T07 — Editorial review batch 2
+- Screened the next 25 held-out records and recorded explicit `keep-unpublished` dispositions in `data/stories-review-queue.json`.
+- Rationale is recorded per slug: generic templated text is not a topic-specific, fact-checked explanation; records must be rewritten bilingually and supported by a reliable topic-level source before publication.
+- No held-out record was added to the active public catalog.
+- Progress after this batch: 50/424 reviewed; 374 remain. T07 stays in progress.
+
+
 ### T08 — Duplicate-slug dispositions recorded
 - Reviewed the six held-out records against the catalog note that their bespoke static article pages remain active.
 - Recorded an explicit `keep-unpublished` disposition for each duplicate slug (`moon-phases`, `why-shadows-change-length`, `why-iron-rusts`, `why-salt-melts-ice`, `why-rainbows-are-arcs`, `why-wood-floats`). The static article is the canonical active version; duplicate dynamic records remain held out.
