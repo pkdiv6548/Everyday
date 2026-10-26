@@ -43,6 +43,8 @@ A bilingual (English/Hindi), responsive science and knowledge-discovery website 
 
 - Discover search input placeholder and accessible name now switch to Hindi with the site language; the sort control uses its translated visible label as its accessible name. Cache version: `everyday-oddities-v83`.
 
+- Service-worker precache now processes assets in batches of 40 and continues if an individual asset fails; offline coverage still requires browser testing.
+
 ## Run locally
 Open `index.html` in a browser. For service-worker/PWA testing, serve the folder through a local HTTP server.
 
