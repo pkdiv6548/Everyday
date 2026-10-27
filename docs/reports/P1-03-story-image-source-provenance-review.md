@@ -19,7 +19,9 @@
 - Updated `scripts/source-provenance-audit.mjs` so it checks the manifest before flagging a local original illustration as missing a visible credit, and so it flags only empty/generic alt values rather than descriptive alt text beginning with “Illustration of”.
 - The audit remains a heuristic, not proof of factual accuracy or licence status. Some source links still point to organization landing pages rather than topic-specific pages; future editorial work should deepen those links and verify individual claims. This report does not claim a full human fact-check of every sentence on all 55 pages.
 
-## Verification
+## Verification — PASS
 
-- Run the updated Content Audit and GitHub Pages deployment on the commit that includes these changes.
-- Expected automated checks: JavaScript syntax, local assets, source-label heuristics, image relevance candidates, provenance candidates, and story/category integrity.
+- Content Audit: [run 40438297585](https://github.com/pkdiv6548/Everyday/actions/runs/40438297585) — success.
+- GitHub Pages deployment: [run 40438297147](https://github.com/pkdiv6548/Everyday/actions/runs/40438297147) — success.
+- Verified counts: 55 article pages inspected; 0 image relevance/alt candidates; 0 source/provenance candidates; 0 broken local paths; 0 missing story image assets; 0 content-integrity issues.
+- Verified commit: `b3e73bd18586c8e6b23d53d6f7f0d9b6333cda68`.
