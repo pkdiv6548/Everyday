@@ -66,7 +66,7 @@ function resolveLocal(rawValue, source) {
   else if (pathname.startsWith(sitePrefix + '/')) pathname = pathname.slice(sitePrefix.length);
   const decoded = decodePath(pathname, source, rawValue);
   const isRootRelative = rawValue.startsWith('/') || (absolute && absolute.origin === siteOrigin);
-  let target = isRootRelative ? decoded.replace(/^\//, '') || 'index.html' : path.posix.normalize(path.posix.join(path.posix.dirname(source), decoded));
+  let target = path.posix.normalize(decoded.replace(/^\//, '')) || 'index.html';
   if (!target || target === '.') target = 'index.html';
   if (target.endsWith('/')) target += 'index.html';
   return { target, fragment: parsed.hash ? decodePath(parsed.hash.slice(1), source, rawValue) : '' };
