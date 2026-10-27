@@ -8,8 +8,8 @@ import vm from "node:vm";
 
 const file = "data-lab.html";
 const html = readFileSync(file, "utf8");
-const blocks = [...html.matchAll(/<script\\b([^>]*)>([\\s\\S]*?)<\\/script\\s*>/gi)]
-  .filter((match) => !/\\bsrc\\s*=/i.test(match[1]))
+const blocks = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi)]
+  .filter((match) => !/\bsrc\s*=/i.test(match[1]))
   .map((match) => match[2])
   .filter((source) => source.trim());
 
