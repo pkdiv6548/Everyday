@@ -52,7 +52,12 @@ try {
   await page.waitForFunction(() => document.querySelector('#weather-results').hidden === false);
   assert.equal(requests.forecast, 2, 'Malformed forecast must not be cached; retry must request fresh data');
   assert.equal(await page.locator('#forecast-grid .forecast-day').count(), 7, 'A valid response must render seven forecast days');
-  assert.equal(await page.locator('#current-temp').textContent(), '28°C');
+  assert.equal(await page.locator('#current-temp').textContent(), '28°C', 'Current temperature must use Celsius');
+  assert.equal(await page.locator('#high-low').textContent(), '31° / 19°', 'Daily high/low units must be shown consistently');
+  const forecastDates = await page.locator('.forecast-day .forecast-date').allTextContents();
+  assert.equal(forecastDates.length, 7, 'Each forecast day must have a readable date');
+  assert.ok(forecastDates[0].includes('27') && forecastDates[6].includes('2'), 'Forecast dates must cover the expected seven-day range');
+  assert.ok((await page.locator('.forecast-day .forecast-temperatures').first().textContent()).includes('31°'), 'Forecast cards must display daily temperature units');
 
   await city.fill('NoSuchCity');
   await submit.click();
@@ -63,6 +68,13 @@ try {
   await submit.click();
   await page.waitForFunction(() => document.querySelector('#weather-status').textContent.includes('temporarily unavailable'));
   assert.equal(requests.forecast, 2, 'Invalid geocoding coordinates must not trigger forecast requests');
+
+  await page.evaluate(() => {
+    Object.defineProperty(navigator, 'geolocation', { configurable: true, value: { getCurrentPosition(_success, error) { error({ code: 1, message: 'User denied Geolocation' }); } } });
+  });
+  await page.locator('#use-location').click();
+  await page.waitForFunction(() => document.querySelector('#weather-status').textContent.includes('Location was not shared'));
+  assert.equal(requests.forecast, 2, 'Denied location permission must not request a forecast');
 
   await page.locator('.lang-toggle').click();
   assert.equal(await page.locator('#weather-form button[type="submit"]').textContent(), 'मौसम देखें');
