@@ -49,7 +49,10 @@ async function probe(check) {
       return { name: check.name, ok: true, status: response.status, ms: Date.now() - started };
     } catch (error) {
       lastError = error?.name === "AbortError" ? `timeout after ${timeoutMs}ms` : (error?.message || String(error));
-      if (attempt < retries) await new Promise(resolve => setTimeout(resolve, 700));
+      // Do not amplify provider throttling or access denials with an immediate retry.
+      const throttled = /HTTP (?:403|429)/i.test(lastError);
+      if (attempt < retries && !throttled) await new Promise(resolve => setTimeout(resolve, 700));
+      else if (throttled) break;
     } finally {
       clearTimeout(timer);
     }
