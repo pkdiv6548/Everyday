@@ -1,6 +1,6 @@
 # Everyday Oddities — Master Audit Tracker
 
-Last updated: 2026-10-26  
+Last updated: 2026-10-27  
 Repository: `pkdiv6548/Everyday`  
 Tracking branch: `main`
 
@@ -35,8 +35,8 @@ Tracking branch: `main`
 | T02 | 1 — Critical checks | P0 | Audit JavaScript syntax, local paths, images, and key HTML pages | Automated checks pass; all discovered failures are logged | Interim code/deploy checkpoint complete; live verification deferred |
 | T03 | 1 — Critical checks | P0 | Verify navigation, Search, category filters, sorting, reset, and empty states | Expected behavior is confirmed in a browser or each untestable case is clearly marked | Interim code/deploy checkpoint complete; live verification deferred |
 | T04 | 1 — Critical checks | P0 | Verify English/Hindi toggle and translation parity | Primary UI and story text change correctly; remaining untranslated content is logged | Interim code/deploy checkpoint complete; live verification deferred |
-| T05 | 1 — Critical checks | P1 | Inspect dark mode, responsive layout, and visual defects | No confirmed high-impact layout/theme issue remains; tested viewport sizes are recorded | Interim code/deploy checkpoint complete; live verification deferred |
-| T06 | 2 — Content | P1 | Recalculate coverage for all 19 categories | Counts and gaps are generated from current files and match the documented baseline | Interim code/deploy checkpoint complete; live verification deferred |
+| T05 | 1 — Critical checks | P1 | Inspect dark mode, responsive layout, and visual defects | No confirmed high-impact layout/theme issue remains; tested viewport sizes are recorded | In progress — dark-mode browser regression test added; CI verification pending |
+| T06 | 2 — Content | P1 | Recalculate coverage for all 19 categories | Counts and gaps are generated from current files and match the documented baseline | Recalculated — 648/950 assignments; 17/19 categories below target; details refreshed in docs/REMAINING_WORK.md from CI run 40431935923 |
 | T07 | 2 — Content | P1 | Review the 424 held-out generic-template story records | Each record is accepted, rewritten, or kept unpublished with a reason; no filler is republished to inflate counts | Interim code/deploy checkpoint complete; live verification deferred |
 | T08 | 2 — Content | P1 | Review 6 held-out duplicate-slug records | Each duplicate has a documented disposition and active catalogs remain free of slug collisions | Interim code/deploy checkpoint complete; live verification deferred |
 | T09 | 2 — Content | P1 | Check story-to-image relevance and repeated imagery | Mismatches and duplicates are logged and corrected with appropriate assets | Interim code/deploy checkpoint complete; live verification deferred |
@@ -343,3 +343,20 @@ Tracking branch: `main`
 - Scope limitation: the available page reader returned a cache-miss error and direct runtime network access was unavailable, so this is a source/API-contract audit, not completed visual/live-browser verification. Browser acceptance is explicitly tracked as TME-16.
 - Highest-priority confirmed code findings include dark-mode “Get time” contrast, non-ticking world-clock display, refresh omitting world time, missing required SunriseSunset.io backlink, dynamic API content not re-localizing on language switch, caching claim not implemented, stale solar values after refresh failure, and `time.html` missing from the service-worker precache list.
 - No application code has been changed as part of this audit-plan commit; the next phase is to execute TME tasks one by one, starting with P1 items.
+
+
+## P1 execution plan — six steps, two tasks per step (2026-10-27)
+
+| Step | Tasks | Focus | Status |
+|---|---|---|---|
+| 1 | T05 + T06 | Dark mode/responsive UI; category coverage | In progress — dark-mode regression test added; latest category counts recalculated |
+| 2 | T07 + T08 | Generic story review queue; duplicate record dispositions | Pending |
+| 3 | T09 + T10 | Story-image relevance; source, alt text, licence and provenance review | Pending |
+| 4 | T11 + T12 | Reviewed category content target; Weather API browser scenarios | Pending |
+| 5 | T13 + T14 | Service Worker/cache upgrade; offline fallback and recovery | Pending |
+| 6 | T23 + T24 | Final regression audit; deployed release verification | Pending |
+
+### Step 1 execution notes — T05 / T06
+- T06 recalculation evidence: Content Audit run [40431935923](https://github.com/pkdiv6548/Everyday/actions/runs/40431935923) parsed 571 active dynamic story records and 55 static cards (626 unique combined slugs); category totals sum to 648/950 assignments. Earth & Weather and Optical Illusions are each at 50/50; the remaining 17 categories are below target, leaving 302 assignments. The generated integrity check reported 0 content integrity issues.
+- Updated docs/REMAINING_WORK.md with the latest category counts. This completes T06's recalculation/reporting acceptance criterion; it does not mean the 50-story content target is complete.
+- For T05, added scripts/dark-mode-browser-test.mjs and integrated it into .github/workflows/content-audit.yml plus scripts/ci-test-integration-check.mjs. It checks nine routes, theme toggle state/icon, persistence after reload, light/dark switching and contrast for header controls and primary buttons. Mark T05 complete only after this test and the existing responsive smoke test pass on the latest commit.
