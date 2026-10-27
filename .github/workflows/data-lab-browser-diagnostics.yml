@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: 20
       - name: Install Chromium
-        run: npm install --no-save --no-audit --no-fund playwright && npx playwright install chromium
+        run: npm install --no-save --no-audit --no-fund playwright acorn && npx playwright install chromium
       - name: Start local site
         run: |
           python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/data-lab-http.log 2>&1 &
