@@ -532,3 +532,10 @@ body.dark-mode .hero-buttons .button-dark:focus-visible {
   opacity: 1 !important;
   text-shadow: none !important;
 }
+
+/* Strongest homepage CTA override: prevent any theme rule from making its fill transparent. */
+html body.dark-mode .hero-buttons > a.button.button-dark {
+  background: #d9f36a !important;
+  color: #17332f !important;
+  border: 1px solid #d9f36a !important;
+}
