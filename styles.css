@@ -518,3 +518,17 @@ body{font-feature-settings:"kern" 1,"liga" 1;text-rendering:optimizeLegibility}
   .header-actions{position:relative;z-index:1102;gap:6px;flex:0 0 auto}
   .round-arrow{display:none}
 }
+
+
+/* P1 T05: keep the homepage primary CTA readable in dark mode. */
+body.dark-mode .hero-buttons a.button.button-dark,
+body.dark-mode .hero-buttons .button-dark:link,
+body.dark-mode .hero-buttons .button-dark:visited,
+body.dark-mode .hero-buttons .button-dark:hover,
+body.dark-mode .hero-buttons .button-dark:focus-visible {
+  background-color: #d9f36a !important;
+  color: #17332f !important;
+  border-color: #d9f36a !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
