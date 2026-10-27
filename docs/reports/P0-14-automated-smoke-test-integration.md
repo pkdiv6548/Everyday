@@ -1,6 +1,6 @@
 # P0-14 — Automated Smoke Test Integration
 
-**Status:** PASS — GitHub Actions run `40431105067` completed successfully.
+**Status:** PASS — latest GitHub Actions run `40431287693` completed successfully.
 
 ## Changes
 
@@ -14,7 +14,7 @@ The first full workflow run failed in `scripts/service-worker-registration-test.
 
 ## Verification
 
-GitHub Actions run [40431105067](https://github.com/pkdiv6548/Everyday/actions/runs/40431105067) completed successfully. The workflow passed:
+Latest audit workflow: [run 40431287693](https://github.com/pkdiv6548/Everyday/actions/runs/40431287693) completed successfully. The workflow passed:
 - JavaScript syntax checks and automated browser-test integration guard
 - Discover URL-state and search regressions, including edge cases
 - Shared runtime selector and Time page regressions/integration
@@ -27,6 +27,8 @@ GitHub Actions run [40431105067](https://github.com/pkdiv6548/Everyday/actions/r
 - Deployed GitHub Pages route smoke tests
 - Local path/image reuse, story-image relevance candidates, media provenance candidates, and category/story integrity audits
 
+The associated workflow build and deploy jobs also completed successfully in run [40431287177](https://github.com/pkdiv6548/Everyday/actions/runs/40431287177).
+
 ## Limitations
 
-This confirms the current automated workflow and the tests it runs; it does not guarantee every browser/device combination is defect-free. P0-02 remains separately tracked as HOLD for its broader live-deployment verification and is not closed by this report.
+This confirms the current automated workflow and the tests it runs; it does not guarantee every browser/device combination is defect-free. P0-02 remains separately tracked as HOLD for broader live-deployment verification and is not closed by this report.
