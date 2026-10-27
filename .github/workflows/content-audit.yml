@@ -17,6 +17,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Audit live Data Lab public API providers
+        run: node scripts/data-lab-api-health-audit.mjs
       - name: Check JavaScript syntax
         run: node --check scripts/ci-test-integration-check.mjs && node --check scripts/dark-mode-browser-test.mjs && node --check scripts/responsive-smoke-test.mjs
       - name: Check newsletter demo privacy and submission behavior
