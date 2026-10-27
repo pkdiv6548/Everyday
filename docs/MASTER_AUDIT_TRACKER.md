@@ -41,10 +41,10 @@ Tracking branch: `main`
 | T08 | 2 — Content | P1 | Review 6 held-out duplicate-slug records | Each duplicate has a documented disposition and active catalogs remain free of slug collisions | Interim code/deploy checkpoint complete; live verification deferred |
 | T09 | 2 — Content | P1 | Check story-to-image relevance and repeated imagery | Mismatches and duplicates are logged and corrected with appropriate assets | Interim code/deploy checkpoint complete; live verification deferred |
 | T10 | 2 — Content | P1 | Review factual sources, image alt text, licensing, and provenance | Published stories have credible sources and media metadata; uncertain claims are qualified | Interim code/deploy checkpoint complete; live verification deferred |
-| T11 | 2 — Content | P1 | Bring each category to at least 50 reviewed stories | All 19 categories meet the target with unique, reviewed stories; no placeholders used | Interim code/deploy checkpoint complete; live verification deferred |
-| T12 | 3 — APIs/PWA | P1 | Test Weather API input, permissions, failure/retry, dates, and units | Valid and invalid city/network/location scenarios behave correctly in browser tests | Interim code/deploy checkpoint complete; live verification deferred |
-| T13 | 3 — APIs/PWA | P1 | Audit Service Worker installation, cache updates, and recovery | Install and upgrade flows are tested; failures do not strand users on a broken cache | Interim code/deploy checkpoint complete; live verification deferred |
-| T14 | 3 — APIs/PWA | P1 | Test offline fallback and cached pages/assets | Documented pages work offline where promised; missing offline capabilities are explicit | Interim code/deploy checkpoint complete; live verification deferred |
+| T11 | 2 — Content | P1 | Bring each category to at least 50 reviewed stories | All 19 categories meet the target with unique, reviewed stories; no placeholders used | **Pending** — 302 category assignments remain; 17/19 categories are below 50. Generic queue records remain unpublished. |
+| T12 | 3 — APIs/PWA | P1 | Test Weather API input, permissions, failure/retry, dates, and units | Valid and invalid city/network/location scenarios behave correctly in browser tests | **Verified** — malformed response/retry, 7-day dates/units, unknown city, invalid coordinates, denied location permission, and request-race tests pass. |
+| T13 | 3 — APIs/PWA | P1 | Audit Service Worker installation, cache updates, and recovery | Install and upgrade flows are tested; failures do not strand users on a broken cache | **Verified** — Service Worker registration tests pass; cache version is v102. |
+| T14 | 3 — APIs/PWA | P1 | Test offline fallback and cached pages/assets | Documented pages work offline where promised; missing offline capabilities are explicit | **Verified** — offline/cache recovery browser tests pass. |
 | T15 | 3 — APIs/PWA | P2 | Test PWA installation and mobile behavior | Installability and core mobile use are verified on supported browsers/devices | Interim code/deploy checkpoint complete; live verification deferred |
 | T16 | 3 — APIs/PWA | P2 | Test every interactive experiment | Buttons, results, keyboard behavior, bilingual text, and safety notes pass checks | Interim code/deploy checkpoint complete; live verification deferred |
 | T17 | 4 — Quality | P2 | Run accessibility review | Labels, keyboard access, focus, semantics, contrast, and reduced-motion support are checked | Interim code/deploy checkpoint complete; live verification deferred |
@@ -53,8 +53,8 @@ Tracking branch: `main`
 | T20 | 4 — Quality | P2 | Run responsive/regression checks across key pages | Mobile, tablet, and desktop behavior is checked after fixes | Interim code/deploy checkpoint complete; live verification deferred |
 | T21 | 5 — Release readiness | P2 | Review external resources and API data handling | External requests, attribution, error handling, and client-visible secrets are checked | Interim code/deploy checkpoint complete; live verification deferred |
 | T22 | 5 — Release readiness | P2 | Assess scalability and the 10,000-concurrent-user goal | A test plan and evidence-based capacity assessment exist; no unsupported capacity claim is made | Interim code/deploy checkpoint complete; live verification deferred |
-| T23 | 5 — Release readiness | P1 | Run final automated regression audit | Required CI checks pass on the release candidate | Interim code/deploy checkpoint complete; live verification deferred |
-| T24 | 5 — Release readiness | P1 | Deploy and verify the final release | Latest main commit is deployed and critical live behaviors are manually verified | Interim code/deploy checkpoint complete; live verification deferred |
+| T23 | 5 — Release readiness | P1 | Run final automated regression audit | Required CI checks pass on the release candidate | **Verified** — final audit passed on commit `4954142dd2d773a4b1f88653337fb37b3ec436cb`. |
+| T24 | 5 — Release readiness | P1 | Deploy and verify the final release | Latest main commit is deployed and critical live behaviors are manually verified | **Verified with scope note** — deployment and live route smoke test passed; not every browser/device was manually tested. |
 
 ## Task execution log
 
@@ -352,9 +352,9 @@ Tracking branch: `main`
 | 1 | T05 + T06 | Dark mode/responsive UI; category coverage | **Complete** — browser regressions and responsive checks pass; category coverage recalculated |
 | 2 | T07 + T08 | Generic story review queue; duplicate record dispositions | **Complete** — all 424 generic records have documented decisions; all 6 duplicate records have documented dispositions |
 | 3 | T09 + T10 | Story-image relevance; source, alt text, licence and provenance review | **Complete for the audit phase** — eight image candidates reviewed, source labels improved, and provenance audit made manifest-aware |
-| 4 | T11 + T12 | Reviewed category content target; Weather API browser scenarios | Pending |
-| 5 | T13 + T14 | Service Worker/cache upgrade; offline fallback and recovery | Pending |
-| 6 | T23 + T24 | Final regression audit; deployed release verification | Pending |
+| 4 | T11 + T12 | Reviewed category content target; Weather API browser scenarios | **In progress** — T12 verified; T11 still needs 302 reviewed category assignments. |
+| 5 | T13 + T14 | Service Worker/cache upgrade; offline fallback and recovery | **Complete** — registration, cache recovery, and offline tests pass. |
+| 6 | T23 + T24 | Final regression audit; deployed release verification | **Complete with scope note** — CI and deployment pass; exhaustive manual device/browser matrix remains outside this verification. |
 
 ### Step 1 execution notes — T05 / T06
 - T05 uncovered a real runtime bug: dark-mode button styling used the single-element `$` selector and then called `.forEach()`, throwing a TypeError before theme handlers initialized. Corrected it to `$$('.button-dark')`, added a dark-mode contrast fallback, and updated the dark-mode browser test to wait for the 200 ms background transition before measuring contrast.
@@ -373,3 +373,9 @@ Tracking branch: `main`
 - Verification: Content Audit [run 40438297585](https://github.com/pkdiv6548/Everyday/actions/runs/40438297585) and Pages deployment [run 40438297147](https://github.com/pkdiv6548/Everyday/actions/runs/40438297147) passed for commit `b3e73bd18586c8e6b23d53d6f7f0d9b6333cda68`.
 - Outcome: Step 3 complete for the current audit phase; deeper claim-by-claim editorial verification remains an explicitly documented content-quality follow-up.
 
+
+### Step 4–6 verification notes — T11 / T12 / T13 / T14 / T23 / T24
+- Weather API browser validation and race-condition tests passed in Content Audit [run 40438725452](https://github.com/pkdiv6548/Everyday/actions/runs/40438725452). Coverage includes malformed forecast rejection, successful retry, seven forecast days, date/unit rendering, unknown city, invalid coordinates, location permission denial, and stale-request protection.
+- Service Worker registration and offline/cache recovery tests passed in the same audit run. The current cache key is `everyday-oddities-v102`.
+- Pages deployment [run 40438724311](https://github.com/pkdiv6548/Everyday/actions/runs/40438724311) succeeded on commit `4954142dd2d773a4b1f88653337fb37b3ec436cb`, with the deployed-route smoke test passing.
+- Step 4 cannot be closed because T11 requires 302 additional reviewed category assignments. The 424 generic-template queue remains unpublished rather than being mass-published as filler. Steps 5 and 6 are complete within the automated verification scope described above.
