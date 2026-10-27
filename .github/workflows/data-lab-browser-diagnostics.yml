@@ -12,7 +12,7 @@ permissions:
 jobs:
   browser-diagnostics:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 10
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: 20
       - name: Install Chromium
-        run: npm install --no-save playwright && npx playwright install --with-deps chromium
+        run: npm install --no-save --no-audit --no-fund playwright && npx playwright install chromium
       - name: Start local site
         run: |
           python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/data-lab-http.log 2>&1 &
