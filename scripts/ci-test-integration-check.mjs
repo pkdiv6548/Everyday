@@ -4,6 +4,7 @@ const workflowPath = '.github/workflows/content-audit.yml';
 const workflow = fs.readFileSync(workflowPath, 'utf8');
 
 const browserTests = [
+  'scripts/dark-mode-browser-test.mjs',
   'scripts/weather-race-condition-test.mjs',
   'scripts/weather-api-validation-test.mjs',
   'scripts/time-page-browser-test.mjs',
