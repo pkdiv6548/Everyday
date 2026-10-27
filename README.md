@@ -22,7 +22,7 @@ A bilingual (English/Hindi), responsive science and knowledge-discovery website 
 - 528 active bilingual dynamic story records and 55 static Discover cards (583 unique combined slugs). A further 424 generic-template records are preserved in `data/stories-review-queue.json`, and 6 duplicate catalog records in `data/stories-duplicate-review.json`; these are held out for review, not deleted.
 - Media provenance and licence notes for reviewed image sources in `data/media-manifest.json`
 - Interactive mini-experiments and article reading progress/share controls
-- PWA manifest and service-worker offline fallback; the current service-worker cache version is v92. Offline behavior and cache updates still require real-browser verification.
+- PWA manifest and service-worker offline fallback; the current service-worker cache version is v98. Offline behavior and cache updates still require real-browser verification.
 - Weather lookup using Open-Meteo Geocoding + Forecast APIs; the page advertises current conditions and a seven-day outlook. API failure states, location permission handling and live forecast accuracy still require browser testing.
 - Content/category plan and story-schema in `data/`; editorial image/source and scalability standards in `docs/`
 
