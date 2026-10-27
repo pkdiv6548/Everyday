@@ -14,7 +14,7 @@ function walk(dir) {
 }
 walk(root);
 const findings = [];
-const counts = { pages: htmlFiles.length, missingDocumentLanguage: 0, missingLanguageToggle: 0, missingHindiValue: 0, missingEnglishValue: 0 };
+const counts = { pages: htmlFiles.length, missingDocumentLanguage: 0, invalidDocumentLanguage: 0, missingLanguageToggle: 0, missingHindiValue: 0, missingEnglishValue: 0, emptyTranslationValue: 0 };
 for (const file of htmlFiles.sort()) {
   const html = readFileSync(file, 'utf8');
   const rel = path.relative(root, file).split(path.sep).join('/');
