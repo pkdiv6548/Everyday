@@ -33,6 +33,10 @@ jobs:
         run: node --check scripts/link-route-asset-audit.mjs
       - name: Audit internal links, routes, fragments, sitemap and custom 404
         run: node scripts/link-route-asset-audit.mjs
+      - name: Check Hindi-English static parity audit syntax
+        run: node --check scripts/i18n-parity-audit.mjs
+      - name: Audit Hindi-English static parity
+        run: node scripts/i18n-parity-audit.mjs
       - name: Check Time page regressions
         run: node scripts/time-page-regression-check.mjs
       - name: Install Chromium browser test dependency
