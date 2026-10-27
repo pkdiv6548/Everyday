@@ -5,7 +5,7 @@ import { parse } from 'acorn';
 import { chromium } from 'playwright';
 
 const html = await readFile('data-lab.html', 'utf8');
-const inlineScripts = [...html.matchAll(/<script\\b([^>]*)>([\\s\\S]*?)<\\/script>/gi)].filter(match => !/\\bsrc\\s*=/.test(match[1]));
+const inlineScripts = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)].filter(match => !/\bsrc\s*=/.test(match[1]));
 for (const [index, match] of inlineScripts.entries()) {
   try {
     parse(match[2], { ecmaVersion: 'latest', sourceType: 'script', locations: true });
