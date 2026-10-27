@@ -72,6 +72,7 @@ try {
         languageTextColor: colorOf(language),
         languageBackground: getComputedStyle(document.body).backgroundColor,
         primaryTextColor: primary ? colorOf(primary) : null,
+        primaryComputedBackground: primary ? getComputedStyle(primary).backgroundColor : null,
         primaryBackground: primary ? bgOf(primary) : null
       };
     });
@@ -82,7 +83,7 @@ try {
     assert.ok(languageContrast !== null && languageContrast >= 4.5, `Language toggle text contrast should be >=4.5:1 on ${route}, got ${languageContrast} (fg=${themeMetrics.languageTextColor}, bg=${themeMetrics.languageBackground})`);
     if (themeMetrics.primaryTextColor) {
       const primaryContrast = contrast(themeMetrics.primaryTextColor, themeMetrics.primaryBackground);
-      assert.ok(primaryContrast !== null && primaryContrast >= 4.5, `Primary button contrast should be >=4.5:1 on ${route}, got ${primaryContrast}`);
+      assert.ok(primaryContrast !== null && primaryContrast >= 4.5, `Primary button contrast should be >=4.5:1 on ${route}, got ${primaryContrast} (fg=${themeMetrics.primaryTextColor}, computedBg=${themeMetrics.primaryComputedBackground}, resolvedBg=${themeMetrics.primaryBackground})`);
     }
 
     await page.reload({ waitUntil: 'domcontentloaded' });
