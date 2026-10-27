@@ -15,7 +15,7 @@ const checks = [
   ['quick clocks cover all selectable zones with city labels and offsets', ['Asia/Kolkata','Europe/London','America/New_York','Asia/Tokyo','Australia/Sydney'].every(z=>page.includes(z)) && page.includes("timeZoneName:'shortOffset'")],
   ['public-data refresh does not request an external time API', /Promise\.allSettled\(\[loadWorldTime\(\),loadSun\(\)/.test(page) && !page.includes('https://hourora.app/api/v1/time')],
   ['SunriseSunset attribution backlink is present', /href="https:\/\/sunrisesunset\.io\//.test(page)],
-  ['holiday integration uses v4 endpoint, timezone-safe dates, and localized holiday names', page.includes('/api/v4/Holidays/IN/') && page.includes('formatToParts(now)') && page.includes("hi()?(h.localName||h.name||'सार्वजनिक अवकाश')")],
+  ['holiday integration uses v3 endpoint candidates, timezone-safe dates, and localized holiday names', page.includes('https://date.nager.at/api/v3/PublicHolidays/') && page.includes('https://nagerholidays.com/api/v3/publicholidays/') && page.includes('formatToParts(now)') && page.includes("hi()?(h.localName||h.name||'सार्वजनिक अवकाश')")],
   ['currency API error displays a localized message safely', page.includes("$('#currency-list').replaceChildren(Object.assign(document.createElement('p')") && !page.includes("$('#currency-list').innerHTML")],
   ['holiday API error displays a localized message safely', page.includes("$('#holiday-list').replaceChildren(Object.assign(document.createElement('p')") && !page.includes("$('#holiday-list').innerHTML")],
   ['external API fields use safe DOM rendering for data rows', page.includes("$('#currency-list').replaceChildren") && page.includes("$('#earthquake-list').replaceChildren") && page.includes("$('#holiday-list').replaceChildren")],
