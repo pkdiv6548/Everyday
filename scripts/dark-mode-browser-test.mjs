@@ -46,6 +46,8 @@ try {
     const lightBackground = await page.locator('body').evaluate(el => getComputedStyle(el).backgroundColor);
     await toggle.click();
     assert.equal(await page.locator('body').evaluate(el => el.classList.contains('dark-mode')), true, `Dark theme should activate on ${route}`);
+    // Let the declared 200ms button background transition settle before measuring contrast.
+    await page.waitForTimeout(250);
     assert.equal(await page.evaluate(() => localStorage.getItem('eo-theme')), 'dark', `Dark theme should persist on ${route}`);
     assert.equal(await toggle.getAttribute('aria-pressed'), 'true', `Theme button aria-pressed should be true on ${route}`);
     assert.equal(await toggle.getAttribute('aria-label'), 'Switch to light theme', `Theme button label should describe next action on ${route}`);
