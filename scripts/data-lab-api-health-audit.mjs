@@ -23,7 +23,7 @@ const checks = [
   { name: "Open Library", url: "https://openlibrary.org/search.json?q=science&limit=1&fields=key,title", ok: d => Array.isArray(d.docs) },
   { name: "Wikidata search", url: "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Solar%20System&language=en&uselang=en&format=json&origin=*&limit=1", ok: d => Array.isArray(d.search) },
   { name: "GDELT news", url: "https://api.gdeltproject.org/api/v2/doc/doc?query=science%20discovery&mode=artlist&format=json&sort=datedesc&maxrecords=2&timespan=7d", ok: d => !!d && (Array.isArray(d.articles) || d.error !== undefined) },
-  { name: "Open Food Facts v2 search", url: "https://world.openfoodfacts.org/api/v2/search?search_terms=oats&page_size=1&fields=product_name", ok: d => Array.isArray(d.products) },
+  { name: "Open Food Facts full-text search", url: "https://search.openfoodfacts.org/search?q=oats&page_size=1&fields=product_name", ok: d => Array.isArray(d.hits) },
   { name: "Gutendex books", url: "https://gutendex.com/books/?search=science", ok: d => Array.isArray(d.results) },
   { name: "NASA Image Library", url: "https://images-api.nasa.gov/search?q=earth&media_type=image&page_size=1", ok: d => Array.isArray(d.collection?.items) },
   { name: "Art Institute of Chicago", url: "https://api.artic.edu/api/v1/artworks/search?q=landscape&limit=1&fields=id,title,image_id", ok: d => Array.isArray(d.data) },
