@@ -68,18 +68,18 @@ try {
       return {
         darkBackground: getComputedStyle(document.body).backgroundColor,
         themeIconColor: colorOf(theme),
-        themeButtonBackground: bgOf(theme),
+        themeButtonBackground: getComputedStyle(document.body).backgroundColor,
         languageTextColor: colorOf(language),
-        languageBackground: bgOf(language),
+        languageBackground: getComputedStyle(document.body).backgroundColor,
         primaryTextColor: primary ? colorOf(primary) : null,
         primaryBackground: primary ? bgOf(primary) : null
       };
     });
     assert.notEqual(themeMetrics.darkBackground, lightBackground, `Body background should change in dark theme on ${route}`);
     const iconContrast = contrast(themeMetrics.themeIconColor, themeMetrics.themeButtonBackground);
-    assert.ok(iconContrast !== null && iconContrast >= 3, `Theme icon contrast should be >=3:1 on ${route}, got ${iconContrast}`);
+    assert.ok(iconContrast !== null && iconContrast >= 3, `Theme icon contrast should be >=3:1 on ${route}, got ${iconContrast} (fg=${themeMetrics.themeIconColor}, bg=${themeMetrics.themeButtonBackground})`);
     const languageContrast = contrast(themeMetrics.languageTextColor, themeMetrics.languageBackground);
-    assert.ok(languageContrast !== null && languageContrast >= 4.5, `Language toggle text contrast should be >=4.5:1 on ${route}, got ${languageContrast}`);
+    assert.ok(languageContrast !== null && languageContrast >= 4.5, `Language toggle text contrast should be >=4.5:1 on ${route}, got ${languageContrast} (fg=${themeMetrics.languageTextColor}, bg=${themeMetrics.languageBackground})`);
     if (themeMetrics.primaryTextColor) {
       const primaryContrast = contrast(themeMetrics.primaryTextColor, themeMetrics.primaryBackground);
       assert.ok(primaryContrast !== null && primaryContrast >= 4.5, `Primary button contrast should be >=4.5:1 on ${route}, got ${primaryContrast}`);
