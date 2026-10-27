@@ -350,11 +350,17 @@ Tracking branch: `main`
 | Step | Tasks | Focus | Status |
 |---|---|---|---|
 | 1 | T05 + T06 | Dark mode/responsive UI; category coverage | **Complete** — dark-mode and responsive browser tests pass; category coverage recalculated and documented |
-| 2 | T07 + T08 | Generic story review queue; duplicate record dispositions | Pending |
+| 2 | T07 + T08 | Generic story review queue; duplicate record dispositions | **Complete** — 424/424 generic records have a documented keep-unpublished decision; all 6 duplicate records have documented canonical-page dispositions |
 | 3 | T09 + T10 | Story-image relevance; source, alt text, licence and provenance review | Pending |
 | 4 | T11 + T12 | Reviewed category content target; Weather API browser scenarios | Pending |
 | 5 | T13 + T14 | Service Worker/cache upgrade; offline fallback and recovery | Pending |
 | 6 | T23 + T24 | Final regression audit; deployed release verification | Pending |
+
+
+### Step 2 execution notes — T07 / T08
+- T07 verified from `data/stories-review-queue.json`: 424 records, 424 review-log entries, 0 missing dispositions, and 0 entries missing a decision or rationale. All 424 remain `keep-unpublished` because they require topic-specific factual rewrites, reliable source verification, and bilingual editorial review. This closes the screening/disposition acceptance criterion without publishing generic filler; it does not certify the records as publish-ready.
+- T08 verified from `data/stories-duplicate-review.json`: all 6 duplicate-slug records have a `keep-unpublished` disposition, identify the existing static article as canonical, and include a reason not to reintroduce them into the dynamic catalog.
+- Outcome: Step 2 (T07 + T08) complete. Public story catalog remains protected from generic filler and duplicate slugs.
 
 ### Step 1 execution notes — T05 / T06
 - T06 recalculation evidence: Content Audit run [40431935923](https://github.com/pkdiv6548/Everyday/actions/runs/40431935923) parsed 571 active dynamic story records and 55 static cards (626 unique combined slugs); category totals sum to 648/950 assignments. Earth & Weather and Optical Illusions are each at 50/50; the remaining 17 categories are below target, leaving 302 assignments. The generated integrity check reported 0 content integrity issues.
