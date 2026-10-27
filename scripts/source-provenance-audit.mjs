@@ -7,7 +7,11 @@ const dir = path.join(root, 'articles');
 const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter(name => name.endsWith('.html')).sort() : [];
 const findings = [];
 const genericSourceText = /scientific reference|learn more|click here|source link|further information/i;
-const genericAltText = /^(image|photo|picture|illustration related to|image of|illustration of)\b/i;
+const genericAltText = /^(image|photo|picture|illustration|image of|illustration of|illustration related to)\s*$/i;
+const mediaManifestPath = path.join(root, 'data/media-manifest.json');
+const mediaManifest = JSON.parse(fs.readFileSync(mediaManifestPath, 'utf8'));
+const originalIllustrations = new Set(mediaManifest.originalIllustrations || []);
+const normalizeLocalAsset = value => value.replace(/^(\.\.\/)+/, '').replace(/^\.\//, '').split(/[?#]/)[0];
 for (const name of files) {
   const file = path.join(dir, name);
   const html = fs.readFileSync(file, 'utf8');
@@ -32,8 +36,12 @@ for (const name of files) {
     const alt = attrs.match(/(?:^|\s)alt\s*=\s*(["'])(.*?)\1/i)?.[2]?.trim();
     if (alt && genericAltText.test(alt)) findings.push({type:'generic-alt-candidate',file:rel,detail:alt});
   }
-  if (/<img\b[^>]*class=["'][^"']*article-cover[^"']*["'][^>]*>/i.test(html) && !/image-credit|photo credit|image source|illustration by/i.test(html)) {
-    findings.push({type:'missing-visible-cover-credit-candidate',file:rel,detail:'Cover has no obvious visible credit text; verify ownership/licence and attribution requirements.'});
+  const cover = html.match(/<img\b([^>]*class=["'][^"']*article-cover[^"']*["'][^>]*)>/i);
+  if (cover && !/image-credit|photo credit|image source|illustration by/i.test(html)) {
+    const src = cover[1].match(/(?:^|\s)src\s*=\s*(["'])(.*?)\1/i)?.[2] || '';
+    const localAsset = normalizeLocalAsset(src);
+    const originalIllustration = originalIllustrations.has(localAsset);
+    if (!originalIllustration) findings.push({type:'missing-visible-cover-credit-candidate',file:rel,detail:'Non-original cover has no obvious visible credit text; verify ownership/licence and attribution requirements.'});
   }
 }
 console.log('Article pages scanned:', files.length);
