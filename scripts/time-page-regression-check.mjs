@@ -21,7 +21,7 @@ const checks = [
   ['external API fields use safe DOM rendering for data rows', page.includes("$('#currency-list').replaceChildren") && page.includes("$('#earthquake-list').replaceChildren") && page.includes("$('#holiday-list').replaceChildren")],
   ['all data panels show localized loading states', ['currency-list','earthquake-list','holiday-list'].every(id=>page.includes("$('#"+id+"').replaceChildren(Object.assign(document.createElement('p')"))],
   ['provider links are present for public data cards', page.includes('href="https://sunrisesunset.io/"') && page.includes('href="https://frankfurter.dev/"') && page.includes('href="https://nagerholidays.com/api"') && page.includes('href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_day.geojson"')],
-  ['time page is included in the service-worker precache and cache version is bumped', /const CACHE='everyday-oddities-v100'/.test(serviceWorker) && /'\.\/time\.html'/.test(serviceWorker)],
+  ['time page is included in the service-worker precache and cache version is bumped', /const CACHE='everyday-oddities-v101'/.test(serviceWorker) && /'\.\/time\.html'/.test(serviceWorker)],
   ['canonical and Open Graph metadata exist', page.includes('rel="canonical"') && page.includes('property="og:title"') && page.includes('property="og:url"')],
   ['status and refresh controls expose accessible busy/status semantics', page.includes('role="status" aria-live="polite"') && page.includes('aria-busy')],
 ];
