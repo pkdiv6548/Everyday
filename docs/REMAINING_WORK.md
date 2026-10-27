@@ -32,9 +32,9 @@ Last checked: 2026-10-26
 - Extended the content audit to inspect inline CSS `url(...)` backgrounds as well as `<img src>` attributes, so future external or broken background-image URLs are not silently missed.
 
 ## Current catalog baseline
-- Active dynamic records: 538; unique dynamic slugs: 538.
+- Active dynamic records: 571; unique dynamic slugs: 571 (latest CI run 40431935923).
 - Static Discover cards: 55.
-- Unique combined catalog slugs: 593, with no cross-catalog duplicate slugs.
+- Unique combined catalog slugs: 626, with no cross-catalog duplicate slugs.
 - Records held out for review: 424 generic-template records and 6 duplicate-slug records.
 - Active story-data JavaScript: approximately 580 KB by source-character count (UTF-8 byte size differs), down substantially from the pre-cleanup catalog.
 - Latest inspected content-audit run passed JavaScript syntax, local-path/image checks and story-integrity checks. The report still shows 19/19 categories below the 50-record target; this is a content-completeness gap, not a broken-path or duplicate-integrity error.
@@ -43,15 +43,15 @@ Last checked: 2026-10-26
 
 ## Latest reviewed story batch — 2026-10-26
 - Added 10 topic-specific bilingual stories (5 Earth & Weather, 5 Optical Illusions) with 10 unique local SVG illustrations in commit `de8cab058edcc3d6235f1e2d52196e1371d40210`.
-- Automated content audit passed: 538 unique dynamic slugs, 0 content-integrity issues. Earth & Weather and Optical Illusions are each at 35/50; 15 more reviewed stories are needed in each. Overall coverage is 615/950, so the 19-category content target remains incomplete.
+- Automated content audit passed: 571 unique dynamic slugs and 0 content-integrity issues in CI run 40431935923. The latest category coverage is 648/950: Earth & Weather and Optical Illusions meet 50/50; the other 17 categories remain below target, leaving 302 category assignments. Source-by-source editorial verification remains separate.
 - CI and GitHub Pages deployment passed for this batch. The new source URLs are attached to each story; source-by-source editorial verification remains a separate requirement.
 
 # Minimum category target — still incomplete
-The target is 50 distinct, reviewed stories per category (950 category assignments minimum). After the latest reviewed batch, coverage is 615/950, leaving 335 assignments; all 19 categories are still below target. Latest coverage report:
+The target is 50 distinct, reviewed stories per category (950 category assignments minimum). The latest CI recalculation (run 40431935923) reports 648/950 category assignments, leaving 302 assignments; 17/19 categories remain below target. Earth & Weather and Optical Illusions are at 50/50. Latest coverage report:
 
 | Category | Current | Target | Still needed |
 |---|---:|---:|---:|
-| Human Body | 31 | 50 | 19 |
+| Human Body | 34 | 50 | 16 |
 | Space & Universe | 31 | 50 | 19 |
 | Nature & Wildlife | 34 | 50 | 16 |
 | Science Explained | 32 | 50 | 18 |
@@ -59,9 +59,9 @@ The target is 50 distinct, reviewed stories per category (950 category assignmen
 | History & Civilizations | 31 | 50 | 19 |
 | Technology & AI | 34 | 50 | 16 |
 | Everyday Mysteries | 31 | 50 | 19 |
-| Earth & Weather | 35 | 50 | 15 |
+| Earth & Weather | 50 | 50 | 0 |
 | Food Science | 33 | 50 | 17 |
-| Optical Illusions | 35 | 50 | 15 |
+| Optical Illusions | 50 | 50 | 0 |
 | Micro World | 32 | 50 | 18 |
 | Materials & Objects | 31 | 50 | 19 |
 | Geography & World | 35 | 50 | 15 |
@@ -70,7 +70,7 @@ The target is 50 distinct, reviewed stories per category (950 category assignmen
 | Inventions & Discoveries | 31 | 50 | 19 |
 | Unsolved Questions | 31 | 50 | 19 |
 | Future & Career Intelligence | 31 | 50 | 19 |
-| **Total category assignments** | **615** | **950** | **335** |
+| **Total category assignments** | **648** | **950** | **302** |
 
 The 424 remaining generic-template records need topic-specific answers, explanations, takeaways, credible sources and manual image-relevance checks before they can return to the public catalog. The six duplicate records must be reviewed against their existing static articles before any reuse.
 
