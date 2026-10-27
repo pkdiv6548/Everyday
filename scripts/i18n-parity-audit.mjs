@@ -35,7 +35,7 @@ for (const file of htmlFiles.sort()) {
     counts.invalidDocumentLanguage++;
     findings.push({ file: rel, type: 'unexpected-document-lang', detail: 'Expected English (en) or Hindi (hi) language tag, found lang=' + lang + '.' });
   }
-  if (!/class=["'][^"']*\blang-toggle\b/.test(html)) {
+  if (!/class=["'][^"']*\blang-toggle\b/.test(html) && !/id=["']language-toggle["']/.test(html)) {
     counts.missingLanguageToggle++;
     findings.push({ file: rel, type: 'missing-language-toggle', detail: 'No language-switch control found in static markup.' });
   }
