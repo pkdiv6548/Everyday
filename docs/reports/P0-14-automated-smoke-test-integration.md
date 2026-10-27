@@ -1,6 +1,6 @@
 # P0-14 — Automated Smoke Test Integration
 
-**Status:** Integration guard added; awaiting GitHub Actions verification.
+**Status:** PASS — GitHub Actions run `40431105067` completed successfully.
 
 ## Changes
 
@@ -10,14 +10,23 @@
 
 ## Failure found and corrective change
 
-The first full workflow run failed in `scripts/service-worker-registration-test.mjs`: the test observed no `sw.js` registration from `/`. The cause was that `app.js` waited for the window `load` event before attempting registration, which can be delayed by other page resources. Registration now starts at `DOMContentLoaded` (or immediately if the document is already ready), without blocking page rendering. This change is in commit `f712e18b4ed03927354997a1d3d1cf8b7cb32809` and is being re-verified by GitHub Actions run `40431105067`.
+The first full workflow run failed in `scripts/service-worker-registration-test.mjs`: the test observed no `sw.js` registration from `/`. The cause was that `app.js` waited for the window `load` event before attempting registration, which can be delayed by other page resources. Registration now starts at `DOMContentLoaded` (or immediately if the document is already ready), without blocking page rendering. The fix is in commit `f712e18b4ed03927354997a1d3d1cf8b7cb32809`.
 
 ## Verification
 
-The guard covers Weather API race/response validation, Time page integration, Discover search and edge cases, interactive controls, service-worker registration, offline/cache recovery, multi-page smoke testing, and responsive layout testing.
-
-The final status will be updated after GitHub Actions runs against the integration change.
+GitHub Actions run [40431105067](https://github.com/pkdiv6548/Everyday/actions/runs/40431105067) completed successfully. The workflow passed:
+- JavaScript syntax checks and automated browser-test integration guard
+- Discover URL-state and search regressions, including edge cases
+- Shared runtime selector and Time page regressions/integration
+- Weather API race-condition and response-validation tests
+- Interactive controls
+- Service Worker registration
+- Offline/cache recovery
+- Multi-page site smoke tests
+- Responsive layout smoke tests
+- Deployed GitHub Pages route smoke tests
+- Local path/image reuse, story-image relevance candidates, media provenance candidates, and category/story integrity audits
 
 ## Limitations
 
-This check verifies workflow wiring and script syntax coverage; it does not replace the browser tests themselves, which are run as separate workflow steps. Deployed-site verification remains separately tracked under P0-02.
+This confirms the current automated workflow and the tests it runs; it does not guarantee every browser/device combination is defect-free. P0-02 remains separately tracked as HOLD for its broader live-deployment verification and is not closed by this report.
