@@ -1,6 +1,19 @@
 #!/usr/bin/env node
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { parse } from 'acorn';
 import { chromium } from 'playwright';
+
+const html = await readFile('data-lab.html', 'utf8');
+const inlineScripts = [...html.matchAll(/<script\\b([^>]*)>([\\s\\S]*?)<\\/script>/gi)].filter(match => !/\\bsrc\\s*=/.test(match[1]));
+for (const [index, match] of inlineScripts.entries()) {
+  try {
+    parse(match[2], { ecmaVersion: 'latest', sourceType: 'script', locations: true });
+  } catch (error) {
+    console.error(`INLINE_SCRIPT_SYNTAX_ERROR script=${index + 1} line=${error.loc?.line} column=${error.loc?.column}: ${error.message}`);
+    throw error;
+  }
+}
 
 const browser = await chromium.launch({ headless: true });
 const pageErrors = [];
