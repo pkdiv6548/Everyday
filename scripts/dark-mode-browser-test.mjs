@@ -73,7 +73,12 @@ try {
         languageBackground: getComputedStyle(document.body).backgroundColor,
         primaryTextColor: primary ? colorOf(primary) : null,
         primaryComputedBackground: primary ? getComputedStyle(primary).backgroundColor : null,
-        primaryBackground: primary ? bgOf(primary) : null
+        primaryBackground: primary ? bgOf(primary) : null,
+        primaryOuterHTML: primary ? primary.outerHTML.slice(0, 240) : null,
+        primaryInkVariable: primary ? getComputedStyle(primary).getPropertyValue('--ink').trim() : null,
+        primaryLimeVariable: primary ? getComputedStyle(primary).getPropertyValue('--lime').trim() : null,
+        bodyInkVariable: getComputedStyle(document.body).getPropertyValue('--ink').trim(),
+        bodyLimeVariable: getComputedStyle(document.body).getPropertyValue('--lime').trim()
       };
     });
     assert.notEqual(themeMetrics.darkBackground, lightBackground, `Body background should change in dark theme on ${route}`);
@@ -83,7 +88,7 @@ try {
     assert.ok(languageContrast !== null && languageContrast >= 4.5, `Language toggle text contrast should be >=4.5:1 on ${route}, got ${languageContrast} (fg=${themeMetrics.languageTextColor}, bg=${themeMetrics.languageBackground})`);
     if (themeMetrics.primaryTextColor) {
       const primaryContrast = contrast(themeMetrics.primaryTextColor, themeMetrics.primaryBackground);
-      assert.ok(primaryContrast !== null && primaryContrast >= 4.5, `Primary button contrast should be >=4.5:1 on ${route}, got ${primaryContrast} (fg=${themeMetrics.primaryTextColor}, computedBg=${themeMetrics.primaryComputedBackground}, resolvedBg=${themeMetrics.primaryBackground})`);
+      assert.ok(primaryContrast !== null && primaryContrast >= 4.5, `Primary button contrast should be >=4.5:1 on ${route}, got ${primaryContrast} (fg=${themeMetrics.primaryTextColor}, computedBg=${themeMetrics.primaryComputedBackground}, resolvedBg=${themeMetrics.primaryBackground}, html=${themeMetrics.primaryOuterHTML}, --ink=${themeMetrics.primaryInkVariable}, --lime=${themeMetrics.primaryLimeVariable}, body--ink=${themeMetrics.bodyInkVariable}, body--lime=${themeMetrics.bodyLimeVariable})`);
     }
 
     await page.reload({ waitUntil: 'domcontentloaded' });
