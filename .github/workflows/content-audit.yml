@@ -35,10 +35,12 @@ jobs:
         run: node scripts/link-route-asset-audit.mjs
       - name: Check Hindi-English static parity audit syntax
         run: node --check scripts/i18n-parity-audit.mjs
+      - name: Check weather metadata language regression
+        run: node scripts/weather-metadata-i18n-regression-check.mjs
       - name: Check weather results language-switch regression
         run: node scripts/weather-results-language-switch-check.mjs
       - name: Check weather sunrise and sunset language regression syntax
-        run: node --check scripts/weather-results-language-switch-check.mjs && node --check scripts/weather-time-i18n-regression-check.mjs
+        run: node --check scripts/weather-metadata-i18n-regression-check.mjs && node --check scripts/weather-results-language-switch-check.mjs && node --check scripts/weather-time-i18n-regression-check.mjs
       - name: Check weather sunrise and sunset language regression
         run: node scripts/weather-time-i18n-regression-check.mjs
       - name: Audit Hindi-English static parity
