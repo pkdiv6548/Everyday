@@ -53,6 +53,16 @@ jobs:
         run: node scripts/time-page-regression-check.mjs
       - name: Install Chromium browser test dependency
         run: npm install --no-save playwright && npx playwright install chromium
+      - name: Run Data Lab browser API diagnostics
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/data-lab-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 20); do
+            if curl --silent --fail http://127.0.0.1:4173/data-lab.html > /dev/null; then break; fi
+            sleep 0.5
+          done
+          node scripts/data-lab-browser-diagnostics.mjs
       - name: Run Weather API race-condition browser tests
         run: |
           python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/everyday-weather-race-http.log 2>&1 &

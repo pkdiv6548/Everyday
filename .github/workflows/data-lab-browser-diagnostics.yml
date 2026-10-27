@@ -1,0 +1,36 @@
+name: Data Lab browser API diagnostics
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'data-lab.html'
+      - 'scripts/data-lab-browser-diagnostics.mjs'
+      - '.github/workflows/data-lab-browser-diagnostics.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-diagnostics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Chromium
+        run: npm install --no-save --no-audit --no-fund playwright && npx playwright install chromium
+      - name: Start local site
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/data-lab-http.log 2>&1 &
+          echo $! > /tmp/data-lab-http.pid
+          for attempt in $(seq 1 20); do
+            if curl --silent --fail http://127.0.0.1:4173/data-lab.html > /dev/null; then exit 0; fi
+            sleep 0.5
+          done
+          cat /tmp/data-lab-http.log
+          exit 1
+      - name: Capture Data Lab runtime and API failures
+        run: node scripts/data-lab-browser-diagnostics.mjs
