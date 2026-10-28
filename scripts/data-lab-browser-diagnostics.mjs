@@ -30,7 +30,7 @@ page.on('response', response => {
 
 try {
   await page.goto('http://127.0.0.1:4173/data-lab.html', { waitUntil: 'domcontentloaded', timeout: 20000 });
-  await page.waitForTimeout(18000);
+  await page.waitForTimeout(30000);
   const panelStatuses = await page.locator('.lab-status').evaluateAll(nodes =>
     nodes.map(node => ({ id: node.id, text: (node.textContent || '').trim(), className: node.className }))
   );
