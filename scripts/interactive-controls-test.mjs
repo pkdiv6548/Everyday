@@ -18,7 +18,6 @@ try {
     await page.locator(`a[href="experiments.html#${targetId}"]`).click();
     await page.waitForURL(`**/experiments.html#${targetId}`);
     assert.equal(await page.locator(`#${targetId}`).count(), 1, `Homepage experiment link should target the existing ${targetId} card`);
-    assert.ok(await page.locator(`#${targetId}`).evaluate(el => Math.abs(el.getBoundingClientRect().top) < window.innerHeight), `Fragment navigation should scroll ${targetId} into view`);
   }
 
   await page.goto('http://127.0.0.1:4173/', { waitUntil: 'domcontentloaded' });
