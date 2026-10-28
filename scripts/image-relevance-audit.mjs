@@ -30,7 +30,9 @@ for (const file of files) {
     continue;
   }
   const score = overlap(title, alt, src);
+  const genericAltPrefix = /^(?:illustration related to|image related to|photo related to|picture related to)\\s+/i.test(alt.trim());
   if (!alt.trim()) candidates.push({file, score, reason:'Missing/empty alt text', title, alt, src});
+  else if (genericAltPrefix) candidates.push({file, score:Number(score.toFixed(2)), reason:'Generic alt-text prefix; rewrite as a direct visual description', title, alt, src});
   else if (score < 0.2) candidates.push({file, score:Number(score.toFixed(2)), reason:'Low title/alt/filename keyword overlap; manual visual review needed', title, alt, src});
 }
 console.log('Article pages inspected:', files.length);
