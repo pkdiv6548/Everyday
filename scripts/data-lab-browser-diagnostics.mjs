@@ -63,7 +63,7 @@ try {
   for (const id of requiredPanels) {
     const panel = panelStatuses.find(item => item.id === id);
     assert.ok(panel, `Required API panel status element is missing: ${id}`);
-    assert.ok(panel.className.split(/\\s+/).includes('ok'), `Required API panel did not reach a successful state: ${id} (${panel.text})`);
+    assert.ok(panel.className.includes('lab-status ok'), `Required API panel did not reach a successful state: ${id} (${panel.text})`);
     assert.ok(panelContent[id]?.resultCount > 0, `Required API panel has no rendered result cards: ${id}`);
   }
   console.log('PASS — Data Lab initialized and required fallback panels rendered real result cards in Chromium.');
