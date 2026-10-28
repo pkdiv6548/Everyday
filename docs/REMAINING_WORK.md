@@ -34,7 +34,7 @@ Last checked: 2026-10-28
 ## Current catalog baseline
 - Active dynamic records: 573; unique dynamic slugs: 573 (CI run 40640134273).
 - Static Discover cards: 55.
-- Static Discover cards: 55; unique combined catalog slugs: 628, with no cross-catalog duplicate slugs.
+- Unique combined catalog slugs: 628, with no cross-catalog duplicate slugs.
 - Records held out for review: 424 generic-template records and 6 duplicate-slug records.
 - Active story-data JavaScript: approximately 580 KB by source-character count (UTF-8 byte size differs), down substantially from the pre-cleanup catalog.
 - Latest inspected content-audit run (40640134273) passed syntax, local-path/image and story-integrity checks with 0 content-integrity issues. Category coverage is 650/950 assignments; 17/19 categories remain below target. This is a content-completeness gap, not a broken-path or duplicate-integrity error.
@@ -78,7 +78,7 @@ The 424 remaining generic-template records need topic-specific answers, explanat
 
 - Discover: Search, combined category filtering, A–Z/Z–A sorting, URL state restoration, invalid query parameters, empty results and reset behavior pass automated browser tests (CI run 40640134273).
 
-- Discover accessibility: search accessible name/placeholder and sort label follow the selected language. Browser tests also verify language/theme preference persistence, keyboard navigation and skip-link behavior (CI run 40640134273).
+- Discover accessibility: search accessible name/placeholder and sort label follow the selected language. Browser tests also verify language/theme preference persistence, keyboard navigation and skip-link behavior (CI run 40637020094).
 
 ## Remaining work — in priority order
 1. Merge reviewed fixes in a controlled order, then confirm the latest GitHub Pages deployment and rerun smoke tests against the deployed site.
