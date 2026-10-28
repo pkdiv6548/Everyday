@@ -72,8 +72,35 @@ try {
   assert.equal((await visibleCards()).length, allCount, 'Reset should restore all story cards');
   assert.equal(new URL(page.url()).search, '', 'Reset should clear URL query parameters');
 
+  // Category chips without matching published cards must be disabled, not lead to dead-end empty results.
+  const categoryChips = page.locator('.filter-row .filter-chip[data-filter]');
+  const categoryStates = await categoryChips.evaluateAll(items => items.map(item => ({
+    filter: item.dataset.filter,
+    disabled: item.disabled,
+    title: item.title
+  })));
+  assert.equal(categoryStates.find(item => item.filter === 'all')?.disabled, false, 'All stories must remain available');
+  assert.equal(categoryStates.find(item => item.filter === 'science')?.disabled, false, 'Science is a composite category with published story matches');
+  const unavailableCategories = categoryStates.filter(item => !['all', 'science'].includes(item.filter) && item.disabled);
+  assert.ok(unavailableCategories.length > 0, 'Categories without published cards should be disabled until content exists');
+  assert.ok(unavailableCategories.every(item => item.title.length > 0), 'Disabled category chips should explain why they are unavailable');
+  for (const item of categoryStates.filter(item => !item.disabled && item.filter !== 'all')) {
+    await page.locator('.filter-chip[data-filter="' + item.filter + '"]').click();
+    const visible = await cards.evaluateAll(items => items.filter(card => !card.hidden).map(card => card.dataset.category));
+    assert.ok(visible.length > 0, item.filter + ' filter should show at least one published story');
+    if (item.filter === 'science') {
+      assert.ok(visible.every(category => ['light', 'physics', 'water', 'materials', 'food', 'body', 'sound', 'nature', 'space'].includes(category)), 'Science filter should show only its supported topic categories');
+    } else {
+      assert.ok(visible.every(category => category === item.filter), item.filter + ' filter should only show stories from its category');
+    }
+  }
+  await page.goto(base + '?category=psychology', { waitUntil: 'domcontentloaded' });
+  assert.equal(await page.locator('.filter-chip[data-filter="all"]').getAttribute('aria-pressed'), 'true', 'URL state for an unavailable category should fall back to All stories');
+  assert.equal(await page.locator('#story-sort').inputValue(), 'featured', 'Unavailable category URL should preserve safe default sorting');
+  assert.equal((await visibleCards()).length, allCount, 'Unavailable category URL should not leave the page in an empty dead-end state');
+
   assert.deepEqual(errors, [], 'Discover regression test should not produce unexpected browser errors');
-  console.log('PASS — Discover/search regressions: matching, combined filters, A–Z/Z–A ordering, URL synchronization and restoration, invalid URL values, reset, and runtime errors.');
+  console.log('PASS — Discover/search regressions: matching, combined filters, sorting, URL restoration, reset, unavailable-category handling, and runtime errors.');
 } finally {
   await browser.close();
 }
