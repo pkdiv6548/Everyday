@@ -36,6 +36,8 @@ try {
 
   for (const item of inventory.filter(item => item.available && item.filter !== 'all')) {
     await page.locator('.filter-chip[data-filter="' + item.filter + '"]').click();
+    assert.equal(await page.locator('.filter-chip[data-filter="' + item.filter + '"]').getAttribute('aria-pressed'), 'true', item.filter + ' chip should become selected');
+    assert.equal(new URL(page.url()).searchParams.get('category'), item.filter, item.filter + ' should update URL state');
     const visible = await cards.evaluateAll(items => items.filter(card => !card.hidden).map(card => card.dataset.category));
     assert.ok(visible.length > 0, item.filter + ' should show published stories');
     if (item.filter === 'science') {
