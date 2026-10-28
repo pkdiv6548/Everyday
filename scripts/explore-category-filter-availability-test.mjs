@@ -39,7 +39,7 @@ try {
     const visible = await cards.evaluateAll(items => items.filter(card => !card.hidden).map(card => card.dataset.category));
     assert.ok(visible.length > 0, item.filter + ' should show published stories');
     if (item.filter === 'science') {
-      assert.ok(visible.every(category => scienceCategories.includes(category)), 'Science should only show its supported topic categories');
+      assert.ok(visible.every(category => scienceCategories.includes(category)), 'Science should only show its supported topic categories; got: ' + JSON.stringify([...new Set(visible)]));
     } else {
       assert.ok(visible.every(category => category === item.filter), item.filter + ' should only show its own category');
     }
