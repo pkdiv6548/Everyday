@@ -31,4 +31,4 @@ jobs:
             if curl --silent --fail http://127.0.0.1:4173/explore.html > /dev/null; then break; fi
             sleep 0.5
           done
-          node --check scripts/explore-category-filter-availability-test.mjs && node scripts/explore-category-filter-availability-test.mjs
+          node --check scripts/explore-search-browser-test.mjs && node scripts/explore-search-browser-test.mjs && node --check scripts/explore-category-filter-availability-test.mjs && node scripts/explore-category-filter-availability-test.mjs
