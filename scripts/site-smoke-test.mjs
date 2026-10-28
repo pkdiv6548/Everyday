@@ -23,8 +23,8 @@ try {
   page.on('console', msg => {
     if (msg.type() !== 'error') return;
     const message = msg.text();
-    // Network-resource failures are tracked separately by response/local asset checks.
-    if (/Failed to load resource|net::ERR_|ERR_BLOCKED_BY_CLIENT/i.test(message)) return;
+    // Network-resource and cross-origin API CORS failures are covered by dedicated provider checks; keep this smoke test focused on page/runtime and same-origin route errors.
+    if (/Failed to load resource|net::ERR_|ERR_BLOCKED_BY_CLIENT|blocked by CORS policy|Access-Control-Allow-Origin/i.test(message)) return;
     failures.push({ type: 'console-error', page: page.url(), message });
   });
   page.on('response', response => {
