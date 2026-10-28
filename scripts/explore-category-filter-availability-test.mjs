@@ -13,8 +13,6 @@ page.on('console', message => { if (message.type() === 'error') errors.push('con
 const scienceCategories = ['light', 'physics', 'water', 'materials', 'food', 'body', 'sound', 'nature', 'space'];
 try {
   await page.goto('http://127.0.0.1:4173/explore.html', { waitUntil: 'domcontentloaded' });
-  console.log('App script HTTP status:', appStatus, 'Initial page errors:', JSON.stringify(errors));
-  console.log('Initial filter accessibility state:', await page.locator('.filter-row .filter-chip[data-filter="science"]').getAttribute('aria-pressed'));
   const cards = page.locator('.explore-grid .story-card[data-category]');
   const chips = page.locator('.filter-row .filter-chip[data-filter]');
   const allCount = await cards.count();
