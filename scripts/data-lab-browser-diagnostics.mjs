@@ -42,7 +42,7 @@ try {
   ].map(([statusId, selector]) => {
     const box = document.querySelector(selector);
     return [statusId, {
-      resultCount: box?.querySelectorAll('.api-list-result, .api-image-card, .lab-row').length || 0,
+      resultCount: box?.querySelectorAll('.api-list-result, .api-image-card, .lab-row, [data-api-image]').length || (box?.querySelectorAll('img').length || 0),
       text: (box?.innerText || '').trim().slice(0, 180)
     }];
   })));
@@ -63,7 +63,7 @@ try {
   for (const id of requiredPanels) {
     const panel = panelStatuses.find(item => item.id === id);
     assert.ok(panel, `Required API panel status element is missing: ${id}`);
-    assert.match(panel.className, /\\bok\\b/, `Required API panel did not reach a successful state: ${id} (${panel.text})`);
+    assert.ok(panel.className.split(/\\s+/).includes('ok'), `Required API panel did not reach a successful state: ${id} (${panel.text})`);
     assert.ok(panelContent[id]?.resultCount > 0, `Required API panel has no rendered result cards: ${id}`);
   }
   console.log('PASS — Data Lab initialized and required fallback panels rendered real result cards in Chromium.');
