@@ -20,16 +20,24 @@ try {
     }
 
     // Empty responses exercise the Food panel's no-results/error handling.
+    const foodQuery = url.searchParams.get('q') || url.searchParams.get('search_terms') || url.searchParams.get('query') || '';
+    const forceFoodFailure = foodQuery.includes('force-api-failure');
     if (url.hostname === 'search.openfoodfacts.org') {
-      await route.fulfill({ json: { hits: [] } });
+      await route.fulfill(forceFoodFailure
+        ? { status: 503, contentType: 'application/json', body: '{}' }
+        : { json: { hits: [] } });
       return;
     }
     if (url.hostname === 'world.openfoodfacts.org') {
-      await route.fulfill({ json: { products: [] } });
+      await route.fulfill(forceFoodFailure
+        ? { status: 503, contentType: 'application/json', body: '{}' }
+        : { json: { products: [] } });
       return;
     }
     if (url.hostname === 'api.nal.usda.gov') {
-      await route.fulfill({ json: { foods: [] } });
+      await route.fulfill(forceFoodFailure
+        ? { status: 503, contentType: 'application/json', body: '{}' }
+        : { json: { foods: [] } });
       return;
     }
 
@@ -62,6 +70,29 @@ try {
   await page.locator('#food-query').fill('empty-response-test');
   await page.locator('#food-form button[type="submit"]').click();
   await page.waitForFunction(
+    () => /no products found/i.test(document.querySelector('#food-status')?.textContent || ''),
+    null,
+    { timeout: 10000 }
+  );
+  assert.equal(
+    await page.locator('#food-status').evaluate(el => el.classList.contains('bad')),
+    false,
+    'Successful but empty provider responses should be treated as an empty state, not a server error.'
+  );
+  assert.match(
+    (await page.locator('#food-results').textContent() || ''),
+    /no products matched/i,
+    'Food panel should explain that the search returned no matches.'
+  );
+  assert.equal(
+    await page.locator('#food-results .api-list-result').count(),
+    0,
+    'Food panel should not render result cards for empty provider responses.'
+  );
+
+  await page.locator('#food-query').fill('force-api-failure');
+  await page.locator('#food-form button[type="submit"]').click();
+  await page.waitForFunction(
     () => document.querySelector('#food-status')?.classList.contains('bad'),
     null,
     { timeout: 10000 }
@@ -69,12 +100,7 @@ try {
   assert.match(
     (await page.locator('#food-status').textContent() || ''),
     /unavailable/i,
-    'Food panel should show a clear failure status when all providers return empty results.'
-  );
-  assert.equal(
-    await page.locator('#food-results .api-list-result').count(),
-    0,
-    'Food panel should not render result cards for empty provider responses.'
+    'Actual provider failures should remain distinguishable from an empty result set.'
   );
 
   await page.locator('#events-query').fill('forced-news-failure-test');
