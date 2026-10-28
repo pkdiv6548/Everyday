@@ -13,6 +13,15 @@ page.on('console', message => {
 try {
   await page.goto('http://127.0.0.1:4173/', { waitUntil: 'domcontentloaded' });
 
+  const skipLink = page.locator('.skip-link');
+  assert.equal(await skipLink.getAttribute('href'), '#main-content', 'Skip link should target the main content landmark');
+  assert.equal(await page.locator('#main-content').count(), 1, 'Skip-link target should exist exactly once');
+  await page.keyboard.press('Tab');
+  assert.equal(await page.evaluate(() => document.activeElement?.classList.contains('skip-link')), true, 'Skip link should be the first keyboard focus target');
+  await page.keyboard.press('Enter');
+  await page.waitForFunction(() => window.location.hash === '#main-content');
+  assert.ok(await page.locator('#main-content').count(), 'Skip link activation should reach the main content landmark');
+
   const menu = page.locator('.menu-toggle');
   const nav = page.locator('.main-nav');
   await menu.click();
