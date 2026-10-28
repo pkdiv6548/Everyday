@@ -29,7 +29,7 @@ const checks = [
   { name: "Art Institute of Chicago", url: "https://api.artic.edu/api/v1/artworks/search?q=landscape&limit=1&fields=id,title,image_id", ok: d => Array.isArray(d.data) },
 ];
 
-async function probe(check) {
+export async function probe(check) {
   let lastError = "unknown error";
   for (let attempt = 0; attempt <= retries; attempt++) {
     const controller = new AbortController();
@@ -40,6 +40,13 @@ async function probe(check) {
         headers: { Accept: "application/json", "User-Agent": "Everyday-Data-Lab-API-Audit/1.0" },
         signal: controller.signal,
       });
+      if (response.status === 429 || response.status === 403) {
+        const retryAfter = response.headers.get("retry-after");
+        const delay = retryAfter ? `; Retry-After ${retryAfter}` : "";
+        const rateLimitError = new Error(`HTTP ${response.status}; not retrying a rate-limited or denied request${delay}`);
+        rateLimitError.retryable = false;
+        throw rateLimitError;
+      }
       const text = await response.text();
       let data;
       try { data = JSON.parse(text); }
@@ -49,7 +56,7 @@ async function probe(check) {
       return { name: check.name, ok: true, status: response.status, ms: Date.now() - started };
     } catch (error) {
       lastError = error?.name === "AbortError" ? `timeout after ${timeoutMs}ms` : (error?.message || String(error));
-      if (attempt < retries) await new Promise(resolve => setTimeout(resolve, 700));
+      if (attempt < retries && error?.retryable !== false) await new Promise(resolve => setTimeout(resolve, 700));
     } finally {
       clearTimeout(timer);
     }
@@ -57,6 +64,7 @@ async function probe(check) {
   return { name: check.name, ok: false, error: lastError };
 }
 
+if (process.env.API_AUDIT_NO_RUN !== "1") {
 const results = [];
 for (let i = 0; i < checks.length; i += 4) {
   results.push(...await Promise.all(checks.slice(i, i + 4).map(probe)));
@@ -70,3 +78,4 @@ const passed = results.filter(r => r.ok).length;
 const failed = results.length - passed;
 console.log(`\nData Lab API audit: ${passed}/${results.length} endpoints passed; ${failed} failed.`);
 if (failed && process.env.STRICT_API_AUDIT === "1") process.exitCode = 1;
+}
