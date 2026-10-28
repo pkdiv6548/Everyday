@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import { chromium } from 'playwright';
 
 const base = process.env.SITE_BASE_URL || 'http://127.0.0.1:4173';
@@ -8,6 +9,15 @@ const routes = [
   '/articles/why-sky-blue.html'
 ];
 const widths = [320, 360, 375, 390, 430, 650, 651, 768, 820, 821, 850, 851, 900, 1024, 1280, 1440, 1920];
+const articleWidths = [320, 375, 768, 1024, 1440];
+const articleRoutes = fs.readdirSync(new URL('../articles/', import.meta.url))
+  .filter(file => file.endsWith('.html'))
+  .map(file => '/articles/' + file)
+  .filter(route => !routes.includes(route));
+const routeChecks = [
+  ...routes.map(route => ({ route, widths })),
+  ...articleRoutes.map(route => ({ route, widths: articleWidths }))
+];
 const failures = [];
 const results = [];
 const browser = await chromium.launch({ headless: true });
@@ -18,11 +28,11 @@ try {
   page.setDefaultTimeout(10000);
   page.on('pageerror', error => failures.push({ type: 'pageerror', url: page.url(), message: error.message }));
 
-  for (const route of routes) {
+  for (const { route, widths: routeWidths } of routeChecks) {
     await page.goto(base + route, { waitUntil: 'domcontentloaded' });
     assert.ok(await page.locator('body').count(), `Body missing: ${route}`);
     assert.ok(await page.locator('.site-header').count(), `Header missing: ${route}`);
-    for (const width of widths) {
+    for (const width of routeWidths) {
       await page.setViewportSize({ width, height: 900 });
       await page.waitForTimeout(25);
       const layout = await page.evaluate(() => {
@@ -67,7 +77,8 @@ try {
     console.error('RESPONSIVE FAILURES:', JSON.stringify(failures, null, 2));
     throw new Error(`Responsive smoke test failed with ${failures.length} issue(s).`);
   }
-  console.log(`PASS — responsive smoke test: ${routes.length} routes × ${widths.length} viewport widths (${routes.length * widths.length} layout checks), plus 7 mobile/tablet menu open-close checks; no horizontal overflow or header bounds failures.`);
+  const layoutCheckCount = routes.length * widths.length + articleRoutes.length * articleWidths.length;
+  console.log(`PASS — responsive smoke test: ${routes.length} core routes × ${widths.length} widths plus ${articleRoutes.length} additional article routes × ${articleWidths.length} widths (${layoutCheckCount} layout checks), plus 7 mobile/tablet menu open-close checks; no horizontal overflow or header bounds failures.`);
 } finally {
   await browser.close();
 }
