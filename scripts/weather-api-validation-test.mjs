@@ -24,6 +24,10 @@ try {
       await route.fulfill({ json: { results: [] } });
       return;
     }
+    if (url.searchParams.get('name') === 'NetworkFailure') {
+      await route.abort();
+      return;
+    }
     if (url.searchParams.get('name') === 'BadGeo') {
       await route.fulfill({ json: { results: [{ name: 'BadGeo', latitude: 'not-a-number', longitude: 73 }] } });
       return;
@@ -85,6 +89,12 @@ try {
   await page.waitForFunction(() => document.querySelector('#weather-status').textContent.includes('temporarily unavailable'));
   assert.equal(requests.forecast, 3, 'Invalid geocoding coordinates must not trigger forecast requests');
 
+  await city.fill('NetworkFailure');
+  await submit.click();
+  await page.waitForFunction(() => document.querySelector('#weather-status').textContent.includes('temporarily unavailable'));
+  assert.equal(await page.locator('#weather-results').isHidden(), true, 'Network failure must not leave stale forecast visible');
+  assert.equal(requests.forecast, 3, 'Failed geocoding request must not trigger forecast requests');
+
   await page.evaluate(() => {
     Object.defineProperty(navigator, 'geolocation', { configurable: true, value: { getCurrentPosition(_success, error) { error({ code: 1, message: 'User denied Geolocation' }); } } });
   });
@@ -92,9 +102,16 @@ try {
   await page.waitForFunction(() => document.querySelector('#weather-status').textContent.includes('Location was not shared'));
   assert.equal(requests.forecast, 3, 'Denied location permission must not request a forecast');
 
+  await page.evaluate(() => {
+    Object.defineProperty(navigator, 'geolocation', { configurable: true, value: undefined });
+  });
+  await page.locator('#use-location').click();
+  await page.waitForFunction(() => document.querySelector('#weather-status').textContent.includes('Location is not supported'));
+  assert.equal(requests.forecast, 3, 'Unsupported geolocation must not request a forecast');
+
   await page.locator('.lang-toggle').click();
   assert.equal(await page.locator('#weather-form button[type="submit"]').textContent(), 'मौसम देखें');
-  console.log('PASS — API response validation: malformed forecast is rejected and not cached, retry succeeds with seven days, unknown city and invalid coordinates fail safely, and Hindi labels remain available.');
+  console.log('PASS — API response validation: malformed forecast is rejected and not cached, retry succeeds with seven days, unknown city, invalid coordinates, network failure, denied/unsupported location, and Hindi labels are handled safely.');
 } finally {
   await browser.close();
 }
