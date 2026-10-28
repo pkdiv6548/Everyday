@@ -27,6 +27,8 @@ try {
     });
   });
 
+  console.log('Category availability inventory:', JSON.stringify(inventory));
+
   for (const item of inventory) {
     assert.equal(item.disabled, !item.available, item.filter + ' chip disabled state should match published story availability');
     if (!item.available) assert.ok(item.title.length > 0, item.filter + ' should explain why it is unavailable');
