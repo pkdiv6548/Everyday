@@ -58,6 +58,35 @@ try {
   assert.equal(await page.locator('.filter-chip[data-filter="space"]').getAttribute('aria-pressed'), 'true', 'Category should restore after navigation/reload');
   assert.ok((await visibleCards()).every(item => item.category === 'space'), 'Restored category should filter visible cards');
 
+  // A copied state URL should restore search, category, and sorting in a fresh tab.
+  const sharedTab = await context.newPage();
+  await sharedTab.goto(page.url(), { waitUntil: 'domcontentloaded' });
+  assert.equal(await sharedTab.locator('#story-search').inputValue(), 'stars', 'Shared URL should restore the search query in a new tab');
+  assert.equal(await sharedTab.locator('#story-sort').inputValue(), 'za', 'Shared URL should restore sort mode in a new tab');
+  assert.equal(await sharedTab.locator('.filter-chip[data-filter="space"]').getAttribute('aria-pressed'), 'true', 'Shared URL should restore category in a new tab');
+  assert.ok((await sharedTab.locator('.explore-grid .story-card[data-category]').evaluateAll(items => items.filter(item => !item.hidden).map(item => item.dataset.category))).every(category => category === 'space'), 'New tab should apply the restored category');
+  await sharedTab.close();
+
+  // Browser Back/Forward should restore state when navigating between shareable URLs.
+  const firstStateUrl = base + '?q=stars&category=space&sort=az';
+  const secondStateUrl = base + '?q=sky&category=water&sort=za';
+  await page.goto(firstStateUrl, { waitUntil: 'domcontentloaded' });
+  assert.equal(await search.inputValue(), 'stars');
+  assert.equal(await sort.inputValue(), 'az');
+  assert.equal(await page.locator('.filter-chip[data-filter="space"]').getAttribute('aria-pressed'), 'true');
+  await page.goto(secondStateUrl, { waitUntil: 'domcontentloaded' });
+  assert.equal(await search.inputValue(), 'sky');
+  assert.equal(await sort.inputValue(), 'za');
+  assert.equal(await page.locator('.filter-chip[data-filter="water"]').getAttribute('aria-pressed'), 'true');
+  await page.goBack({ waitUntil: 'domcontentloaded' });
+  assert.equal(await search.inputValue(), 'stars', 'Back should restore the previous search query');
+  assert.equal(await sort.inputValue(), 'az', 'Back should restore the previous sort mode');
+  assert.equal(await page.locator('.filter-chip[data-filter="space"]').getAttribute('aria-pressed'), 'true', 'Back should restore the previous category');
+  await page.goForward({ waitUntil: 'domcontentloaded' });
+  assert.equal(await search.inputValue(), 'sky', 'Forward should restore the next search query');
+  assert.equal(await sort.inputValue(), 'za', 'Forward should restore the next sort mode');
+  assert.equal(await page.locator('.filter-chip[data-filter="water"]').getAttribute('aria-pressed'), 'true', 'Forward should restore the next category');
+
   // Invalid query values should not break rendering; defaults should be used where appropriate.
   await page.goto(base + '?q=stars&category=not-a-category&sort=invalid', { waitUntil: 'domcontentloaded' });
   assert.equal(await page.locator('#story-search').inputValue(), 'stars', 'Valid search should restore even with invalid other parameters');
