@@ -56,7 +56,8 @@ export async function probe(check) {
       return { name: check.name, ok: true, status: response.status, ms: Date.now() - started };
     } catch (error) {
       lastError = error?.name === "AbortError" ? `timeout after ${timeoutMs}ms` : (error?.message || String(error));
-      if (attempt < retries && error?.retryable !== false) await new Promise(resolve => setTimeout(resolve, 700));
+      if (error?.retryable === false) break;
+      if (attempt < retries) await new Promise(resolve => setTimeout(resolve, 700));
     } finally {
       clearTimeout(timer);
     }
