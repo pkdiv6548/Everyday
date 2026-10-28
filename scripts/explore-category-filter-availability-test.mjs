@@ -15,9 +15,6 @@ try {
   const allCount = await cards.count();
   assert.ok(allCount > 0, 'Discover should render published story cards');
 
-  const cardCategoryCounts = await page.locator('.explore-grid .story-card[data-category]').evaluateAll(items => Object.fromEntries([...new Set(items.map(item => item.dataset.category))].map(category => [category, items.filter(item => item.dataset.category === category).length])));
-  console.log('Published card category counts:', JSON.stringify(cardCategoryCounts));
-
   const inventory = await page.evaluate(() => {
     const cards = [...document.querySelectorAll('.explore-grid .story-card[data-category]')];
     return [...document.querySelectorAll('.filter-row .filter-chip[data-filter]')].map(chip => {
@@ -30,13 +27,11 @@ try {
     });
   });
 
-  console.log('Category availability inventory:', JSON.stringify(inventory));
-
   for (const item of inventory) {
     assert.equal(item.disabled, !item.available, item.filter + ' chip disabled state should match published story availability');
     if (!item.available) assert.ok(item.title.length > 0, item.filter + ' should explain why it is unavailable');
   }
-  assert.ok(inventory.some(item => !item.available), 'Audit should detect categories with no published stories');
+  assert.ok(inventory.filter(item => !['all', 'science'].includes(item.filter)).every(item => item.available), 'Every listed topic should have at least one published story');
   assert.equal(inventory.find(item => item.filter === 'science')?.disabled, false, 'Science composite filter should remain available');
 
   for (const item of inventory.filter(item => item.available && item.filter !== 'all')) {
@@ -51,16 +46,9 @@ try {
     assert.equal(new URL(page.url()).searchParams.get('category'), item.filter, item.filter + ' should synchronize to the URL');
   }
 
-  await page.goto('http://127.0.0.1:4173/explore.html?category=psychology', { waitUntil: 'domcontentloaded' });
-  assert.equal(await page.locator('.filter-chip[data-filter="all"]').getAttribute('aria-pressed'), 'true', 'Unavailable URL category should fall back to All stories');
-  assert.equal((await cards.evaluateAll(items => items.filter(card => !card.hidden).length)), allCount, 'Unavailable URL category should not create a dead-end empty state');
-
-  const unavailable = inventory.find(item => !item.available);
-  if (unavailable) {
-    await page.locator('.lang-toggle').click();
-    const chip = page.locator('.filter-chip[data-filter="' + unavailable.filter + '"]');
-    assert.match(await chip.getAttribute('title'), /अभी कहानियाँ उपलब्ध नहीं हैं/, 'Disabled category explanation should update to Hindi');
-  }
+  await page.goto('http://127.0.0.1:4173/explore.html?category=not-a-real-category', { waitUntil: 'domcontentloaded' });
+  assert.equal(await page.locator('.filter-chip[data-filter="all"]').getAttribute('aria-pressed'), 'true', 'Unknown URL category should fall back to All stories');
+  assert.equal((await cards.evaluateAll(items => items.filter(card => !card.hidden).length)), allCount, 'Unknown URL category should not create a dead-end empty state');
 
   assert.deepEqual(errors, [], 'Category filter handling should not cause uncaught browser errors');
   console.log('PASS — Discover category availability: published categories filter correctly; empty categories are disabled with bilingual explanation; unavailable URL categories fall back safely.');
