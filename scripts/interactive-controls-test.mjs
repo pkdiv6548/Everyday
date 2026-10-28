@@ -76,6 +76,8 @@ try {
   assert.ok(await page.locator('.article-content').count(), 'Article route should render readable article content');
   await page.locator('.menu-toggle').click();
   assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'), 'true', 'Mobile menu should open before returning from an article');
+  await page.locator('.menu-toggle').click();
+  assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'), 'true', 'Mobile menu should open before navigating back from an article');
   await page.locator('.main-nav a[href="../explore.html"]').click();
   await page.waitForURL('**/explore.html');
 
