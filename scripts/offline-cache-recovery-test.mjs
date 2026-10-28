@@ -10,6 +10,19 @@ try {
   page.setDefaultTimeout(15000);
   page.on('pageerror', error => failures.push(error.message));
 
+  await page.goto(base + '/offline.html', { waitUntil: 'domcontentloaded' });
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await page.evaluate(() => localStorage.setItem('eo-theme', 'light'));
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  assert.equal(await page.locator('html').getAttribute('data-theme'), 'light', 'Saved light preference should override a dark operating-system preference on the offline page');
+  assert.equal(await page.locator('body').evaluate(el => getComputedStyle(el).backgroundColor), 'rgb(248, 247, 241)', 'Offline page should use the light palette when light is saved');
+
+  await page.evaluate(() => localStorage.setItem('eo-theme', 'dark'));
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark', 'Saved dark preference should apply to the offline page');
+  assert.equal(await page.locator('body').evaluate(el => getComputedStyle(el).backgroundColor), 'rgb(16, 34, 29)', 'Offline page should use the dark palette when dark is saved');
+
+  await page.emulateMedia({ colorScheme: 'light' });
   await page.goto(base + '/', { waitUntil: 'domcontentloaded' });
   await page.waitForFunction(() => navigator.serviceWorker.controller !== null, { timeout: 15000 });
   await page.waitForFunction(async () => {
