@@ -13,6 +13,14 @@ page.on('console', message => {
 try {
   await page.goto('http://127.0.0.1:4173/', { waitUntil: 'domcontentloaded' });
 
+  for (const targetId of ['experiment-01', 'experiment-02', 'experiment-03']) {
+    await page.goto('http://127.0.0.1:4173/', { waitUntil: 'domcontentloaded' });
+    await page.locator(`a[href="experiments.html#${targetId}"]`).click();
+    await page.waitForURL(`**/experiments.html#${targetId}`);
+    assert.equal(await page.locator(`#${targetId}`).count(), 1, `Homepage experiment link should target the existing ${targetId} card`);
+  }
+
+  await page.goto('http://127.0.0.1:4173/', { waitUntil: 'domcontentloaded' });
   const menu = page.locator('.menu-toggle');
   const nav = page.locator('.main-nav');
   await menu.click();
