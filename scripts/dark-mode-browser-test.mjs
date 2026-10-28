@@ -5,7 +5,9 @@ import { chromium } from 'playwright';
 const base = process.env.SITE_BASE_URL || 'http://127.0.0.1:4173';
 const coreRoutes = [
   '/', '/categories.html', '/explore.html', '/weather.html', '/time.html',
-  '/future.html', '/experiments.html', '/about.html',
+  '/future.html', '/experiments.html', '/about.html', '/data-lab.html',
+  '/feedback.html', '/food.html', '/light.html', '/live-science.html',
+  '/materials.html', '/physics.html', '/sound.html', '/story.html', '/water.html',
   '/articles/why-sky-blue.html'
 ];
 const articleRoutes = fs.readdirSync(new URL('../articles/', import.meta.url))
