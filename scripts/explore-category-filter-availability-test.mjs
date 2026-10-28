@@ -5,11 +5,16 @@ const browser = await chromium.launch({ headless: true });
 const context = await browser.newContext({ viewport: { width: 1280, height: 900 }, serviceWorkers: 'block' });
 const page = await context.newPage();
 const errors = [];
-page.on('pageerror', error => errors.push(error.message));
+page.on('pageerror', error => errors.push('pageerror: ' + error.message));
+let appStatus = null;
+page.on('response', response => { if (new URL(response.url()).pathname.endsWith('/app.js')) appStatus = response.status(); });
+page.on('console', message => { if (message.type() === 'error') errors.push('console: ' + message.text()); });
 
 const scienceCategories = ['light', 'physics', 'water', 'materials', 'food', 'body', 'sound', 'nature', 'space'];
 try {
   await page.goto('http://127.0.0.1:4173/explore.html', { waitUntil: 'domcontentloaded' });
+  console.log('App script HTTP status:', appStatus, 'Initial page errors:', JSON.stringify(errors));
+  console.log('Initial filter accessibility state:', await page.locator('.filter-row .filter-chip[data-filter="science"]').getAttribute('aria-pressed'));
   const cards = page.locator('.explore-grid .story-card[data-category]');
   const chips = page.locator('.filter-row .filter-chip[data-filter]');
   const allCount = await cards.count();
