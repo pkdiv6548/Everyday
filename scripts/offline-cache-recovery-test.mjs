@@ -10,6 +10,12 @@ try {
   page.setDefaultTimeout(15000);
   page.on('pageerror', error => failures.push(error.message));
 
+  await page.goto(base + '/offline.html', { waitUntil: 'domcontentloaded' });
+  await page.evaluate(async () => {
+    const obsolete = await caches.open('everyday-oddities-obsolete-test');
+    await obsolete.put('/obsolete-test-entry', new Response('stale cache entry'));
+  });
+
   await page.goto(base + '/', { waitUntil: 'domcontentloaded' });
   await page.waitForFunction(() => navigator.serviceWorker.controller !== null, { timeout: 15000 });
   await page.waitForFunction(async () => {
@@ -29,6 +35,9 @@ try {
   const cachedPaths = cacheState.entries.flatMap(entry => entry.urls);
   assert.ok(cachedPaths.some(path => path.endsWith('/index.html') || path.endsWith('/Everyday/')), 'Homepage should be available in cache');
   assert.ok(cachedPaths.some(path => path.endsWith('/offline.html')), 'Offline fallback should be precached');
+  assert.ok(cachedPaths.some(path => path.endsWith('/styles.css')), 'Core stylesheet should be precached for offline rendering');
+  assert.ok(cachedPaths.some(path => path.endsWith('/app.js')), 'Core application script should be precached');
+  assert.ok(!cacheState.keys.includes('everyday-oddities-obsolete-test'), 'Service Worker activation should delete obsolete site cache versions');
 
   await page.goto(base + '/articles/why-sky-blue.html', { waitUntil: 'domcontentloaded' });
   assert.match(await page.title(), /sky|blue|Everyday|Oddities/i, 'Cached article should render online before going offline');
