@@ -59,8 +59,18 @@ try {
   assert.equal(await cards.evaluateAll(items => items.filter(item => !item.hidden).length), initialCount, 'Clear filters should restore all stories');
   assert.equal(new URL(page.url()).search, '', 'Clear filters should remove query parameters');
 
+  const firstStory = page.locator('.explore-grid .story-card[data-category]').first();
+  const storyHref = await firstStory.getAttribute('href');
+  assert.ok(storyHref && storyHref.startsWith('articles/'), 'Story cards should link to an article route');
+  await firstStory.click();
+  await page.waitForURL('**/articles/**');
+  assert.ok(await page.locator('main h1').textContent(), 'Article route should render a headline');
+  assert.ok(await page.locator('.article-content').count(), 'Article route should render readable article content');
+  await page.locator('.main-nav a[href="../explore.html"]').click();
+  await page.waitForURL('**/explore.html');
+
   assert.deepEqual(errors, [], 'Navigation and controls should not produce browser runtime errors');
-  console.log('PASS — interactive controls: mobile navigation open/close, theme toggle, language toggle, Discover search/filter/sort/reset, URL state, accessibility state, and browser runtime errors.');
+  console.log('PASS — interactive controls: mobile navigation open/close, theme toggle, language toggle, Discover search/filter/sort/reset, URL state, article card/detail/back navigation, accessibility state, and browser runtime errors.');
 } finally {
   await browser.close();
 }
