@@ -31,15 +31,23 @@ try {
   await search.fill('sky & stars');
   assert.equal(new URL(page.url()).searchParams.get('q'), 'sky & stars', 'Queries containing spaces and ampersands should survive URL encoding');
 
-  const searchUrl = page.url();
+  const encodedQueryUrl = page.url();
   await page.locator('#explore-search button[type="submit"]').click();
-  assert.equal(page.url(), searchUrl, 'Submitting the search form should filter in place without navigating away');
+  assert.equal(page.url(), encodedQueryUrl, 'Submitting a special-character query should not navigate away');
   assert.equal(await search.inputValue(), 'sky & stars', 'Button submission should preserve the exact query');
 
+  await search.fill('sky');
+  const matchingQueryUrl = page.url();
+  assert.ok(await visibleCount() > 0, 'A matching query should show results before submission');
+  await page.locator('#explore-search button[type="submit"]').click();
+  assert.equal(page.url(), matchingQueryUrl, 'Search-button submission should filter in place without navigating away');
+  assert.equal(await search.inputValue(), 'sky', 'Button submission should preserve a matching query');
+  assert.ok(await visibleCount() > 0, 'Matching results should remain usable after button submission');
+
   await search.press('Enter');
-  assert.equal(page.url(), searchUrl, 'Submitting search with Enter should not trigger a full-page navigation');
-  assert.equal(await search.inputValue(), 'sky & stars', 'Enter submission should preserve the exact query');
-  assert.ok(await visibleCount() > 0, 'Search results should remain usable after either submission method');
+  assert.equal(page.url(), matchingQueryUrl, 'Submitting search with Enter should not trigger a full-page navigation');
+  assert.equal(await search.inputValue(), 'sky', 'Enter submission should preserve the matching query');
+  assert.ok(await visibleCount() > 0, 'Matching results should remain usable after Enter submission');
 
   assert.deepEqual(errors, [], 'Discover edge-case search tests should not produce unexpected browser errors');
   console.log('PASS — Discover search edge cases: zero results, empty-state visibility, result counter, recovery, encoded query strings, and runtime errors.');
