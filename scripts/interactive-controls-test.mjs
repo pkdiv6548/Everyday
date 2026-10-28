@@ -34,6 +34,9 @@ try {
   await theme.click();
   assert.notEqual(await page.locator('body').evaluate(el => el.classList.contains('dark-mode')), beforeTheme, 'Theme button should toggle dark mode');
   assert.equal(await theme.getAttribute('aria-pressed'), String(!beforeTheme), 'Theme button aria-pressed should match current state');
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  assert.equal(await page.locator('body').evaluate(el => el.classList.contains('dark-mode')), !beforeTheme, 'Dark-mode preference should persist after reload');
+  assert.equal(await page.locator('.theme-toggle').getAttribute('aria-pressed'), String(!beforeTheme), 'Theme toggle accessible state should restore after reload');
 
   const lang = page.locator('.lang-toggle');
   const beforeLanguage = await page.locator('html').getAttribute('lang');
@@ -41,6 +44,9 @@ try {
   const afterLanguage = beforeLanguage === 'hi' ? 'en' : 'hi';
   assert.equal(await page.locator('html').getAttribute('lang'), afterLanguage, 'Language button should switch document language');
   assert.equal(await lang.getAttribute('aria-label'), afterLanguage === 'hi' ? 'Switch to English' : 'Switch to Hindi', 'Language button accessible name should match its action');
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  assert.equal(await page.locator('html').getAttribute('lang'), afterLanguage, 'Language preference should persist after reload');
+  assert.equal(await page.locator('.lang-toggle').getAttribute('aria-label'), afterLanguage === 'hi' ? 'Switch to English' : 'Switch to Hindi', 'Language action label should restore after reload');
 
   const search = page.locator('#story-search');
   const cards = page.locator('.explore-grid .story-card[data-category]');
