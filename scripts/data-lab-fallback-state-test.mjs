@@ -51,7 +51,11 @@ try {
       return;
     }
     if (url.hostname === 'hn.algolia.com') {
-      await route.fulfill({ json: { hits: [] } });
+      const query = url.searchParams.get('query') || '';
+      const hits = query === 'fallback-success-test'
+        ? [{ title: 'Deterministic fallback story', url: 'https://example.com/fallback-story', author: 'test-author', created_at: '2026-10-28T00:00:00Z', points: 7 }]
+        : [];
+      await route.fulfill({ json: { hits } });
       return;
     }
 
@@ -101,6 +105,19 @@ try {
     (await page.locator('#food-status').textContent() || ''),
     /unavailable/i,
     'Actual provider failures should remain distinguishable from an empty result set.'
+  );
+
+  await page.locator('#events-query').fill('fallback-success-test');
+  await page.locator('#events-form button[type="submit"]').click();
+  await page.waitForFunction(
+    () => /Hacker News fallback/i.test(document.querySelector('#events-status')?.textContent || ''),
+    null,
+    { timeout: 10000 }
+  );
+  assert.match(
+    (await page.locator('#events-results').textContent() || ''),
+    /Deterministic fallback story/,
+    'Events panel should render fallback stories when GDELT and Google News are unavailable.'
   );
 
   await page.locator('#events-query').fill('forced-news-failure-test');
