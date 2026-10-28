@@ -30,7 +30,7 @@ page.on('response', response => {
 
 try {
   await page.goto('http://127.0.0.1:4173/data-lab.html', { waitUntil: 'domcontentloaded', timeout: 20000 });
-  await page.waitForTimeout(18000);
+  await page.waitForTimeout(30000);
   const panelStatuses = await page.locator('.lab-status').evaluateAll(nodes =>
     nodes.map(node => ({ id: node.id, text: (node.textContent || '').trim(), className: node.className }))
   );
@@ -38,7 +38,8 @@ try {
     ['food-status', '#food-results'],
     ['gut-status', '#gut-results'],
     ['nasaimages-status', '#nasaimages-results'],
-    ['art-status', '#art-results']
+    ['art-status', '#art-results'],
+    ['events-status', '#events-results']
   ].map(([statusId, selector]) => {
     const box = document.querySelector(selector);
     return [statusId, {
@@ -59,7 +60,7 @@ try {
   assert.equal(pageErrors.length, 0, 'Uncaught browser JavaScript error(s) stopped or disrupted Data Lab initialization.');
   assert.ok(apiRequests.length >= 10, `Expected at least 10 initial API requests, saw ${apiRequests.length}; Data Lab may have stopped before starting its loaders.`);
 
-  const requiredPanels = ['food-status', 'gut-status', 'nasaimages-status', 'art-status'];
+  const requiredPanels = ['food-status', 'gut-status', 'nasaimages-status', 'art-status', 'events-status'];
   for (const id of requiredPanels) {
     const panel = panelStatuses.find(item => item.id === id);
     assert.ok(panel, `Required API panel status element is missing: ${id}`);
