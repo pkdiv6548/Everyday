@@ -28,6 +28,15 @@ try {
   assert.ok(await visibleCount() > 0, 'A matching query should recover results');
   assert.equal(await emptyState.isVisible(), false, 'No-results message should hide when results return');
 
+  await search.fill('StArS');
+  assert.ok(await visibleCount() > 0, 'Search should match results regardless of keyword casing');
+  assert.equal(await emptyState.isVisible(), false, 'Mixed-case matching should hide the no-results message');
+
+  await search.fill('');
+  assert.equal(await visibleCount(), await cards.count(), 'An empty query should restore all story cards');
+  assert.equal(await emptyState.isVisible(), false, 'An empty query should hide the no-results message');
+  assert.equal(new URL(page.url()).searchParams.has('q'), false, 'An empty query should remove q from the URL');
+
   await search.fill('sky & stars');
   assert.equal(new URL(page.url()).searchParams.get('q'), 'sky & stars', 'Queries containing spaces and ampersands should survive URL encoding');
 
