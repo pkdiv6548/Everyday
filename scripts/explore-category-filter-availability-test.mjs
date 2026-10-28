@@ -15,6 +15,9 @@ try {
   const allCount = await cards.count();
   assert.ok(allCount > 0, 'Discover should render published story cards');
 
+  const cardCategoryCounts = await page.locator('.explore-grid .story-card[data-category]').evaluateAll(items => Object.fromEntries([...new Set(items.map(item => item.dataset.category))].map(category => [category, items.filter(item => item.dataset.category === category).length])));
+  console.log('Published card category counts:', JSON.stringify(cardCategoryCounts));
+
   const inventory = await page.evaluate(() => {
     const cards = [...document.querySelectorAll('.explore-grid .story-card[data-category]')];
     return [...document.querySelectorAll('.filter-row .filter-chip[data-filter]')].map(chip => {
