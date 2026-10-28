@@ -1,12 +1,18 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import { chromium } from 'playwright';
 
 const base = process.env.SITE_BASE_URL || 'http://127.0.0.1:4173';
-const routes = [
+const coreRoutes = [
   '/', '/categories.html', '/explore.html', '/weather.html', '/time.html',
   '/future.html', '/experiments.html', '/about.html',
   '/articles/why-sky-blue.html'
 ];
+const articleRoutes = fs.readdirSync(new URL('../articles/', import.meta.url))
+  .filter(file => file.endsWith('.html'))
+  .map(file => '/articles/' + file)
+  .filter(route => !coreRoutes.includes(route));
+const routes = [...coreRoutes, ...articleRoutes];
 const failures = [];
 const browser = await chromium.launch({ headless: true });
 
@@ -102,7 +108,7 @@ try {
   }
 
   assert.deepEqual(failures, [], `Browser runtime errors: ${JSON.stringify(failures)}`);
-  console.log(`PASS — dark-mode browser test: ${routes.length} routes; theme toggles both ways, accessible state/icon, persisted preference, and dark-theme control contrast checks passed.`);
+  console.log(`PASS — dark-mode browser test: ${coreRoutes.length} core routes plus ${articleRoutes.length} additional static article routes (${routes.length} total); theme toggles both ways, accessible state/icon, persisted preference, and dark-theme control contrast checks passed.`);
 } finally {
   await browser.close();
 }
