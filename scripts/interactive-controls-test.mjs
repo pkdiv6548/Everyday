@@ -18,6 +18,12 @@ try {
   await menu.click();
   assert.equal(await menu.getAttribute('aria-expanded'), 'true', 'Mobile menu should announce expanded state');
   assert.equal(await nav.evaluate(el => el.classList.contains('open')), true, 'Mobile menu should open');
+  await page.keyboard.press('Escape');
+  assert.equal(await menu.getAttribute('aria-expanded'), 'false', 'Escape should announce the mobile menu as collapsed');
+  assert.equal(await nav.evaluate(el => el.classList.contains('open')), false, 'Escape should close the mobile menu');
+  assert.equal(await menu.evaluate(el => document.activeElement === el), true, 'Focus should return to the menu toggle after Escape');
+  await menu.click();
+  assert.equal(await menu.getAttribute('aria-expanded'), 'true', 'Mobile menu should reopen after Escape');
   await nav.locator('a[href="explore.html"]').click();
   await page.waitForURL('**/explore.html');
   assert.equal(await menu.getAttribute('aria-expanded'), 'false', 'Selecting a navigation link should close the mobile menu');
@@ -66,6 +72,8 @@ try {
   await page.waitForURL('**/articles/**');
   assert.ok(await page.locator('main h1').textContent(), 'Article route should render a headline');
   assert.ok(await page.locator('.article-content').count(), 'Article route should render readable article content');
+  await page.locator('.menu-toggle').click();
+  assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'), 'true', 'Mobile menu should open before returning from an article');
   await page.locator('.main-nav a[href="../explore.html"]').click();
   await page.waitForURL('**/explore.html');
 
