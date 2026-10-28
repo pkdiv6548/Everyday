@@ -81,9 +81,7 @@ try {
   })));
   assert.equal(categoryStates.find(item => item.filter === 'all')?.disabled, false, 'All stories must remain available');
   assert.equal(categoryStates.find(item => item.filter === 'science')?.disabled, false, 'Science is a composite category with published story matches');
-  const unavailableCategories = categoryStates.filter(item => !['all', 'science'].includes(item.filter) && item.disabled);
-  assert.ok(unavailableCategories.length > 0, 'Categories without published cards should be disabled until content exists');
-  assert.ok(unavailableCategories.every(item => item.title.length > 0), 'Disabled category chips should explain why they are unavailable');
+  assert.ok(categoryStates.filter(item => !['all', 'science'].includes(item.filter)).every(item => !item.disabled), 'Every listed topic should remain available when published story cards exist');
   for (const item of categoryStates.filter(item => !item.disabled && item.filter !== 'all')) {
     await page.locator('.filter-chip[data-filter="' + item.filter + '"]').click();
     const visible = await cards.evaluateAll(items => items.filter(card => !card.hidden).map(card => card.dataset.category));
@@ -94,10 +92,10 @@ try {
       assert.ok(visible.every(category => category === item.filter), item.filter + ' filter should only show stories from its category');
     }
   }
-  await page.goto(base + '?category=psychology', { waitUntil: 'domcontentloaded' });
-  assert.equal(await page.locator('.filter-chip[data-filter="all"]').getAttribute('aria-pressed'), 'true', 'URL state for an unavailable category should fall back to All stories');
-  assert.equal(await page.locator('#story-sort').inputValue(), 'featured', 'Unavailable category URL should preserve safe default sorting');
-  assert.equal((await visibleCards()).length, allCount, 'Unavailable category URL should not leave the page in an empty dead-end state');
+  await page.goto(base + '?category=not-a-category', { waitUntil: 'domcontentloaded' });
+  assert.equal(await page.locator('.filter-chip[data-filter="all"]').getAttribute('aria-pressed'), 'true', 'Unknown URL category should fall back to All stories');
+  assert.equal(await page.locator('#story-sort').inputValue(), 'featured', 'Unknown category URL should preserve safe default sorting');
+  assert.equal((await visibleCards()).length, allCount, 'Unknown category URL should not leave the page in an empty dead-end state');
 
   assert.deepEqual(errors, [], 'Discover regression test should not produce unexpected browser errors');
   console.log('PASS — Discover/search regressions: matching, combined filters, sorting, URL restoration, reset, unavailable-category handling, and runtime errors.');
